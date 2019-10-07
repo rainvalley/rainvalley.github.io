@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>如何输出Hello World！ | Chores</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">如何输出Hello World！</h1><a id="logo" href="/.">Chores</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">如何输出Hello World！</h1><div class="post-meta">Oct 3, 2019</div><div class="post-content"><h1 id="One-issue！"><a href="#One-issue！" class="headerlink" title="One issue！"></a>One issue！</h1><p><strong><em>据说在学习一门语言的时候输出Hello World！会带来好运。</em></strong></p>
+<p>哪怎么输出Hello World呢？难道就是像下面这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;Hello World!&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>是的，我们就是要输出上述源代码。</p>
+<h1 id="输出源码"><a href="#输出源码" class="headerlink" title="输出源码"></a>输出源码</h1><p>如果我们直接运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;#include&lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;Hello World!&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不出意外地报错，由于各种语言存在保留字以及需要使用无法输入的字符，因此需要对部分地方进行转义。<img src="https://s2.ax1x.com/2019/10/03/u0dVJS.jpg" alt="u0dVJS.jpg"><br>修改后的源码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;#include &lt;stdio.h&gt;\nint main()\n&#123;\nprintf(\&quot;Hello world\\n\&quot;);\nreturn 0;\n&#125;&quot;);</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此处，我们对换行符通过\n进行了转义,还对”以及\进行了转义。</p>
+<h1 id="AWSL"><a href="#AWSL" class="headerlink" title="AWSL"></a>AWSL</h1><p><img src="https://s2.ax1x.com/2019/10/03/u0ySt1.jpg" alt="u0ySt1.jpg"><br>阿伟死了！这道题与上述问题相似，不过又有一个坑。<br><img src="https://s2.ax1x.com/2019/10/03/u0yxKS.jpg" alt="u0yxKS.jpg"><br>我最开始的源码是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;#include &lt;bits/stdc++.h&gt;\nusing namespace std;\n\nint main()\n&#123;\n\t//输出 Hello World !\n\tcout&lt;&lt;\&quot;Hello World !\&quot;&lt;&lt;endl;\n\n\treturn 0;\n&#125;&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我使用了\n和\t来对上述源码进行转义，提交之后报格式错误。由于有了前几题的心酸历程，我去仔细看了下格式，发现缩进只有四个空格。而我使用Mingw-W64编译出来的代码中制表符占据了八个空格的位置，不同编译器以及编辑器的差异造成了上述问题。</p>
+<p>修改后的源码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;#include &lt;bits/stdc++.h&gt;\nusing namespace std;\n\nint main()\n&#123;\n    //输出 Hello World !\n    cout&lt;&lt;\&quot;Hello World !\&quot;&lt;&lt;endl;\n\n    return 0;\n&#125;&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在使用Tab还是Space的问题上的讨论似乎成为了与Vim/Emacs哪个更好相似的问题。</p>
+<h1 id="转义表"><a href="#转义表" class="headerlink" title="转义表"></a>转义表</h1><p>以下即为C语言常用转义字符表格：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>意义</th>
+<th>ASCII码值（十进制）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\a</td>
+<td>响铃(BEL)</td>
+<td>007</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格(BS) ，将当前位置移到前一列</td>
+<td>008</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页(FF)，将当前位置移到下页开头</td>
+<td>012</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行(LF) ，将当前位置移到下一行开头</td>
+<td>010</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车(CR) ，将当前位置移到本行开头</td>
+<td>013</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>水平制表(HT)</td>
+<td>009</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直制表(VT)</td>
+<td>011</td>
+</tr>
+<tr>
+<td>\’</td>
+<td>单引号</td>
+<td>039</td>
+</tr>
+<tr>
+<td>\”</td>
+<td>双引号</td>
+<td>034</td>
+</tr>
+<tr>
+<td>\</td>
+<td>反斜杠</td>
+<td>092</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div><div class="tags"></div><div class="post-nav"><a class="next" href="/2019/10/02/how_to_measure_information/">一种基于熵来度量信息量的方式</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Math/" style="font-size: 15px;">Math</a> <a href="/tags/Google/" style="font-size: 15px;">Google</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/供电/" style="font-size: 15px;">供电</a> <a href="/tags/接口/" style="font-size: 15px;">接口</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/网络/" style="font-size: 15px;">网络</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/tags/GFW/" style="font-size: 15px;">GFW</a> <a href="/tags/半导体/" style="font-size: 15px;">半导体</a> <a href="/tags/Apple/" style="font-size: 15px;">Apple</a> <a href="/tags/Videos/" style="font-size: 15px;">Videos</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/10/03/how_to_output_Hello-World！/">如何输出Hello World！</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/02/how_to_measure_information/">一种基于熵来度量信息量的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/15/PS-PR-Guide/">Ps Pr安装指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/10/Reborn/">Try reborn</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/09/Windows-junior/">Windows安装文件初探</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/05/0-（9）-1-issue/">0.（9）=1问题探究</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/23/update-2019-06-23/">次古董升级&重装</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/04/2018annuall/">2018看过的番剧？</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/03/Windows_softwores-backup/">Windows软件备份</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/03/from_iCloud_to_Google_Drive/">从iCloud迁移照片到Google Drive</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="https://blog.iknet.top/" title="秋のかえで" target="_blank">秋のかえで</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Chores.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
