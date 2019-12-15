@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>单片机基础资源介绍 | Chores</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">单片机基础资源介绍</h1><a id="logo" href="/.">Chores</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">单片机基础资源介绍</h1><div class="post-meta">Dec 15, 2019</div><div class="post-content"><h1 id="0X00-背景"><a href="#0X00-背景" class="headerlink" title="0X00 背景"></a>0X00 背景</h1><p>单片机，全称单片微型计算机（英語：single-chip microcomputer），可以看作是缩小版的计算机，拥有基础输入输出与数据处理功能的晶片。本人手中有两块51单片机开发板，一块是普中科技的HC-6800MS，另外一块是蓝桥杯的竞赛板CT107D。下文的所有介绍以及示例代码（如果有的话），均针对CT107D（芯片：IAP15F2K61S2）。</p>
+<h1 id="0X01-资源"><a href="#0X01-资源" class="headerlink" title="0X01 资源"></a>0X01 资源</h1><p><img src="https://s2.ax1x.com/2019/12/15/QhiySs.jpg" alt="板上资源"></p>
+<ul>
+<li>单片机芯片接口：40针脚51单片机接口，40脚AVR单片机接口，40脚8255芯片引脚。</li>
+<li>显示模块：LED模块输出，8位的8段共阳数码管，1602/12860液晶接口。</li>
+<li>输入输出模块：4*4矩阵键盘（包含可配置的独立按键），继电器蜂鸣器。</li>
+<li>传感器模块：超声波发射接收探头，红外发射管，霍尔传感器，光敏电阻，温湿度传感器。</li>
+<li><p>电源：USB供电或者5V DC供电。</p>
+</li>
+<li><p>……</p>
+<h1 id="0X02-跳线"><a href="#0X02-跳线" class="headerlink" title="0X02 跳线"></a>0X02 跳线</h1><p>由于CT107D上拥有丰富的外设，因此常常使用跳线进行独立功能的选择。</p>
+</li>
+<li><p>单片机类型选择：J15处可选51/AVR。</p>
+</li>
+<li>下载方式选择：J4接口可选择UART/PROG工作模式。</li>
+<li>按键工作模式选择：J5处可选择使用独立按键或者按键矩阵。连接2-3时选择到独立按键（BTN)，1-2时选择到按键矩阵(KBD)。</li>
+<li>超声/红外功能选择：J2口可用于选择超声/红外。</li>
+<li>外设访问方式选择：J13处可选择使用IO口扩展模式或者储存器映射扩展模式。<h1 id="0X03-电位器"><a href="#0X03-电位器" class="headerlink" title="0X03 电位器"></a>0X03 电位器</h1></li>
+<li>电位器 Rb1: 用于调节液晶模块的显示清晰度电位器。</li>
+<li>电位器 Rb2: 调节电压值，可以用于 A/D 输入电位器。 </li>
+<li>电位器Rb3: 用于调节方波发生器的频率电位器。</li>
+<li>电位器Rb4: 用于调节信号放大模块的放大倍数。<h1 id="0X04-关闭蜂鸣器"><a href="#0X04-关闭蜂鸣器" class="headerlink" title="0X04 关闭蜂鸣器"></a>0X04 关闭蜂鸣器</h1></li>
+</ul>
+<p>关闭蜂鸣器之前，我们需要了解几个芯片：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>芯片</th>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>74HC138</td>
+<td>138译码器</td>
+<td>扩展IO口</td>
+</tr>
+<tr>
+<td>74HC02</td>
+<td>NOR逻辑门</td>
+<td>逻辑运算取反</td>
+</tr>
+<tr>
+<td>HC573</td>
+<td>573锁存器</td>
+<td>锁存/通透IO口高低电平</td>
+</tr>
+<tr>
+<td>ULN2003</td>
+<td>达林顿晶体管阵列</td>
+<td>放大电流，增强驱动能力</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void Initsys()</span><br><span class="line">&#123;</span><br><span class="line">	HC138_C=1;</span><br><span class="line">	HC138_B=0;</span><br><span class="line">	HC138_A=1;//Y5输出低电平</span><br><span class="line">	P0=0X00;//拉低所有P0端口电平初始化</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h1><p>本开发板说明书可于<a href="https://mega.nz/#!gx1miKTL!RHTAffxpVWtdEx-A7KB0g2mOChKn93afb-YH0oLXYeE" target="_blank" rel="noopener">此处</a>下载，其它诸如历年试题，上位机，示例代码，原理图等可于<a href="https://mega.nz/#F!gldCUCwL!iY7c18KLE6jxkM9NiH6S5g" target="_blank" rel="noopener">此处</a>下载。</p>
+<p>当然，整个学习过程中我的代码将会在GitHub开源，地址：<a href="https://github.com/rainvalley/51" target="_blank" rel="noopener">https://github.com/rainvalley/51</a> 。</p>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2019/12/15/51_lv1/">51单片机之点亮小灯</a><a class="next" href="/2019/11/29/the_future_of_communication/">未来通信之我见</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Math/" style="font-size: 15px;">Math</a> <a href="/tags/Google/" style="font-size: 15px;">Google</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/供电/" style="font-size: 15px;">供电</a> <a href="/tags/接口/" style="font-size: 15px;">接口</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/网络/" style="font-size: 15px;">网络</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/tags/GFW/" style="font-size: 15px;">GFW</a> <a href="/tags/半导体/" style="font-size: 15px;">半导体</a> <a href="/tags/Apple/" style="font-size: 15px;">Apple</a> <a href="/tags/Videos/" style="font-size: 15px;">Videos</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/12/15/51_lv1/">51单片机之点亮小灯</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/15/51_lv0/">单片机基础资源介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/29/the_future_of_communication/">未来通信之我见</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/08/communication_applications/">通信理论应用领域综述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/01/ouput_digit/">输出一串数字的每一位</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/29/Weight_balls/">小球称重问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/03/how_to_output_Hello-World！/">如何输出Hello World！</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/02/how_to_measure_information/">一种基于熵来度量信息量的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/15/PS-PR-Guide/">Ps Pr安装指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/10/Reborn/">Try reborn</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="https://blog.iknet.top/" title="秋のかえで" target="_blank">秋のかえで</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Chores.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
