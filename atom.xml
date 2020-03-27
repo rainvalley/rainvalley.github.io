@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-08T08:16:43.534Z</updated>
+  <updated>2020-03-27T14:38:03.923Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,104 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>软件正版化</title>
+    <link href="http://yoursite.com/2020/03/26/authorised_software/"/>
+    <id>http://yoursite.com/2020/03/26/authorised_software/</id>
+    <published>2020-03-26T21:57:00.000Z</published>
+    <updated>2020-03-27T14:38:03.923Z</updated>
+    
+    <content type="html"><![CDATA[<p>正版化的意义不仅仅在于软件使用者对问题的重新审视，更在于对社会风气潜移默化的影响。我的观点很鲜明，力所能及范围内使用正版，支持非实物优质内容付费。</p><p>我把电脑上需要需要授权的软件大概整理了一下，如图：<img src="https://pic.rmb.bdstatic.com/9958298076d7d759e4e56ad651022429.png" alt="某些值得一提的软件"></p><p>第一行均为盗版应用，暂无优质应用替代，第二行均为通过STU邮箱注册获得的正版授权应用，第三行则为自付费应用。除此之外还有其他类型的授权软件，例如Keil针对M0内核免费，TouchGFX针对STM32开发免费。</p><p>通过教育邮箱，你可以将一部分专业软件正版化，包括但不仅限于：</p><ul><li>JetBrains：WebStorm，IntelliJ，PyCharm，CLion……</li><li>AutoDesk：AutoCAD，3ds max，Maya……</li><li>Altium：Altium Designer</li></ul><hr><p>以下授权仅限于部分高校：</p><ul><li>Microsoft：Office 365，Microsoft Imagine</li><li>MathWorks：Matlab，Simulink</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;正版化的意义不仅仅在于软件使用者对问题的重新审视，更在于对社会风气潜移默化的影响。我的观点很鲜明，力所能及范围内使用正版，支持非实物优质内容付费。&lt;/p&gt;
+&lt;p&gt;我把电脑上需要需要授权的软件大概整理了一下，如图：&lt;img src=&quot;https://pic.rmb.bdsta
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于换行</title>
+    <link href="http://yoursite.com/2020/03/23/about_lf/"/>
+    <id>http://yoursite.com/2020/03/23/about_lf/</id>
+    <published>2020-03-23T06:41:59.000Z</published>
+    <updated>2020-03-23T14:58:46.770Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>The following characters are interpreted as line breaks in Visual Studio:</p><p>CR LF: Carriage return + line feed, Unicode characters 000D + 000A</p><p>LF: Line feed, Unicode character 000A</p><p>NEL: Next line, Unicode character 0085</p><p>LS: Line separator, Unicode character 2028</p><p>PS: Paragraph separator, Unicode character 2029</p></blockquote><p>最常见的换行符为CRLF与LF两种：</p><ul><li><p>CR : Carriage Return，译为回车。机械英文打字机时代，当需要进行打字操作之前需要将纸带拉到最右端，然后开始打字。当一行打完之后，弹簧会把纸带拉回去，因此叫做回车（即打印机头部回到最初始的位置）。</p></li><li><p>LF : Line Feed，译为换行。打印机旁边也有一个把手，拨动把手一次便可以将纸带向上移动一格，因此称之为换行。</p></li></ul><p>Windows最初的设计符合打印机的直观逻辑，即先回车，再进行换行。然而PC刚刚兴起之时，储存器价格昂贵，因为又有人提出来只使用一个符号记录表示换行，LF换行方式，多见于Linux/Unix。</p><ul><li>在现代Linux/Unix系统中，使用LF进行换行，即\n表示新起下一行。</li><li>在Windows系统中，使用CRLF进行换行，意为回车+换行。</li><li>Legacy Mac系统上，使用CR进行换行，现代Mac OS系统已经更改为LF。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;The following characters are interpreted as line breaks in Visual Studio:&lt;/p&gt;
+&lt;p&gt;CR LF: Carriage return + line feed, Unicode
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CSS基础框盒模型与HTML元素类型</title>
+    <link href="http://yoursite.com/2020/03/21/CSS_box_model/"/>
+    <id>http://yoursite.com/2020/03/21/CSS_box_model/</id>
+    <published>2020-03-21T19:13:13.000Z</published>
+    <updated>2020-03-22T04:27:05.010Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="CSS框盒模型"><a href="#CSS框盒模型" class="headerlink" title="CSS框盒模型"></a>CSS框盒模型</h1><p>在使用CSS进行layout的时候，经常需要对BOX Model中的元素进行调整，Box模型定义四个概念：Margin,Border,Padding与Content。<br><img src="https://pic.rmb.bdstatic.com/f54cf47e6b0d5e70f6bf0838b753b7e1.png" alt="BoxModel.png"></p><ul><li>Margin 外边距，<strong>块级元素</strong>边框之间的距离，用来增强文本可读性。使用margin-top、margin-right、margin-bottom、margin-left来定义间距大小。</li></ul><ul><li>Border 边框，元素的边框，用以区分元素范围，可以设置边框类型颜色以及宽度。</li></ul><ul><li><p>Padding 内边距，显示内容与元素边框之间的间距，用以增强文本，图像可读性。</p><blockquote><p>内边距的粗细可以由 padding-top、padding-right、padding-bottom、padding-left，和简写属性 padding 控制。</p></blockquote></li><li><p>Content 内容，即需要显示的内容，容纳文本，图像或者视频等元素。</p></li></ul><p>写一个简单的HTML如下：<br><img src="https://pic.rmb.bdstatic.com/db2da944e1cf64282a5e3437ceced53a.png" alt="VSCode.png"><br>Chrome渲染效果如下：<br><img src="https://pic.rmb.bdstatic.com/f613813a0f3fa88d1113aaee8a0e09f6.png" alt="Chrome.png"><br>Chrome Debug如下：<br><img src="https://pic.rmb.bdstatic.com/7e11176a8366a2687f94b70d2c0744da.png" alt="Debug.png"></p><h1 id="HTML元素类型"><a href="#HTML元素类型" class="headerlink" title="HTML元素类型"></a>HTML元素类型</h1><ul><li><p>Top-level element 【顶级元素】: { html, body,head }</p></li><li><p>Block-level element 【块级元素】: { p, h1~h6, div, ul }，块级元素之间自动换行，任意一个块级元素均可使用BoxModel来描述。</p></li><li><p>Inline element 【内联元素】: { a, br, em, img, li, span }，文本，图片等元素的具体表现。</p></li></ul><blockquote><p>任何不是块级元素的可见元素都是内联元素</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;CSS框盒模型&quot;&gt;&lt;a href=&quot;#CSS框盒模型&quot; class=&quot;headerlink&quot; title=&quot;CSS框盒模型&quot;&gt;&lt;/a&gt;CSS框盒模型&lt;/h1&gt;&lt;p&gt;在使用CSS进行layout的时候，经常需要对BOX Model中的元素进行调整，Box模型定义四个
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Apple招聘文案</title>
+    <link href="http://yoursite.com/2020/03/08/Apple-hire/"/>
+    <id>http://yoursite.com/2020/03/08/Apple-hire/</id>
+    <published>2020-03-08T01:23:08.000Z</published>
+    <updated>2020-03-12T03:15:11.415Z</updated>
+    
+    <content type="html"><![CDATA[<p>直接从果子官网抄的文案）</p><p>各位敢于不断从零开始的人</p><p>爱唱反调</p><p>讨厌合拍的人</p><p>各位不懂得随大流，不看规则的眼色</p><p>能投入新世界，重塑自我的人</p><p>各位睁眼白日梦，闭眼天马行空</p><p>满脑子理想和幻想的人</p><p>各位能在一片草地里</p><p>分辨出万千种绿色的人</p><p>能为现实的死结</p><p>寻求答案的人</p><p>你能飞得比自己想象的更高、更远</p><p>你，就是我们寻找的人 </p><video width="100%" height="331.3125" poster="https://www.apple.com/jobs/images/index/hero/home_look2/phone@2x.jpg" controls><source src="https://www.apple.com/jobs/global/media/acvideo/2020-index/cn/2020CNHero-HD-cc-cn-2019_1280x720h.mp4?label=mp4_hd&amp;template=852x480.25.0&amp;trans_finger=62b30a3f061b162e421008955c73f536&amp;Expires=1583662778&amp;ssig=9%2BiGONCxYE&amp;KID=unistore,video" type="video/mp4"></video>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;直接从果子官网抄的文案）&lt;/p&gt;
+&lt;p&gt;各位敢于不断从零开始的人&lt;/p&gt;
+&lt;p&gt;爱唱反调&lt;/p&gt;
+&lt;p&gt;讨厌合拍的人&lt;/p&gt;
+&lt;p&gt;各位不懂得随大流，不看规则的眼色&lt;/p&gt;
+&lt;p&gt;能投入新世界，重塑自我的人&lt;/p&gt;
+&lt;p&gt;各位睁眼白日梦，闭眼天马行空&lt;/p&gt;
+&lt;p&gt;满脑子理
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>”智能“小车预览版</title>
@@ -369,96 +467,6 @@
       
       
         &lt;p&gt;一份通信导论作业，做了一份PPT，下面是答疑，以备不时之需。PPT可下面下载浏览。&lt;br&gt;&lt;a href=&quot;https://mega.nz/#!9kdQjQib!oAtd7gnJUo2Lbbj-nFuYXBJLmh7dfuuvDhFum_ABSKQ&quot; target=&quot;_bl
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>如何输出Hello World！</title>
-    <link href="http://yoursite.com/2019/10/03/how_to_output_Hello-World%EF%BC%81/"/>
-    <id>http://yoursite.com/2019/10/03/how_to_output_Hello-World%EF%BC%81/</id>
-    <published>2019-10-03T03:45:45.000Z</published>
-    <updated>2019-11-08T10:48:22.132Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="One-issue！"><a href="#One-issue！" class="headerlink" title="One issue！"></a>One issue！</h1><p><strong><em>据说在学习一门语言的时候输出Hello World！会带来好运。</em></strong></p><p>哪怎么输出Hello World呢？难道就是像下面这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">printf(&quot;Hello World!&quot;);</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>是的，我们就是要输出上述源代码。</p><h1 id="输出源码"><a href="#输出源码" class="headerlink" title="输出源码"></a>输出源码</h1><p>如果我们直接运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">printf(&quot;#include&lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">printf(&quot;Hello World!&quot;);</span><br><span class="line">return 0;</span><br><span class="line">&#125;&quot;);</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>不出意外地报错，由于各种语言存在保留字以及需要使用无法输入的字符，因此需要对部分地方进行转义。<img src="https://s2.ax1x.com/2019/10/03/u0dVJS.jpg" alt="u0dVJS.jpg"><br>修改后的源码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;#include &lt;stdio.h&gt;\nint main()\n&#123;\nprintf(\&quot;Hello world\\n\&quot;);\nreturn 0;\n&#125;&quot;);</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>此处，我们对换行符通过\n进行了转义,还对”以及\进行了转义。</p><h1 id="AWSL"><a href="#AWSL" class="headerlink" title="AWSL"></a>AWSL</h1><p><img src="https://s2.ax1x.com/2019/10/03/u0ySt1.jpg" alt="u0ySt1.jpg"><br>阿伟死了！这道题与上述问题相似，不过又有一个坑。<br><img src="https://s2.ax1x.com/2019/10/03/u0yxKS.jpg" alt="u0yxKS.jpg"><br>我最开始的源码是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;#include &lt;bits/stdc++.h&gt;\nusing namespace std;\n\nint main()\n&#123;\n\t//输出 Hello World !\n\tcout&lt;&lt;\&quot;Hello World !\&quot;&lt;&lt;endl;\n\n\treturn 0;\n&#125;&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>我使用了\n和\t来对上述源码进行转义，提交之后报格式错误。由于有了前几题的心酸历程，我去仔细看了下格式，发现缩进只有四个空格。而我使用Mingw-W64编译出来的代码中制表符占据了八个空格的位置，不同编译器以及编辑器的差异造成了上述问题。</p><p>修改后的源码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;#include &lt;bits/stdc++.h&gt;\nusing namespace std;\n\nint main()\n&#123;\n    //输出 Hello World !\n    cout&lt;&lt;\&quot;Hello World !\&quot;&lt;&lt;endl;\n\n    return 0;\n&#125;&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>在使用Tab还是Space的问题上的讨论似乎成为了与Vim/Emacs哪个更好相似的问题。</p><h1 id="转义表"><a href="#转义表" class="headerlink" title="转义表"></a>转义表</h1><p>以下即为C语言常用转义字符表格：</p><div class="table-container"><table><thead><tr><th>转义字符</th><th>意义</th><th>ASCII码值（十进制）</th></tr></thead><tbody><tr><td>\a</td><td>响铃(BEL)</td><td>007</td></tr><tr><td>\b</td><td>退格(BS) ，将当前位置移到前一列</td><td>008</td></tr><tr><td>\f</td><td>换页(FF)，将当前位置移到下页开头</td><td>012</td></tr><tr><td>\n</td><td>换行(LF) ，将当前位置移到下一行开头</td><td>010</td></tr><tr><td>\r</td><td>回车(CR) ，将当前位置移到本行开头</td><td>013</td></tr><tr><td>\t</td><td>水平制表(HT)</td><td>009</td></tr><tr><td>\v</td><td>垂直制表(VT)</td><td>011</td></tr><tr><td>\’</td><td>单引号</td><td>039</td></tr><tr><td>\”</td><td>双引号</td><td>034</td></tr><tr><td>\\</td><td>反斜杠</td><td>092</td></tr></tbody></table></div><p>当然C语言也提供一种数字转义方法，如下：</p><div class="table-container"><table><thead><tr><th>八进制转义</th><th>十六进制转义</th><th>名称/意义</th></tr></thead><tbody><tr><td>\7</td><td>\x07</td><td>响铃</td></tr><tr><td>\10</td><td>\x08</td><td>退格</td></tr><tr><td>\12</td><td>\x0A</td><td>换行</td></tr><tr><td>\14</td><td>\x0C</td><td>换页</td></tr><tr><td>\40</td><td>\x20</td><td>空格</td></tr><tr><td>\60</td><td>\x30</td><td>0</td></tr><tr><td>\101</td><td>\x41</td><td>A</td></tr><tr><td>\141</td><td>x61</td><td>a</td></tr></tbody></table></div>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;One-issue！&quot;&gt;&lt;a href=&quot;#One-issue！&quot; class=&quot;headerlink&quot; title=&quot;One issue！&quot;&gt;&lt;/a&gt;One issue！&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;据说在学习一门语言的时候输出Hello World！
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>一种基于熵来度量信息量的方式</title>
-    <link href="http://yoursite.com/2019/10/02/how_to_measure_information/"/>
-    <id>http://yoursite.com/2019/10/02/how_to_measure_information/</id>
-    <published>2019-10-02T06:33:09.000Z</published>
-    <updated>2019-10-02T15:27:47.214Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在日常交流中，有人可能说了几大段话却如同废话，也有人就简单说了几句话却让人一时感觉难以理解。信息量的多寡并不能仅仅靠信息的长度，更应该看中于其所传达的信息。<br>在《通信的数学原理》里，香农把信息定义为“消除不确定性的东西”，只要一个字能够传达足矣确定不确定量的信息，那么它的信息量就甚至比一段话的信息量更多。由此，香农引进了热力学中的传统观点——熵。</p><p>使用熵来描述信息不确定程度如何，由此度量出信息量。本文则以一些实例开头来介绍信息的表达，逐渐引入数学模型，站在前人的肩膀上去进一步理解信息并且实现对信息的度量。</p><h1 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h1><h3 id="二进制系统"><a href="#二进制系统" class="headerlink" title="二进制系统"></a>二进制系统</h3><p>如果一个系统仅有两种可能的情况，如同掷硬币只有正面和反面两种可能性。我们可以尝试将正面定义为1，反面定义为0，那么抛掷一次硬币就能够代表1 bit信息。</p><h3 id="十进制系统"><a href="#十进制系统" class="headerlink" title="十进制系统"></a>十进制系统</h3><p>人类有十根手指以及对称的脚趾，这也就使得人类习惯于使用十进制系统来进行日常计数。在十进制系统中，存在从0到9一共10个数字，这也就使得在十进制系统中提供一个确定的系统能够消除另外九个数字的干扰。容易看出，十进制系统中一个数字能够表达信息量更大。</p><h3 id="二十六进制系统"><a href="#二十六进制系统" class="headerlink" title="二十六进制系统"></a>二十六进制系统</h3><p>英文字母一共有26个，确定一个字母能够消除另外25个无关字母。<br>可以看出，随着信息不确定性的增大，一个单独的字符所能够表达的信息量越大。</p><h1 id="数学模型的建立"><a href="#数学模型的建立" class="headerlink" title="数学模型的建立"></a>数学模型的建立</h1><p>传统热力学系统上，人们经常使用熵来描述一个系统的混乱程度,并且作为描述系统状态的一个函数</p><script type="math/tex; mode=display">S=k(ln Ω)</script><p>当我们将之引入信息论则可以用来描述信息的不确定性。<br>在信息传输中，系统的熵越高则能传输越多的信息，系统的熵越低，传输的信息量相对而言越少。</p><p>此外，在热力学熵与信息论中的熵之间也存在一个联系，即：</p><script type="math/tex; mode=display">S(X)=K_B H(X)</script><p>其中$K_B$为波兹曼常数。</p><h2 id="熵的计算"><a href="#熵的计算" class="headerlink" title="熵的计算"></a>熵的计算</h2><p>于是我们定义一种不确定程度$I_e$</p><script type="math/tex; mode=display">I_e = -log_b P_i</script><p>其中P为有效信息占所有可能信息的概率，并且该种不确定性的概率与其所传达的信息量成正比,我们称之为自信息量。</p><p>在经典信息传输中，由于不同字符存在不同的出现概率以及信息量，于是我们可以联想并使用概率学来求解该条消息量的数学期望H(X)。于是定义H(X)为信息熵</p><script type="math/tex; mode=display">H(X)= \sum_{i=1}^ {n} P_i I_e = - \sum_{i=1}^ {n}P_i log_b P_i</script><p>这里的定义H（X）即为信息熵。<br>在这里信息熵同样可以被理解为一串信息流中每个字符的平均信息量。</p><h2 id="计算举例"><a href="#计算举例" class="headerlink" title="计算举例"></a>计算举例</h2><h2 id="单信息"><a href="#单信息" class="headerlink" title="单信息"></a>单信息</h2><p>上文我们提到了不同进制位中单个字符所传达的信息量不同，当我们引入信息熵的概念之后，我们就有了能够度量字符所传达的信息量大小的方式，当信息熵$I_e$计算公式里的底数b取2时，计算结果则以bit为单位。如下表格所示：</p><div class="table-container"><table><thead><tr><th>进制数</th><th>信息量</th></tr></thead><tbody><tr><td>2</td><td>1.0</td></tr><tr><td>10</td><td>3.2</td></tr><tr><td>16</td><td>4.0</td></tr><tr><td>26</td><td>4.7</td></tr><tr><td>26</td><td>11.7</td></tr></tbody></table></div><p>其中英文字母26个，《通用规范汉字表》中一级字表3500个，由上述计算可以看出单个汉字所能够表达的信息量约为英文字母的2.5倍,这也就使得英文文献翻译后会薄了很多。</p><h2 id="信息流"><a href="#信息流" class="headerlink" title="信息流"></a>信息流</h2><p>假定存在这样的一枚骰子，共有4面，记为面a,面b，面c，面d，并且$P_a= \frac{2}{5}$,$P_b=P_c=P_d=\frac{1}{5}$。那么由上文公式可求得<script type="math/tex">H(X)= \frac{2}{5} * log_2 \frac{5}{2} + 3* \frac{1}{5}*log_2 5</script>)$。</p><p>假定存在这样的一枚骰子，共有4面，记为面a,面b，面c，面d，并且$P_a= \frac{2}{5}$,$P_b=P_c=P_d=\frac{1}{5}$。那么由上文公式可求得<script type="math/tex">H(X)= \frac{2}{5} * log_2 \frac{5}{2} + 3* \frac{1}{5}*log_2 5</script></p><p>由此，我们计算出了连续抛掷骰子的情况下单次信息量的数学期望，当在理想状态下抛掷N次时，其总信息量可以表述为$Y_n=N*H(X)$。</p><h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><p>从二进制到最终呈现到屏幕上的汉字需要一套字符编码集来实现，根据香农的信息熵我们可以得知，如果给出现频率高的字符安排较短的编码长度则可以大幅度降低最终文件的大小。</p><p>由于存在文件的格式定义以及容错字节等其它占据一定文件大小的内容或者无法精确得知文件大小的因素存在，因此我们需要使用大量的数据来减小计算误差。在此我使用Python来生成了三个文件，分别包含五十万个“河南工业大学”“河南工大”以及“河工大”。<br>一部分代码截取如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i = 0</span><br><span class="line">for i in range(500000):</span><br><span class="line">    file = open(&apos;a.txt&apos;,&apos;a&apos;)</span><br><span class="line">    file.write(&quot;河南工业大学&quot;)</span><br><span class="line">    i = i + 1</span><br><span class="line">    file.close()</span><br></pre></td></tr></table></figure></p><p>第一个文件最终输出为a.txt，可于此处下载<a href="http://1t.click/amdv。" target="_blank" rel="noopener">http://1t.click/amdv。</a><br>该文件使用utf-8进行编码,大小约为8790KB，即70320000个bit，于是可以计算出单个汉字占据的bit位约为23.44bit。通过查阅utf-8定义可知，上述文字均位于一级字表中，utf-8使用3 Bytes来进行编码这些文字，对于那些使用频率较低的文字则分配4 Bytes空间。</p><p>从另外一个方面来看，上述三个文件所能够表述的意思相同，但最终以二进制文件储存在计算机里的文件大小不一致。这是因为在不同范围内的人群对上述理解存在不确定性，可能对于一个人而言“河工大”无法让其确定具体学校，也就无法消除不确定性，此时的信息量为0。而对于另外一些人而言，也许“工大”的描述就足够。<br>对于不同人而言，信息容量不同，单个信息传输的信息量也就产生了区别。</p><h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>在section 1，2里面我们介绍了生活中的常例，在section 3里我们引入了信息熵的定义以及计算公式并进行了基本计算，在section 4里我们编写了一个程序，粗略算得单个汉字占据约3 Bytes空间，对于一些生僻字，则分配4个字节的储存空间。<br>信息熵在这里则可以作为编码的一部分理论依据，以此为基础确定如何最佳地分配空间。香农的信息熵以信息的本质意义，为我们提供了一种更加方便并且使用的方法来度量信息量。</p><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>克劳德·艾尔伍德·香农：《通信的数学理论》（A mathematical theory of communication）贝尔系统技术月刊l,27卷,379-423,623-656页, 1948年7月,10月.</p><p>维基百科编者. 波茲曼常數[G/OL]. 维基百科, 2019(20190604)[2019-06-04]. </p><p>维基百科编者. UTF-8[G/OL]. 维基百科, 2019(20190520)[2019-05-20]. -{R <a href="https://en.m.wikipedia.org/wiki/UTF-8}-" target="_blank" rel="noopener">https://en.m.wikipedia.org/wiki/UTF-8}-</a>.</p><p>维基百科编者. 信息论[G/OL]. 维基百科, 2019(20190401)[2019-04-01]. -{R <a href="https://en.m.wikipedia.org/wiki/Information\_theory}-" target="_blank" rel="noopener">https://en.m.wikipedia.org/wiki/Information\_theory}-</a>.</p><p>CSDN编者规数.CSDN,2014(20140528)[2014-05-28]. -{R <a href="https://blog.csdn.net/hguisu/article/details/27305435}-" target="_blank" rel="noopener">https://blog.csdn.net/hguisu/article/details/27305435}-</a>.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;在日常交流中，有人可能说了几大段话却如同废话，也有人就简单说了几句话却让人一时感觉难以理解。信息量的多寡并不能仅仅靠信息的长度，更应该看中于
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Ps Pr安装指南</title>
-    <link href="http://yoursite.com/2019/09/15/PS-PR-Guide/"/>
-    <id>http://yoursite.com/2019/09/15/PS-PR-Guide/</id>
-    <published>2019-09-15T13:16:00.000Z</published>
-    <updated>2019-10-02T14:03:29.993Z</updated>
-    
-    <content type="html"><![CDATA[<p>首先，Ps Pr全称分别为Photoshop和Premiere Pro。</p><p><img src="https://i.loli.net/2019/09/16/CsxaqMpwk3ZTmHh.png" alt="ps.png"><br><img src="https://s2.ax1x.com/2019/09/16/nWmJ6U.png" alt="pr.png"></p><p>众所周知，Adobe全家桶都是需要订阅的，每年几千软妹币。一般而言，普通用户使用盗版，Adobe是不追责的，甚至有宽容抑或是说暗中默许的态度。这点很容易理解，在之前也有过类似的先例。</p><p>上世纪末的时候，Macintosh有远超Windows的界面以及操作逻辑，然而最后Windows能够瓜分市场的主要原因就在于其灵活的授权，而Macintosh仅可以用在自家的电脑上。大概是从XP开始，Windows开始进入中国市场，然而密匙文件什么的都是漫天传。Windows似乎懂得大陆的国情，没有严格要求激活流程，这也就使得Windows积累了大量的用户群，直到Win 7以及目前的10。尽管现在购买笔记本抑或是品牌台式机都预装的有正版Windows授权（大致几块钱一台），但是破解的文化仍然流传下来，桌面操作市场最后也演变成Mac OS和Windows以及Linux独享的一杯羹。</p><h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><p>如上文所叙述的那样，Adobe对于个人用户甚是宽容，企业用户则是严打态度。我一般提倡使用官方正版，但是，在官方版本上小修小补又何妨?</p><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><img src="https://s2.ax1x.com/2019/09/16/nW3BQI.png" alt="下载器"><br>直接从中国官网下载Ps，Pr的安装器，直接点击“下载试用版”即可下载安装器，保持默认路径即可。点击继续即可开始下载，由于在中国大陆，所以安装速度可能会略微有点慢。1-2个小时之后即可下载完Ps,Pr。</p><h2 id="对于Ps"><a href="#对于Ps" class="headerlink" title="对于Ps"></a>对于Ps</h2><p>很不妙的是，最新版本更新了激活策略，这也就使得之前替换注册文件的方法失效。一般下载的版本为64位，即一般为‪C:\Program Files\Adobe\Adobe Photoshop CC 2019\Photoshop.exe，将安装目录下的Photoshop.exe替换为下文附上的版本，复制粘贴并选择替换目标中的文件，可与此处<a href="https://mega.nz/#!t91xjQBL!QphuUzImgSetkLXDdTKUjh-hopEeSodcpdbol6GI9XY" target="_blank" rel="noopener">下载</a>。<br><img src="https://s2.ax1x.com/2019/09/16/nWJHTf.png" alt></p><h2 id="对于Pr"><a href="#对于Pr" class="headerlink" title="对于Pr"></a>对于Pr</h2><p>替换文件C:\Program Files\Adobe\Adobe Premiere Pro CC 2019\Registration.dll，可与此处<a href="https://mega.nz/#!M19hmKia!B-QHwJ-3ChJ_33CkTDGf-GJ4qqNvuqwyIrG_QiYDTBc" target="_blank" rel="noopener">下载</a>。</p><h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><p>打开Ps,Pr,若无7天试用激活即为成功。若仍有，重启解决。若还有，花钱买吧。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;首先，Ps Pr全称分别为Photoshop和Premiere Pro。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/09/16/CsxaqMpwk3ZTmHh.png&quot; alt=&quot;ps.png&quot;&gt;&lt;br&gt;&lt;img src=&quot;https
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Try reborn</title>
-    <link href="http://yoursite.com/2019/08/10/Reborn/"/>
-    <id>http://yoursite.com/2019/08/10/Reborn/</id>
-    <published>2019-08-10T04:50:00.000Z</published>
-    <updated>2019-08-10T15:04:34.972Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong><em>Reborn</em></strong>，重生。</p><p>7月下旬，我开始尝试着去理清思路与考量人生。不管怎么样，我仍然重启了博客，不为其它，只为那不可名状的“分享欲”。今天，恰巧是我的17岁生日，在这个<del>特殊</del>的时间点，我选择了reborn，并尝试去不断promote我的能力。</p><p>不久前的某一天，偶然的机会我接触到了李笑来老师的书。怎么说呢，读他的书有一种醍醐灌顶之感，在那之后我开始了不断的思考自己的人生观。有时候的奇观是:上午一种观点，下午立刻改变。</p><p>尝试重生，在学习中不断提高认知能力。</p><p>预留存几本书，Animal farm，beyond feelings，历史的终结与最后的人，捍卫社会主义共和国。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;&lt;em&gt;Reborn&lt;/em&gt;&lt;/strong&gt;，重生。&lt;/p&gt;
-&lt;p&gt;7月下旬，我开始尝试着去理清思路与考量人生。不管怎么样，我仍然重启了博客，不为其它，只为那不可名状的“分享欲”。今天，恰巧是我的17岁生日，在这个&lt;del&gt;特殊&lt;/del&gt;的时间点，我选
       
     
     </summary>
