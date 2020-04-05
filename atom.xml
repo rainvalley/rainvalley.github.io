@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-27T14:38:03.923Z</updated>
+  <updated>2020-04-05T14:54:22.724Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>8051 Memory TypeS</title>
+    <link href="http://yoursite.com/2020/04/05/8051-Memory-TypeS/"/>
+    <id>http://yoursite.com/2020/04/05/8051-Memory-TypeS/</id>
+    <published>2020-04-05T06:52:56.000Z</published>
+    <updated>2020-04-05T14:54:22.724Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="TypeS"><a href="#TypeS" class="headerlink" title="TypeS"></a>TypeS</h1><p>data:可直接寻址的RAM，速度最快，大小128 bytes。</p><p>idata:间接(Indirectly)寻址RAM，大小256 bytes，前128 bytes与data相同，访问方式不同。</p><p>bdata:位寻址（Bit-addressable ）内部RAM，支持位/字节访问，大小16 bytes。</p><p>xdata:外部扩展（eXternal）RAM，大小64 KB。</p><p>code:程序储存空间，即ROM，大小64 KB。</p><p>far:外部扩展RAM和ROM空间，最大16MB。</p><p>pdata:分页（Paged）扩展RAM，大小256 bytes。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;TypeS&quot;&gt;&lt;a href=&quot;#TypeS&quot; class=&quot;headerlink&quot; title=&quot;TypeS&quot;&gt;&lt;/a&gt;TypeS&lt;/h1&gt;&lt;p&gt;data:可直接寻址的RAM，速度最快，大小128 bytes。&lt;/p&gt;
+&lt;p&gt;idata:间接(Indirectl
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>软件正版化</title>
@@ -445,28 +468,6 @@
       
         &lt;p&gt;初学C语言，OJ题目的解题过程中经常需要提取一个数字的每一位并输出；分为如下两种情况：正序输出，逆序输出。&lt;/p&gt;
 &lt;h1 id=&quot;正序输出&quot;&gt;&lt;a href=&quot;#正序输出&quot; class=&quot;headerlink&quot; title=&quot;正序输出&quot;&gt;&lt;/a&gt;正序输出&lt;/h1&gt;&lt;p&gt;按
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>小球称重问题</title>
-    <link href="http://yoursite.com/2019/10/29/Weight_balls/"/>
-    <id>http://yoursite.com/2019/10/29/Weight_balls/</id>
-    <published>2019-10-29T00:40:52.000Z</published>
-    <updated>2019-11-02T03:27:49.942Z</updated>
-    
-    <content type="html"><![CDATA[<p>一份通信导论作业，做了一份PPT，下面是答疑，以备不时之需。PPT可下面下载浏览。<br><a href="https://mega.nz/#!9kdQjQib!oAtd7gnJUo2Lbbj-nFuYXBJLmh7dfuuvDhFum_ABSKQ" target="_blank" rel="noopener">https://mega.nz/#!9kdQjQib!oAtd7gnJUo2Lbbj-nFuYXBJLmh7dfuuvDhFum_ABSKQ</a></p><p>（不要问我为什么程序没有运行出来！我用的编译器是mingw-w64，编译出来的是64位程序，不兼容32位系统。当然，64位使用的是扩展指令集，可以向下兼容32位程序。</p><p>Q&amp;A(s):</p><p>Q0:编码为何需要保证保证唯一性且不重复？<br>A0:因为我们需要使得每一个编码对应一个独立的小球，每一次称重可以判断出1/3或者2/3的正常小球。编码全部重复，即小球三次被称，会产生信息量的浪费。</p><p>Q1:小球编码时为何需要保证0，1，2均分？<br>A1:给小球编码的目的即为为小球选定在天平上的位置做参考，保证0，1，2均分可以使得每次放在天平左右两侧的小球数目相等。</p><p>Q2:为什么正序码对应的小球为重球？<br>A2:每次天平秤重指向的一侧我们将之编码，最后形成一个正序码。如果一个小球每次称重均满足在指向的一侧，其定为重球。</p><p>Q3:为什么逆序码对应的小球就是轻球？<br>A3:参考Q2可得，每次均位于对侧，其定为轻球。出于判断方便，我们采用逆序码比较的办法来判断。</p><p>Q4:利用信息论进行计算为什么会产生如此诡异的操作方法？<br>A4:香农的信息论仅仅是一个存在性定理，可以借此算法计算出最理想化情况下所能够触及的<br>次数下线。现实生活中由于物理条件限制可能根本无法设计出这种完美算法（当理想照进现实。。。。。。）！</p><p>Q5:我们为什么需要利用三进制进行编码？<br>A5:天平有三种情况，分别有左倾，右倾，平衡，三种情况。编码后对应的小球（假定为重球）放置情况分别对应左侧，右侧以及不放在天平上，借用三进制编码来实现能够让小球位置的判定更容易实现。</p><p>Q6:为什么N个小球称重的实验我没写？<br>A6:我没有找到一种容易操作的办法来生成正序码，尝试若干次，最终放弃。</p><p>Q7:上面的N狭义上指的都是3N，如果我们有若干个小球，其数量不是3的倍数该如何分配编码？<br>A7:小球数量除以3，余1，则给多出来的这个球分配以1开头的编号；小球数量除以3，余2，则给多出来的这两个球分配一组编号中以0和2开头的两个。简单的变换，以保证在天平两侧的球数目相同。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;一份通信导论作业，做了一份PPT，下面是答疑，以备不时之需。PPT可下面下载浏览。&lt;br&gt;&lt;a href=&quot;https://mega.nz/#!9kdQjQib!oAtd7gnJUo2Lbbj-nFuYXBJLmh7dfuuvDhFum_ABSKQ&quot; target=&quot;_bl
       
     
     </summary>
