@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2020-04-06T14:39:05.894Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="https://blog.raincorn.top/"/>
+  <updated>2020-04-25T14:16:08.117Z</updated>
+  <id>https://blog.raincorn.top/</id>
   
   <author>
     <name>Raincorn</name>
@@ -17,9 +17,54 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>项目Git远程推送与开源协议</title>
+    <link href="https://blog.raincorn.top/2020/04/25/github_new_repositories/"/>
+    <id>https://blog.raincorn.top/2020/04/25/github_new_repositories/</id>
+    <published>2020-04-25T04:46:23.000Z</published>
+    <updated>2020-04-25T14:16:08.117Z</updated>
+    
+    <content type="html"><![CDATA[<p>GitHub新建一个空项目之后会出现操作指南，但是如果新建的项目init了README或者LICENSE，GitHub将不会提示，头疼。GitHub的国内镜像下载地址可参考<a href="https://github.com/waylau/git-for-win" target="_blank" rel="noopener">https://github.com/waylau/git-for-win</a> 。</p><p><del>于是我新建了一个空项目把他的提示抄下来了</del></p><p><img src="/images/New Git.png" alt="New_Git"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">…or create a new repository on the command line</span><br><span class="line">echo &quot;# A&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@github.com:rainvalley&#x2F;A.git</span><br><span class="line">git pull --rebase origin master pull</span><br><span class="line">git push -u origin master</span><br><span class="line">                </span><br><span class="line">…or push an existing repository from the command line</span><br><span class="line">git remote add origin git@github.com:rainvalley&#x2F;A.git</span><br><span class="line">git push -u origin master</span><br><span class="line"></span><br><span class="line">…or import code from another repository</span><br><span class="line">You can initialize this repository with code from a Subversion, Mercurial, or TFS project.</span><br></pre></td></tr></table></figure></p><p>新建项目并关联的命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git init初始化git目录生成.git隐藏目录</span><br><span class="line">git add .将当前目录下的文件暂存</span><br><span class="line">git commit -m &quot;first commit&quot;将暂存的文件提交</span><br><span class="line">git remote add origin git@github.com:rainvalley&#x2F;A.git指定远程仓库，此处地址需要修改</span><br><span class="line">git pull --rebase origin masterpull远程仓库进行合并，避免冲突</span><br><span class="line">git push -u origin masterpush本地代码到远程，第一次需填写账号密码</span><br></pre></td></tr></table></figure></p><p>关于各种开源协议，区别如下：</p><p><img src="/images/Open_license.png" alt="Open_license"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;GitHub新建一个空项目之后会出现操作指南，但是如果新建的项目init了README或者LICENSE，GitHub将不会提示，头疼。GitHub的国内镜像下载地址可参考&lt;a href=&quot;https://github.com/waylau/git-for-win&quot; tar
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>一些坑与奇妙淫技</title>
+    <link href="https://blog.raincorn.top/2020/04/25/holes/"/>
+    <id>https://blog.raincorn.top/2020/04/25/holes/</id>
+    <published>2020-04-25T04:31:09.000Z</published>
+    <updated>2020-04-25T12:44:10.683Z</updated>
+    
+    <content type="html"><![CDATA[<p><del>坑真的太多了，赶紧删库跑路。</del></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;del&gt;坑真的太多了，赶紧删库跑路。&lt;/del&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Bing最高分辨率图片爬取</title>
-    <link href="http://yoursite.com/2020/04/06/Bing_max_spider/"/>
-    <id>http://yoursite.com/2020/04/06/Bing_max_spider/</id>
+    <link href="https://blog.raincorn.top/2020/04/06/Bing_max_spider/"/>
+    <id>https://blog.raincorn.top/2020/04/06/Bing_max_spider/</id>
     <published>2020-04-06T05:02:29.000Z</published>
     <updated>2020-04-06T14:39:05.894Z</updated>
     
@@ -41,8 +86,8 @@
   
   <entry>
     <title>8051 Memory TypeS</title>
-    <link href="http://yoursite.com/2020/04/05/8051-Memory-TypeS/"/>
-    <id>http://yoursite.com/2020/04/05/8051-Memory-TypeS/</id>
+    <link href="https://blog.raincorn.top/2020/04/05/8051-Memory-TypeS/"/>
+    <id>https://blog.raincorn.top/2020/04/05/8051-Memory-TypeS/</id>
     <published>2020-04-05T06:52:56.000Z</published>
     <updated>2020-04-05T14:54:22.724Z</updated>
     
@@ -64,8 +109,8 @@
   
   <entry>
     <title>软件正版化</title>
-    <link href="http://yoursite.com/2020/03/26/authorised_software/"/>
-    <id>http://yoursite.com/2020/03/26/authorised_software/</id>
+    <link href="https://blog.raincorn.top/2020/03/26/authorised_software/"/>
+    <id>https://blog.raincorn.top/2020/03/26/authorised_software/</id>
     <published>2020-03-26T21:57:00.000Z</published>
     <updated>2020-03-27T14:38:03.923Z</updated>
     
@@ -87,8 +132,8 @@
   
   <entry>
     <title>关于换行</title>
-    <link href="http://yoursite.com/2020/03/23/about_lf/"/>
-    <id>http://yoursite.com/2020/03/23/about_lf/</id>
+    <link href="https://blog.raincorn.top/2020/03/23/about_lf/"/>
+    <id>https://blog.raincorn.top/2020/03/23/about_lf/</id>
     <published>2020-03-23T06:41:59.000Z</published>
     <updated>2020-03-23T14:58:46.770Z</updated>
     
@@ -111,8 +156,8 @@
   
   <entry>
     <title>CSS基础框盒模型与HTML元素类型</title>
-    <link href="http://yoursite.com/2020/03/21/CSS_box_model/"/>
-    <id>http://yoursite.com/2020/03/21/CSS_box_model/</id>
+    <link href="https://blog.raincorn.top/2020/03/21/CSS_box_model/"/>
+    <id>https://blog.raincorn.top/2020/03/21/CSS_box_model/</id>
     <published>2020-03-21T19:13:13.000Z</published>
     <updated>2020-03-22T04:27:05.010Z</updated>
     
@@ -133,8 +178,8 @@
   
   <entry>
     <title>Apple招聘文案</title>
-    <link href="http://yoursite.com/2020/03/08/Apple-hire/"/>
-    <id>http://yoursite.com/2020/03/08/Apple-hire/</id>
+    <link href="https://blog.raincorn.top/2020/03/08/Apple-hire/"/>
+    <id>https://blog.raincorn.top/2020/03/08/Apple-hire/</id>
     <published>2020-03-08T01:23:08.000Z</published>
     <updated>2020-03-12T03:15:11.415Z</updated>
     
@@ -162,8 +207,8 @@
   
   <entry>
     <title>”智能“小车预览版</title>
-    <link href="http://yoursite.com/2020/03/08/smart_car_preview/"/>
-    <id>http://yoursite.com/2020/03/08/smart_car_preview/</id>
+    <link href="https://blog.raincorn.top/2020/03/08/smart_car_preview/"/>
+    <id>https://blog.raincorn.top/2020/03/08/smart_car_preview/</id>
     <published>2020-03-08T00:10:37.000Z</published>
     <updated>2020-03-08T08:16:43.534Z</updated>
     
@@ -185,8 +230,8 @@
   
   <entry>
     <title>Anaconda卸载后CMD Powershell启动报错</title>
-    <link href="http://yoursite.com/2020/02/21/Anaconda_uninstalled_cmd_powershell_error/"/>
-    <id>http://yoursite.com/2020/02/21/Anaconda_uninstalled_cmd_powershell_error/</id>
+    <link href="https://blog.raincorn.top/2020/02/21/Anaconda_uninstalled_cmd_powershell_error/"/>
+    <id>https://blog.raincorn.top/2020/02/21/Anaconda_uninstalled_cmd_powershell_error/</id>
     <published>2020-02-21T19:09:45.000Z</published>
     <updated>2020-02-22T03:16:53.965Z</updated>
     
@@ -207,8 +252,8 @@
   
   <entry>
     <title>纵向选择文本</title>
-    <link href="http://yoursite.com/2020/02/04/select_in_column/"/>
-    <id>http://yoursite.com/2020/02/04/select_in_column/</id>
+    <link href="https://blog.raincorn.top/2020/02/04/select_in_column/"/>
+    <id>https://blog.raincorn.top/2020/02/04/select_in_column/</id>
     <published>2020-02-04T03:50:34.000Z</published>
     <updated>2020-02-04T11:51:01.595Z</updated>
     
@@ -230,8 +275,8 @@
   
   <entry>
     <title>5—数码管的动态显示</title>
-    <link href="http://yoursite.com/2020/01/26/ct107d-5/"/>
-    <id>http://yoursite.com/2020/01/26/ct107d-5/</id>
+    <link href="https://blog.raincorn.top/2020/01/26/ct107d-5/"/>
+    <id>https://blog.raincorn.top/2020/01/26/ct107d-5/</id>
     <published>2020-01-26T21:36:26.000Z</published>
     <updated>2020-01-27T07:31:24.603Z</updated>
     
@@ -252,8 +297,8 @@
   
   <entry>
     <title>4—独立按键与矩阵键盘</title>
-    <link href="http://yoursite.com/2020/01/26/ct107d_4/"/>
-    <id>http://yoursite.com/2020/01/26/ct107d_4/</id>
+    <link href="https://blog.raincorn.top/2020/01/26/ct107d_4/"/>
+    <id>https://blog.raincorn.top/2020/01/26/ct107d_4/</id>
     <published>2020-01-26T00:06:34.000Z</published>
     <updated>2020-01-26T10:13:48.908Z</updated>
     
@@ -275,8 +320,8 @@
   
   <entry>
     <title>3—蜂鸣器与继电器的驱动</title>
-    <link href="http://yoursite.com/2020/01/25/ct107d_3/"/>
-    <id>http://yoursite.com/2020/01/25/ct107d_3/</id>
+    <link href="https://blog.raincorn.top/2020/01/25/ct107d_3/"/>
+    <id>https://blog.raincorn.top/2020/01/25/ct107d_3/</id>
     <published>2020-01-25T03:44:29.000Z</published>
     <updated>2020-01-26T06:56:53.210Z</updated>
     
@@ -297,8 +342,8 @@
   
   <entry>
     <title>我的2019年</title>
-    <link href="http://yoursite.com/2020/01/24/2019/"/>
-    <id>http://yoursite.com/2020/01/24/2019/</id>
+    <link href="https://blog.raincorn.top/2020/01/24/2019/"/>
+    <id>https://blog.raincorn.top/2020/01/24/2019/</id>
     <published>2020-01-24T06:55:32.000Z</published>
     <updated>2020-01-24T15:41:09.410Z</updated>
     
@@ -319,8 +364,8 @@
   
   <entry>
     <title>CPU寄存器总结</title>
-    <link href="http://yoursite.com/2020/01/01/CPU_Regs/"/>
-    <id>http://yoursite.com/2020/01/01/CPU_Regs/</id>
+    <link href="https://blog.raincorn.top/2020/01/01/CPU_Regs/"/>
+    <id>https://blog.raincorn.top/2020/01/01/CPU_Regs/</id>
     <published>2020-01-01T06:05:28.000Z</published>
     <updated>2020-01-24T15:06:42.317Z</updated>
     
@@ -342,8 +387,8 @@
   
   <entry>
     <title>Windows蓝屏分析</title>
-    <link href="http://yoursite.com/2019/12/21/Windows_blue_screen_of_death/"/>
-    <id>http://yoursite.com/2019/12/21/Windows_blue_screen_of_death/</id>
+    <link href="https://blog.raincorn.top/2019/12/21/Windows_blue_screen_of_death/"/>
+    <id>https://blog.raincorn.top/2019/12/21/Windows_blue_screen_of_death/</id>
     <published>2019-12-21T03:14:52.000Z</published>
     <updated>2019-12-21T15:18:24.429Z</updated>
     
@@ -366,8 +411,8 @@
   
   <entry>
     <title>Chrome插件推荐</title>
-    <link href="http://yoursite.com/2019/12/18/Recommended_plugins_for_chrome/"/>
-    <id>http://yoursite.com/2019/12/18/Recommended_plugins_for_chrome/</id>
+    <link href="https://blog.raincorn.top/2019/12/18/Recommended_plugins_for_chrome/"/>
+    <id>https://blog.raincorn.top/2019/12/18/Recommended_plugins_for_chrome/</id>
     <published>2019-12-18T23:59:53.000Z</published>
     <updated>2019-12-19T08:59:22.259Z</updated>
     
@@ -389,8 +434,8 @@
   
   <entry>
     <title>2—51单片机之点亮小灯</title>
-    <link href="http://yoursite.com/2019/12/15/ct107d_2/"/>
-    <id>http://yoursite.com/2019/12/15/ct107d_2/</id>
+    <link href="https://blog.raincorn.top/2019/12/15/ct107d_2/"/>
+    <id>https://blog.raincorn.top/2019/12/15/ct107d_2/</id>
     <published>2019-12-15T06:59:43.000Z</published>
     <updated>2020-01-25T11:54:15.460Z</updated>
     
@@ -412,8 +457,8 @@
   
   <entry>
     <title>1—CT107D基础资源介绍</title>
-    <link href="http://yoursite.com/2019/12/15/ct107d_1/"/>
-    <id>http://yoursite.com/2019/12/15/ct107d_1/</id>
+    <link href="https://blog.raincorn.top/2019/12/15/ct107d_1/"/>
+    <id>https://blog.raincorn.top/2019/12/15/ct107d_1/</id>
     <published>2019-12-15T05:47:23.000Z</published>
     <updated>2020-01-26T07:01:11.436Z</updated>
     
@@ -424,50 +469,6 @@
       
       
         &lt;h1 id=&quot;0X00-背景&quot;&gt;&lt;a href=&quot;#0X00-背景&quot; class=&quot;headerlink&quot; title=&quot;0X00 背景&quot;&gt;&lt;/a&gt;0X00 背景&lt;/h1&gt;&lt;p&gt;单片机，全称单片微型计算机（英語：single-chip microcomputer），可以看作是缩
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>未来通信之我见</title>
-    <link href="http://yoursite.com/2019/11/29/the_future_of_communication/"/>
-    <id>http://yoursite.com/2019/11/29/the_future_of_communication/</id>
-    <published>2019-11-29T06:31:41.000Z</published>
-    <updated>2019-11-29T14:40:32.675Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>随着5G技术的商用开放，更多人开始着眼于下一代通信技术的研究。本文首先使用“更大带宽”，“更广连接”，“更大容量”，“更开放标准”四个关键词来描述未来通信领域的重要特征。接着提出一些能够满足上述特征的通信技术与发展方向，再而提出未来通信可能面临的实际问题。本文通过探讨未来通信发展的发展与物理极限来展现未来通信的情景，力求理性评判与憧憬。</p><h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>5G于10月31日开始正式商用，更快的速率，更大的小区容量无不为移动互联网的应用提供更多可能性与发展前景。观望前几代移动通信技术，2G给短信发送带来了可能，3G给互联网图片加载带来了契机，4G更是将流视频服务推向巅峰时期。依个人所见，5G将带来的是VR/AR/MR技术的大革新，它带来的不仅是技术的更新，更是对未来的展望。本文将谈论的即是对未来通信技术的个人观点与些许看法。</p><h1 id="未来通信发展方向"><a href="#未来通信发展方向" class="headerlink" title="未来通信发展方向"></a>未来通信发展方向</h1><h2 id="更大传输带宽"><a href="#更大传输带宽" class="headerlink" title="更大传输带宽"></a>更大传输带宽</h2><p>4G峰值速率100Mbps，已商用的5G使用毫米波，速率达到1Gbps，6G将进一步扩展以使用太赫兹。大宽带的广泛应用将带来更多的应用领域与使用场景。在未来，城域网交换将以Ebps为单位，终端接入将以Gbps为基础单位，进一步支撑未来的信息传输与交流，建立起全息实时交互的未来应用场景。</p><h2 id="更广覆盖范围"><a href="#更广覆盖范围" class="headerlink" title="更广覆盖范围"></a>更广覆盖范围</h2><p>“世界上约有3/4的地区仍未有移动网络覆盖”，未来的通信必定需要更加更加广泛的连接，由陆地基站的覆盖转换到星际之间的互联。卫星通信自上世纪便开始商用，中国也于2000年开始开通了卫星上网服务，峰值速率达到400kbps。纵览未来，Google与SpaceX纷纷提出自己的未来卫星组网通信服务，试图将互联网自由访问带给那些无法触及网络的落后国家。<br> <img src="https://s2.ax1x.com/2019/11/29/QEnUfI.png" alt="QEnUfI.png"><br>Figure 1 SpaceX构想图</p><h2 id="更大容量"><a href="#更大容量" class="headerlink" title="更大容量"></a>更大容量</h2><p>当前的4G网络在人流量密集的地方，极容易出现网络崩溃的现象。例如北京故宫，网络连接一直处于较低可用范围，甚至无法拨出电话的现象。下一代的移动通信技术，将会带来更大的小区容量以及更加精准的小区定位服务。同时随着海量的IOT设备涌入，互联网连接设备将会愈来愈多，最终大部分设备将会与网络互连互通。此外，IPV6的进一步推进，将会使得互联网上每个连接的设备都拥有自己独立且唯一的地址，设备之间的互通将会更加方便与快速。</p><h2 id="更开放标准"><a href="#更开放标准" class="headerlink" title="更开放标准"></a>更开放标准</h2><p>未来的互联网将会更加开放与包容，人工智能，大数据与云端计算将会更加切实地连接在一起，数据交换将会更加自然与无障碍。开放的标准有助于构建更为完整的生态，更多服务将会“上云”，产品的标签化，生产流程的全程监督化将会成为常态。更多服务的可以通过Internet这张巨量的网络进行无缝衔接与协作，互联网应用领域将得到极大的扩展与延伸。</p><h1 id="发展问题"><a href="#发展问题" class="headerlink" title="发展问题"></a>发展问题</h1><p>理念与需求发展不受限，但技术发展总是存在其物理上线，现如今，摩尔定律开始逐步变得不可靠，硬件迭代越来越慢。下一代的通信技术在完全铺开之前必须克服一些亟待解决的难题。<br> <img src="https://s2.ax1x.com/2019/11/29/QEn06f.jpg" alt="QEn06f.jpg"><br>Figure 2 3GPP R17方向议题<br>上图展示了6G前期议题的主要内容与主攻方向，我们可以籍此提出未来通信可能存在问题的方向，如性能，能耗，成本等。</p><h2 id="集成电路发展"><a href="#集成电路发展" class="headerlink" title="集成电路发展"></a>集成电路发展</h2><p>1965年，摩尔定律第一次发布，其内容为：“集成电路上可容纳的晶体管数目，约每隔两年便会增加一倍”。</p><p>当时间来到2019年，摩尔定律的原始内容早已不适用于现在的硅基半导体行业，集成电路的发展速度开始逐步放缓。在下一代半导体材料（例如GaN，SiC），或者下一代集成电路技术取得突破之前，目前的芯片性能很难再取得飞跃式的跨步。</p><h2 id="功耗问题"><a href="#功耗问题" class="headerlink" title="功耗问题"></a>功耗问题</h2><p><img src="https://s2.ax1x.com/2019/11/29/QEnw1P.jpg" alt="QEnw1P.jpg"><br>Figure 3 5G基站功耗<br>如上图所示的结论，5G的单基站功耗将会是4G的2.5-3.5倍。单基站峰值功耗达到3.7KW。当谈论到终端接入设备时，依靠电池供电的移动设备耗电问题更为突出。5G使用更高频率的毫米波，发射功率进一步提高。同时由于技术原因，目前绝大部份5G手机的基带均未集成进SoC，普遍存在耗电量大，发热严重，续航差的问题。</p><h2 id="有线连接带宽问题"><a href="#有线连接带宽问题" class="headerlink" title="有线连接带宽问题"></a>有线连接带宽问题</h2><p>无线接入终究是终端设备的辅助接入方式，城域网之间的连接仍然需要巨量的有线光缆。然而，目前的光缆传输容量将于近几年达到其物理上线，更多光缆的铺设将带来更为巨大的资金投入。</p><h2 id="造价问题"><a href="#造价问题" class="headerlink" title="造价问题"></a>造价问题</h2><p>进一步的网络扩容，将会带来巨额的投入。当前运营商的次级终端接入大都仍然使用较为老旧的设备，面对下时代Gbps的接入，亟待巨量的资金投入。倘若大宽带应用覆盖不足，运营商的升级动力很难得到保证，很有可能走若干年前长城宽带的老路，放弃下一步升级计划。同时，移动通信技术的发展以进一步压榨频率为主，将会带来更多的基站建设投入与维护费用。</p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>科技发展的本质是降低科技的存在感，通信作为一种基础需求，在未来的发展过程中会扮演越来越重要的角色。一些科幻影片中的内容可能会成为现实，真正的降低科技存在的“实感”。然而，在现实中任何一种技术发展的上限实际上是物理的上限，在基础物理尚未取得突破性进展的当下，通信技术的快速发展带来的更多问题仍然无法取得有效的解决。<br>展望未来通信，挑战满满，但随之而来的机遇也随处可见。未来的社会在通信技术的驱动下将会成为万物互联，人物互联，数据至上的世界，为每个社会个体构建真实的“虚幻”社会。</p><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]维基百科编者. 梅特卡夫定律[G/OL]. 维基百科, 2018(20180315)[2018-03-15]. -{R|<a href="https://zh.wikipedia.org/w/index.php?title=%E6%A2%85%E7%89%B9%E5%8D%A1%E5%A4%AB%E5%AE%9A%E5%BE%8B&amp;oldid=48676234}-" target="_blank" rel="noopener">https://zh.wikipedia.org/w/index.php?title=%E6%A2%85%E7%89%B9%E5%8D%A1%E5%A4%AB%E5%AE%9A%E5%BE%8B&amp;oldid=48676234}-</a>.<br>[2]维基百科编者. IPv6[G/OL]. 维基百科, 2019(20191108)[2019-11-08].{R|<a href="https://zh.wikipedia.org/w/index.php?title=IPv6&amp;oldid=56792939}-" target="_blank" rel="noopener">https://zh.wikipedia.org/w/index.php?title=IPv6&amp;oldid=56792939}-</a>.<br>[3]维基百科编者. 摩尔定律[G/OL]. 维基百科, 2019(20191017)[2019-10-17]. {R|<a href="https://zh.wikipedia.org/w/index.php?title=%E6%91%A9%E5%B0%94%E5%AE%9A%E5%BE%8B&amp;oldid=56513827}-" target="_blank" rel="noopener">https://zh.wikipedia.org/w/index.php?title=%E6%91%A9%E5%B0%94%E5%AE%9A%E5%BE%8B&amp;oldid=56513827}-</a>.<br>[4]赵亚军,郁光辉,徐汉青.6G移动通信网络:愿景、挑战与关键技术[J].中国科学:信息科学,2019,49(08):963-987.<br>[5]郑子亨. 量子通信是发展未来通信的必经之路[N]. 通信产业报,2019-09-16(008).<br>[6]王佳佳,陈琪美,江昊,吴静.太赫兹空间接入技术[J].无线电通信技术,2019,45(06):653-657.<br>[7]杨明军,黄乘顺.现代无线通信技术的发展状况及未来前景展望[J].农家参谋,2019(21):172.<br>[8]腾讯深网 马关夏 康路.卫星网络、5G、永不失联，什么是未来通信？[EB/OL].<a href="https://m.pedaily.cn/news/441334,2019-03-18" target="_blank" rel="noopener">https://m.pedaily.cn/news/441334,2019-03-18</a>.<br>[9]张海龙.余少华：未来二十年通信技术演进将面临六堵墙[EB/OL].<a href="http://m.c114.com.cn/w16-1052031.html,2018-5-11" target="_blank" rel="noopener">http://m.c114.com.cn/w16-1052031.html,2018-5-11</a>.<br>[10]阮一峰.关于卫星上网[EB/OL].<a href="http://www.ruanyifeng.com/blog/2009/07/satellite_internet.html,2009年7月19日" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2009/07/satellite_internet.html,2009年7月19日</a>.<br>[11]华叔聊5G.电费开支160亿！实测华为、中兴5G基站耗电情况，令人担忧[EB/OL].<a href="https://zhuanlan.zhihu.com/p/77809738,2019-08-" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/77809738,2019-08-</a><br>[12]木斯.Space X 的太空互联网快建好了，卫星上网的时代要来了？[EB/OL].<a href="https://www.ifanr.com/1272490,2019-10-23" target="_blank" rel="noopener">https://www.ifanr.com/1272490,2019-10-23</a>.<br>[13]Winnie Lee.谷歌全球免费wifi计划再下一城 已接入墨西哥60多个高速站点[EB/OL].<a href="https://t.qianzhan.com/caijing/detail/180330-b2cf58e8.html,2018-03-30" target="_blank" rel="noopener">https://t.qianzhan.com/caijing/detail/180330-b2cf58e8.html,2018-03-30</a>.<br>[14]小枣君 鲜枣课堂.关于光纤宽带技术，看这一篇就够啦！[EB/OL].<a href="https://mp.weixin.qq.com/s/sT0vu9RXY0YbFh8kYsyOfQ,2018-07-18" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/sT0vu9RXY0YbFh8kYsyOfQ,2018-07-18</a>.<br>[15]小枣君 鲜枣课堂.揭秘！关于海底光缆的最强科普！[EB/OL].<a href="https://mp.weixin.qq.com/s/MVHHtxPbiZZfzsRqdrdIrg,2018-03-19" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/MVHHtxPbiZZfzsRqdrdIrg,2018-03-19</a>.<br>[16]小枣君 鲜枣课堂.6G为什么不被看好?[EB/OL].<a href="https://mp.weixin.qq.com/s/NWDckF17yHCa9cYloW-l4w,2019-11-03" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/NWDckF17yHCa9cYloW-l4w,2019-11-03</a>.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h1&gt;&lt;p&gt;随着5G技术的商用开放，更多人开始着眼于下一代通信技术的研究。本文首先使用“更大带宽”，“更广连接”，“更大容量”，“更开放标准”四个关键词
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>通信理论应用领域综述</title>
-    <link href="http://yoursite.com/2019/11/08/communication_applications/"/>
-    <id>http://yoursite.com/2019/11/08/communication_applications/</id>
-    <published>2019-11-08T07:37:40.000Z</published>
-    <updated>2019-11-08T15:57:34.741Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>1837年，查尔斯·惠斯通和威廉·库克发明了第一个实用电报系统，并于1839年建成了世界上第一条商用电报路线，1850年英国铺设了首条海底电报线。随之，通信的范围扩大到全球，实用型通信应用也随之发挥其应有的价值。如今，通信已经渗透进日常生活的每个方面，小到使用移动设备上网，大到国防领域的通信设备互通建设。通信理论的应用早已成为日常生活不可缺的内容，本文主要参考互联网资料以及日常生活经验，介绍日常生活中各种通信技术的渗透。</p><h1 id="设备接入与互联"><a href="#设备接入与互联" class="headerlink" title="设备接入与互联"></a>设备接入与互联</h1><h2 id="域网-国际骨干网连接"><a href="#域网-国际骨干网连接" class="headerlink" title="域网/国际骨干网连接"></a>域网/国际骨干网连接</h2><p>出于各骨干网之间互联的巨大需求，该种范围内的连接带宽主要以Tbps为单位。在通信中，由香农公式，信道的带宽与其容量关系有如下关系：</p><center>C=B×log_2⁡(1+S/N)</center><p>（B-带宽，S-信号功率谱密度，N-信噪比，C-信道容量）</p><p>由于光纤传输具有低损耗，低成本，干扰小等优点，因此我们主要使用大容量的光纤进行信号传输。通过铺设巨量的通信线缆与各个点位交换机的协作，将光信号传输以进行点之间的通信。中国大陆的出口光缆出口分布在青岛市，上海市，福州市，汕头市，共约有15条光纤。由于海底环境恶劣，因此光缆需要做好十足保护，结构如下：</p><p>1，聚乙烯外皮        2，聚酯树酯或沥青层        3，钢绞线层<br>4，铝制防水层        5，聚碳酸酯层        6，铜管或铝管<br>7，石蜡，烷烃层        8，光纤束<br> <img src="https://s2.ax1x.com/2019/11/08/MePNxP.png" alt="典型海底光缆结构图"><br><img src="https://s2.ax1x.com/2019/11/08/MePdr8.jpg" alt="国际光缆出口"></p><h2 id="个人设备互联"><a href="#个人设备互联" class="headerlink" title="个人设备互联"></a>个人设备互联</h2><h3 id="近距离无线通信"><a href="#近距离无线通信" class="headerlink" title="近距离无线通信"></a>近距离无线通信</h3><p>近距离无线通信，简称NFC，使用13.56MHz频率运行于20CM的范围内，传输速率分为106Kb/S,212Kb/S,424Kb/S，一个完整的NFC设备包括三种模式：卡模拟模式，读卡器模式，点对点模式。配置便利，安全性高，耗电量低（&lt;15mA）等优点使得其在卡片交易方面占据重要地位。</p><h3 id="中短距离设备互联"><a href="#中短距离设备互联" class="headerlink" title="中短距离设备互联"></a>中短距离设备互联</h3><p>短距离互联技术中，WIFI以及蓝牙当属应用最为广泛的技术。二者均使用2.4GHz频段，WIFI在版本迭代中又加入了对5GHz频段的支持。2.4G频段被广泛使用，使得其频段之间的干扰较强，当使用5G频段时，抗干扰能力能够显著增强。</p><div class="table-container"><table><thead><tr><th>版本号</th><th>峰值速率与使用频段</th></tr></thead><tbody><tr><td>802.11b(WI-FI 1)</td><td>2.4GHz,11Mb/S</td></tr><tr><td>802.11a(WI-FI 2)</td><td>5GHz,54Mb/S</td></tr><tr><td>802.11g(WI-FI 3)</td><td>2.4GHz,54Mb/S</td></tr><tr><td>802.11n(WI-FI 4)</td><td>2.4GHz/5GHz,450 Mb/S</td></tr><tr><td>802.11ac(WI-FI 5)</td><td>5GHz,866Mb/S</td></tr><tr><td>802.11ax(WI-FI 6)</td><td>2.4GHz/5GHz，1.2Gb/S</td></tr></tbody></table></div><p>最新版本的WI-FI速率达到了1.2Gb/S，但是由于其高功耗的特性，未被海量的物联网设备采用。蓝牙在研发之初的目标就被确定为低成本，低功耗，连接便利，这也就使得其成为物联网设备以及个人设备之间便捷通信的理想技术。最新一代的蓝牙5.0于2016年6月发布，理论传输速度达到24Mb/S，进一步优化了功耗以及性能相关表现。</p><h3 id="中远距离设备互联"><a href="#中远距离设备互联" class="headerlink" title="中远距离设备互联"></a>中远距离设备互联</h3><p>该种设备接入主要借助蜂窝移动网络，从最开始的0G到1G,2G,3G,3G,4G乃至最近被谈论火热的5G技术。以2G技术为分割，在此之后的通信技术均使用数字信号进行编码传输。不同版本的通信技术更迭物理提升点主要在其使用的频率，频率不断地提升，带来更快的信号的衰减。5G主要使用30-300GHz的毫米波段，并将频宽提升到800M，较之前700MHz-3GHz的蜂窝移动频段提升了更多物理带宽。更高频率的无线通信技术带来更多的信号衰减，乃至比微波的辐射范围更小。5G的蜂窝移动覆盖范围将会只有一个城市街区的范围，更多的基站天线将被安装在建筑物或者电线杆上。</p><h1 id="室内-室外定位服务"><a href="#室内-室外定位服务" class="headerlink" title="室内/室外定位服务"></a>室内/室外定位服务</h1><h2 id="室内高精度定位"><a href="#室内高精度定位" class="headerlink" title="室内高精度定位"></a>室内高精度定位</h2><p>参考微软室内定位比赛（MILC）的报告：<a href="https://www.microsoft.com/en-us/research/event/microsoft-indoor-localization-competition-ipsn-2018/" target="_blank" rel="noopener">https://www.microsoft.com/en-us/research/event/microsoft-indoor-localization-competition-ipsn-2018/</a><br> <img src="https://s2.ax1x.com/2019/11/08/MePr5j.jpg" alt="室内定位比赛技术及其排名"><br>    如上图表可以看出高精度的定位结果主要使用UWB技术，第一名则将误差控制在了0.27米。UWB（Ultra Wideband），超宽带技术，兼具低耗电和高速传输速率的无线通讯技术。如其名，该技术拥有共7.5GHz的频宽，使得其传输速率高达480Mb/S，和USB 2.0的峰值速率相等。由于使用极短时间的脉冲信号，使得其在高速传输的时候仍然能够保持较低的发射功率。 <img src="https://s2.ax1x.com/2019/11/08/MePvZD.jpg" alt="频段分布"></p><h2 id="室外定位系统"><a href="#室外定位系统" class="headerlink" title="室外定位系统"></a>室外定位系统</h2><p>室外的定位系统主要分为基站定位与卫星定位系统，卫星定位系统是目前应用范围最广的定位系统，精度高，大规模制造带来的低成本，包括美国的GPS,中国的BDS,欧洲的Galileo，俄罗斯的GLONASS。其中中国的BDS已发射53颗，覆盖亚太地区并将逐步扩展到全球范围内。目前北斗已免费开放服务，定位精度2.6米或者加密后的0.1米，单向授时精度9.8ns。</p><p>基站定位技术则借助附近基站的TOA（达到时刻）或者TDOA(到达时间差计算手机的位置，至少三个基站即可确定其所在的点位，卫星通信的计算方式类似，至少需要搜索到三颗正常服务的卫星才可确定具体位置。</p><h2 id="其他辅助定位系统"><a href="#其他辅助定位系统" class="headerlink" title="其他辅助定位系统"></a>其他辅助定位系统</h2><p>前文提到的Wi-Fi以及蓝牙均可用于定位服务的增强，其中蓝牙定位基于RSSI定位原理依赖蓝牙信标，根据信号强弱来判断设备位置。目前使用范围不广，一个典型的例子是iOS 13上加入的Find my功能，通过蓝牙互通汇报位置信息。</p><p>Wi-Fi定位是目前适用范围较为广泛的辅助定位系统，由于每个Wi-Fi热点均具有独一的MAC地址，通过热点汇报的物理地址，通过信号强弱即可判断位置，在热点数量保有量较大的商业街可以做到较高精度。一些导航软件会在GPS信号较差的时候启用辅助定位系统，通过采集周围热点SSID以及MAC即可判断位置。</p><h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>前文我们讨论了日常生活中应用范围较为广泛的两类通信理论应用范围，随着信息科学的进一步发展，这些技术定会更加稳定与精度地服务于日常生活生产。就如前文的定位技术，从最开始的目测到GPS，再到目前精度最高的UWB技术，在不断提高精度于覆盖范围的过程中，更好地便利日常生活。</p><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><em>1 维基百科编者. Wi-Fi[G/OL]. 维基百科, 2019(20191103)[2019-11-03]. -{R|<a href="https://zh.wikipedia.org/w/index.php?title=Wi-Fi&amp;oldid=56733204}-" target="_blank" rel="noopener">https://zh.wikipedia.org/w/index.php?title=Wi-Fi&amp;oldid=56733204}-</a>.</em></p><p><em>2 维基百科编者. 电信[G/OL]. 维基百科, 2019(20190119)[2019-01-19]. -{R|<a href="https://zh.wikipedia.org/w/index.php?title=%E7%94%B5%E4%BF%A1&amp;oldid=52847806}-" target="_blank" rel="noopener">https://zh.wikipedia.org/w/index.php?title=%E7%94%B5%E4%BF%A1&amp;oldid=52847806}-</a>.</em></p><p><em>3 维基百科编者. 海底電纜[G/OL]. 维基百科, 2019(20191029)[2019-10-29]. -{R|<a href="https://zh.wikipedia.org/w/index.php?title=%E6%B5%B7%E5%BA%95%E9%9B%BB%E7%BA%9C&amp;oldid=56669692}-" target="_blank" rel="noopener">https://zh.wikipedia.org/w/index.php?title=%E6%B5%B7%E5%BA%95%E9%9B%BB%E7%BA%9C&amp;oldid=56669692}-</a>.</em></p><p><em>4 维基百科编者. 近場通訊[G/OL]. 维基百科, 2019(20190909)[2019-09-09]. -{R|<a href="https://zh.wikipedia.org/w/index.php?title=%E8%BF%91%E5%A0%B4%E9%80%9A%E8%A8%8A&amp;oldid=56032669}-" target="_blank" rel="noopener">https://zh.wikipedia.org/w/index.php?title=%E8%BF%91%E5%A0%B4%E9%80%9A%E8%A8%8A&amp;oldid=56032669}-</a>.</em></p><p><em>5 维基百科编者. 超寬頻[G/OL]. 维基百科, 2019(20190906)[2019-09-06]. -{R|<a href="https://zh.wikipedia.org/w/index.php?title=%E8%B6%85%E5%AF%AC%E9%A0%BB&amp;oldid=55990882}-" target="_blank" rel="noopener">https://zh.wikipedia.org/w/index.php?title=%E8%B6%85%E5%AF%AC%E9%A0%BB&amp;oldid=55990882}-</a>.</em></p><p><em>6 中国科普博览<a href="http://mtw.kepu.net.cn/gb/technology/telecom/fiber/fbr203.html" target="_blank" rel="noopener">http://mtw.kepu.net.cn/gb/technology/telecom/fiber/fbr203.html</a></em></p><p><em>7 Microsoft Indoor Localization Competition – IPSN 2018<a href="https://www.microsoft.com/en-us/research/event/microsoft-indoor-localization-competition-ipsn-2018/" target="_blank" rel="noopener">https://www.microsoft.com/en-us/research/event/microsoft-indoor-localization-competition-ipsn-2018/</a></em></p><p><em>8 UWB技术揭秘<a href="https://mp.weixin.qq.com/s/6YhraWU-pmn2gwO0AOZv9w" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/6YhraWU-pmn2gwO0AOZv9w</a></em></p><p><em>9 Greg’s Cable Map <a href="https://cablemap.info/_default.aspx" target="_blank" rel="noopener">https://cablemap.info/_default.aspx</a></em></p><p><em>10 维基百科编者. 超寬頻[G/OL]. 维基百科, 2019(20190906)[2019-09-06]. -{R|<a href="https://zh.wikipedia.org/w/index.php?title=%E8%B6%85%E5%AF%AC%E9%A0%BB&amp;oldid=55990882}-" target="_blank" rel="noopener">https://zh.wikipedia.org/w/index.php?title=%E8%B6%85%E5%AF%AC%E9%A0%BB&amp;oldid=55990882}-</a>.</em></p><p><em>11 维基百科编者. 光纖通訊[G/OL]. 维基百科, 2019(20190820)[2019-08-20]. -{R|<a href="https://zh.wikipedia.org/w/index.php?title=%E5%85%89%E7%BA%96%E9%80%9A%E8%A8%8A&amp;oldid=55747085}-" target="_blank" rel="noopener">https://zh.wikipedia.org/w/index.php?title=%E5%85%89%E7%BA%96%E9%80%9A%E8%A8%8A&amp;oldid=55747085}-</a>.</em></p><p><em>12 维基百科编者. 藍牙[G/OL]. 维基百科, 2019(20191017)[2019-10-17]. -{R|<a href="https://zh.wikipedia.org/w/index.php?title=%E8%97%8D%E7%89%99&amp;oldid=56512439}-" target="_blank" rel="noopener">https://zh.wikipedia.org/w/index.php?title=%E8%97%8D%E7%89%99&amp;oldid=56512439}-</a>.</em></p><p><em>13 维基百科编者. 北斗卫星导航系统[G/OL]. 维基百科, 2019(20191105)[2019-11-05]. -{R|<a href="https://zh.wikipedia.org/w/index.php?title=%E5%8C%97%E6%96%97%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F&amp;oldid=56753589}-" target="_blank" rel="noopener">https://zh.wikipedia.org/w/index.php?title=%E5%8C%97%E6%96%97%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F&amp;oldid=56753589}-</a>.</em></p><p><em>14  US Department of Defense Reports on China’s Space Capabilities <a href="http://www.spacesafetymagazine.com/space-on-earth/international-relations/department-defense-reports-chinas-space-capabilities/" target="_blank" rel="noopener">http://www.spacesafetymagazine.com/space-on-earth/international-relations/department-defense-reports-chinas-space-capabilities/</a></em></p><p><em>15 维基百科编者. 辅助全球卫星定位系统[G/OL]. 维基百科, 2019(20191001)[2019-10-01]. -{R|<a href="https://zh.wikipedia.org/w/index.php?title=%E8%BE%85%E5%8A%A9%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AE%9A%E4%BD%8D%E7%B3%BB%E7%BB%9F&amp;oldid=56312849}-" target="_blank" rel="noopener">https://zh.wikipedia.org/w/index.php?title=%E8%BE%85%E5%8A%A9%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AE%9A%E4%BD%8D%E7%B3%BB%E7%BB%9F&amp;oldid=56312849}-</a>.</em></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;1837年，查尔斯·惠斯通和威廉·库克发明了第一个实用电报系统，并于1839年建成了世界上第一条商用电报路线，1850年英国铺设了首条海底电
       
     
     </summary>
