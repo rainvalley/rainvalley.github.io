@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.raincorn.top/"/>
-  <updated>2020-04-25T16:04:00.472Z</updated>
+  <updated>2020-04-26T15:36:46.216Z</updated>
   <id>https://blog.raincorn.top/</id>
   
   <author>
@@ -17,20 +17,20 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>关于撰写爬虫的一些心得</title>
-    <link href="https://blog.raincorn.top/2020/04/25/Python_Spider/"/>
-    <id>https://blog.raincorn.top/2020/04/25/Python_Spider/</id>
-    <published>2020-04-25T08:03:51.000Z</published>
-    <updated>2020-04-25T16:04:00.472Z</updated>
+    <title>Microcontroller’s abbreviation</title>
+    <link href="https://blog.raincorn.top/2020/04/26/Microcontroller%E2%80%99s-abbreviation/"/>
+    <id>https://blog.raincorn.top/2020/04/26/Microcontroller%E2%80%99s-abbreviation/</id>
+    <published>2020-04-26T07:33:23.000Z</published>
+    <updated>2020-04-26T15:36:46.216Z</updated>
     
-    <content type="html"><![CDATA[<p>挖坑，很长。</p>]]></content>
+    <content type="html"><![CDATA[<p><del>大佬们说我标题党，于是我把我简书那篇文章偷过来了，这下子算50篇了。</del></p><p>In daily’s development,abbreviations are normal in judging different usages.It can be important to know the abbreviations’ full names.And I will update for a long time in this pages.</p><p>Signal Processing:</p><p>PWM - Pulse Width Modulation 脉冲宽度调制</p><p>CCP - Capture Compare PWM 捕获比较脉宽调制</p><p>PCA - Programmable Counter Array 可编程计数器阵列</p><p>Serial Communication Protocols:</p><p>SPI - Serial Peripheral Interface Bus 串行外设接口 ： SCLK - Serial Clock 串列时脉 ; MOSI - Master Output Salve Input 主机输出从机输入 ; MISO - Master Input Salve Output 主机输入从机输出到 ; SS - Salve Selected 从机选择。</p><p>IIC Bus - Inter-Integrated Circuit Bus 集成电路总线 : SDA - Serial Data Line 串行数据线 ; SCL - Serial Clock Line 串行时钟线。</p><p>UART - Universal Asynchronous Receiver/Transmitter 通用异步收发传输器 : VCC - Voltage Common Collector 电压公共收集器 ; GND - Ground 接地 ; TX - Transmit 传送 ; RX - Receive 接收。</p><p>CAN Bus - Controller Area Network Bus局域网控制器总线。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;挖坑，很长。&lt;/p&gt;
-
+        &lt;p&gt;&lt;del&gt;大佬们说我标题党，于是我把我简书那篇文章偷过来了，这下子算50篇了。&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;In daily’s development,abbreviations are normal in judging different usages.It can b
       
     
     </summary>
