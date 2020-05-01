@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>三星S10使用手册 | Chores</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="generator" content="Hexo 4.2.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">三星S10使用手册</h1><a id="logo" href="/.">Chores</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">三星S10使用手册</h1><div class="post-meta">May 1, 2020</div><div class="post-content"><p>某鱼2K-入手美版三星S10，算是翻了0.25个车吧，不过对我而言问题不大。一些需要解决的坑与骚操作如下：</p>
+<ul>
+<li>将ATT版本刷为公开版——运营商定制版本有运营商全家桶并且无法正常接收到OTA。（我之前还和卖家确认过是支持OTA的呢，唉。）</li>
+<li>修复手机气密性——使用防水胶与B7000胶水，点胶后压制后盖24小时使胶水固化。</li>
+</ul>
+<p><strong><em>本人对风险概不负责，仅作提示。</em></strong></p>
+<h1 id="刷机"><a href="#刷机" class="headerlink" title="刷机"></a>刷机</h1><p>有一说一，我已经很久没刷过机了。论坛搜索一番后，整理工具如下：</p>
+<p><img src="/images/刷机工具.png" alt="刷机工具"></p>
+<p>SamFirm用于下载固件，已汉化。Odin3_Patched用于刷入固件，注意普通版Odin无法使用。VC++ 2008/2010则为SamFirm的依赖库，部分不含该环境的PC将会报错。下载链接于此，<a href="https://1drv.ms/u/s!AoHhwbcAPMS_i1HdJl7uAv3Q_hGo?e=4seKzR" target="_blank" rel="noopener">https://1drv.ms/u/s!AoHhwbcAPMS_i1HdJl7uAv3Q_hGo?e=4seKzR</a> 。</p>
+<h2 id="开始之前"><a href="#开始之前" class="headerlink" title="开始之前"></a>开始之前</h2><h3 id="检查Blacklist"><a href="#检查Blacklist" class="headerlink" title="检查Blacklist"></a>检查Blacklist</h3><p>访问Samsung IMEI查询的网站，例如<a href="https://www.imeipro.info/samsung_imei_check.html" target="_blank" rel="noopener">Samsung IMEI checker</a>，输入手机IMEI查询信息，注意Carrier与Blacklist status信息。此处的Blacklist status即为黑名单情况，一般CLEAN即代表不处于黑名单可自由刷机。</p>
+<p>但是，请注意星号：</p>
+<blockquote>
+<p>Please note that it can take up to few days till the IMEI number is added to the global blacklist. We do not guarantee that our service is error-free. All results are provided “as is”.</p>
+</blockquote>
+<p>翻译如下：</p>
+<blockquote>
+<p>请注意，最多可能需要几天的时间才能将IMEI号码添加到全局黑名单中。 我们不保证我们的服务没有错误。 所有结果均按“原样”提供。</p>
+</blockquote>
+<p><img src="/images/IMEI checker.png" alt="IMEI Checker"></p>
+<p>请仔细斟酌，淘宝解网络锁需要300大洋。</p>
+<h3 id="下载固件"><a href="#下载固件" class="headerlink" title="下载固件"></a>下载固件</h3><p>打开我提供的SamFirm，地区选择XAA，勾选自动搜索，下载五件套，校验CRC32与下载完成后自动解密，公开版型号选择如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>S10E</th>
+<th>S10</th>
+<th>S10+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SM-G970U1</td>
+<td>SM-G973U1</td>
+<td>SM-G975U1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="/images/SamFirm_selected.png" alt="SamFirm_selected"></p>
+<p>倘若报错如下，请安装前文提供的VC++ 2008与2010：<br><img src="https://ae04.alicdn.com/kf/H50d776e631c24535a56060cfce3d07cfc.png" alt="SamFirm_error"></p>
+<p>最后检查更新，一切无误即可开始下载（如下图）：</p>
+<p><img src="/images/SamFirm.png" alt="SamFirm_true"></p>
+<h3 id="备份资料退出账号"><a href="#备份资料退出账号" class="headerlink" title="备份资料退出账号"></a>备份资料退出账号</h3><p><strong><em>请注意：</em></strong></p>
+<ul>
+<li>备份手机中的必要的资料</li>
+<li>移除SIM卡</li>
+<li>退出三星账户</li>
+<li>退出Google账户</li>
+<li>关闭所有设备管理器</li>
+</ul>
+<p>如无特殊情况，请恢复出厂设置。</p>
+<h3 id="开始刷机"><a href="#开始刷机" class="headerlink" title="开始刷机"></a>开始刷机</h3><p>进入挖煤模式，将手机关机，同时按下音量减键与Bixby建，然后再将数据线连接至电脑USB端口（请保证供电充足与稳定，尽量避免使用Hub），当出现如下画面时，松开所有按键。<br><img src="/images/挖煤.png" alt="挖煤模式"></p>
+<p>紧接着，按下音量加键以确认继续，出现如下画面，请打开Odin3_Patched，并确认端口显示为蓝色（已检测到手机）。</p>
+<p><img src="/images/下载页面.png" alt="下载页面"></p>
+<p>Odin3_Patched的选项页面调整为下图，并请根据下载的文件首字母正确选中BL,AP,CP,CSC文件。注意，在选择AP时，由于文件太大程序会假死若干分钟，请耐心等待。<br><img src="/images/Odin3.png" alt="Odin3_Patched_Options"><br>一切完成之后，点击开始刷机即可，如下。<br><img src="/images/Downloading页面.png" alt="Downloading"></p>
+<h3 id="刷机之后"><a href="#刷机之后" class="headerlink" title="刷机之后"></a>刷机之后</h3><p>倘若一切顺利，恭喜你已经进入了公开版系统。同时请注意，由于OneUI神奇的调度，请尽量正常的使用它。（我用一个星期之后续航明显有所提升</p>
+<h1 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h1><h2 id="一些小波澜"><a href="#一些小波澜" class="headerlink" title="一些小波澜"></a>一些小波澜</h2><p>购买之前曾与卖家交流过，卖家说此机更换过电池（你当我不知道是组装机啊 ）。在使用若干天后后盖缝隙变大，前置摄像头进入些许灰尘，与卖家沟通，尚无明确答复。</p>
+<p>ps：单独更换电池对三星机型的续航提升极其有限，建议有条件的朋友可以拿到三星售后，使用Samsung Anyway（蓝盒子）进行电池循环次数清零，注意请提前联系当地售后。</p>
+<h2 id="备件"><a href="#备件" class="headerlink" title="备件"></a>备件</h2><p>防水胶，B7000胶水，蔡司拭镜纸。如需原装后盖推荐截图中店铺购买，卖家很喜欢聊天，人和东西都不错。<br><img src="/images/备件.png" alt="备件"></p>
+<h2 id="开肝"><a href="#开肝" class="headerlink" title="开肝"></a>开肝</h2><p>先咕咕咕咕了</p>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>Raincorn</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/2020/05/01/SM-G973U1_Guide/">https://blog.raincorn.top/2020/05/01/SM-G973U1_Guide/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本文采用知识共享署名-非商业性使用 4.0 国际许可协议进行许可</li></ul></div><br><div class="tags"></div><div class="post-nav"><a class="next" href="/2020/04/29/cURL_Wget/">cURL用法以及与Wget的区别</a></div><div id="container"></div><link rel="stylesheet" type="text/css" href="//unpkg.com/gitalk/dist/gitalk.css?v=0.0.0"><script type="text/javascript" src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js?v=0.0.0"></script><script type="text/javascript" src="//unpkg.com/gitalk/dist/gitalk.min.js?v=0.0.0"></script><script>var gitalk = new Gitalk({
+  clientID: 'f37f10ebdf132d420475',
+  clientSecret: '8227577172fe3a52fa726354d7382e11d0a34d52',
+  repo: 'rainvalley.github.io',
+  owner: 'rainvalley',
+  admin: ['rainvalley'],
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('container')
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Math/" style="font-size: 15px;">Math</a> <a href="/tags/Google/" style="font-size: 15px;">Google</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/%E4%BE%9B%E7%94%B5/" style="font-size: 15px;">供电</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 15px;">接口</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 15px;">网络</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/tags/GFW/" style="font-size: 15px;">GFW</a> <a href="/tags/%E5%8D%8A%E5%AF%BC%E4%BD%93/" style="font-size: 15px;">半导体</a> <a href="/tags/Apple/" style="font-size: 15px;">Apple</a> <a href="/tags/Videos/" style="font-size: 15px;">Videos</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/05/01/SM-G973U1_Guide/">三星S10使用手册</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/29/cURL_Wget/">cURL用法以及与Wget的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/26/Microcontroller%E2%80%99s-abbreviation/">Microcontroller’s abbreviation</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/25/Visual_Studio_uninit_error/">Visual Studio的”烫烫烫“与”屯屯屯“</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/25/github_new_repositories/">项目Git远程推送与开源协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/25/holes/">一些坑与奇妙淫技</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/06/Bing_max_spider/">Bing最高分辨率图片爬取</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/05/8051-Memory-TypeS/">8051 Memory TypeS</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/26/authorised_software/">软件正版化</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/23/about_lf/">关于换行</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://blog.iknet.top/" title="秋のかえで" target="_blank">秋のかえで</a><ul></ul><a href="https://www.wygdbb.com/" title="周海棠啦" target="_blank">周海棠啦</a><ul></ul><a href="https://mttblog.cn/" title="MttBlog" target="_blank">MttBlog</a><ul></ul><a href="https://www.wangtoushuo.cn/" title="起雾了" target="_blank">起雾了</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">Chores.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
