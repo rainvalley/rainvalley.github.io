@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是我的博客，记录一些琐事。"><title>Linux命令——Sed | Chores</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="/css/dark.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 4.2.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Linux命令——Sed</h1><a id="logo" href="/.">Chores</a><p class="description">宁愿卑微如土，不愿蜷曲如虫。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Linux命令——Sed</h1><div class="post-meta">2020-07-18<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 507</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 2</span><span class="post-meta-item-text"> 分钟</span></span></span></div><div class="post-content"><blockquote>
+<p>Sed牛逼！</p>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><p><code>sed [-hnV][-e&lt;script&gt;][-f&lt;script文件&gt;][文本文件]</code></p>
+<ul>
+<li>-h：显示帮助信息</li>
+<li>-n：仅显示脚本处理后的结果</li>
+<li>-V：显示版本信息</li>
+<li>-e：以指定的script处理文本文件</li>
+<li>-f：以指定的script文件来处理文本文件</li>
+<li>-i：直接修改文件内容（-i.bak将会创建原文件的备份）</li>
+</ul>
+</blockquote>
+<h1 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h1><ul>
+<li>a\：插入，后加字符串，会出现在下一行</li>
+<li>i\：插入，后加字符串，出现在目标上一行</li>
+<li>c\：替换，将选定的行修改为新的文本</li>
+<li>s：替换，搭配正则表达式使用</li>
+<li>d：删除选择的行</li>
+<li>p：打印，选择数据并打印</li>
+</ul>
+<h1 id="script"><a href="#script" class="headerlink" title="script"></a>script</h1><p><strong>当script中的正则表达式含有复杂表达式影响解析时，需使用/来定界</strong></p>
+<h2 id="插入（增）"><a href="#插入（增）" class="headerlink" title="插入（增）"></a>插入（增）</h2><p><code>sed &#39;/Search_String/a（/i）\Add_String&#39; file</code></p>
+<ul>
+<li>Search_String：需要查找行的正则表达式</li>
+<li>a：当前行后插入</li>
+<li>i：当前行前插入</li>
+<li>Add_String：需要插入的文本<blockquote>
+<p>示例</p>
+</blockquote>
+</li>
+<li><code>sed &#39;/^test/a\this is a test line&#39; file</code>，将this is a test line添加到以test开头的行后面</li>
+<li><code>sed &#39;2a\this is a test line&#39; file</code>，在文件的第二行后插入</li>
+<li><code>sed &#39;5i\this is a test line&#39; file</code>，在文件的第五行前插入</li>
+</ul>
+<h2 id="删除（删）"><a href="#删除（删）" class="headerlink" title="删除（删）"></a>删除（删）</h2><p><code>sed &#39;/Search_String/d&#39; file</code></p>
+<ul>
+<li>d：删除</li>
+<li>Search_String：正则表达式，匹配特定行`</li>
+<li>当删除特定行时，直接使用<code>sed &#39;2d&#39; file</code>即可<blockquote>
+<p>示例：</p>
+</blockquote>
+</li>
+<li>删除空白行：<code>sed &#39;/^$/d&#39; file</code></li>
+<li>删除第二行到末尾行：<code>sed &#39;2,$d&#39; file</code></li>
+<li>删除文件中所有开头是test的行：<code>sed &#39;/^test/&#39;d file</code></li>
+<li>删除第二行：<code>sed &#39;2d&#39; file</code></li>
+</ul>
+<h2 id="替换（改）"><a href="#替换（改）" class="headerlink" title="替换（改）"></a>替换（改）</h2><p><code>sed &#39;s/Search_String/Replacement_String/Ng&#39; Input_File</code></p>
+<ul>
+<li>s：替换</li>
+<li>Search_String：搜索的字符串或者正则表达式</li>
+<li>Replacement_String：替换的字符串</li>
+<li>N：从第N处开始匹配</li>
+<li>g：全局替换标志，替换每一行的全部匹配</li>
+<li>/：定界符re</li>
+</ul>
+<h1 id="参考链接与其他示例"><a href="#参考链接与其他示例" class="headerlink" title="参考链接与其他示例"></a>参考链接与其他示例</h1><p><a href="https://juejin.im/post/5d86414e6fb9a06b0b1cb1d5" target="_blank" rel="noopener">使用 sed 命令查找和替换文件中的字符串的 16 个示例</a></p>
+<p><a href="https://wangchujiang.com/linux-command/c/sed.html" target="_blank" rel="noopener">sed</a></p>
+</div><div class="post-copyright"><script type="text/javascript" src="/js/copyright.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copyright.css"><p><span>本文标题：</span>Linux命令——Sed</p><p><span>文章作者：</span>Raincorn</p><p><span>发布时间：</span>2020-07-18</p><p><span>最后更新：</span>2020-07-18</p><p><span>原始链接：</span><a href="/2020/07/18/Linux_Command_Sed/">https://blog.raincorn.top/2020/07/18/Linux_Command_Sed/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="https://blog.raincorn.top/2020/07/18/Linux_Command_Sed/"></i></span></p><p><span>版权声明：</span>本文采用知识共享署名-非商业性使用 4.0 国际许可协议进行许可</p></div><br><div class="tags"></div><div class="post-nav"><a class="next" href="/2020/07/16/Linux_Pipe/">Linux重定向与管道（Pipe）</a></div><div id="container"></div><link rel="stylesheet" type="text/css" href="//unpkg.com/gitalk/dist/gitalk.css?v=0.0.0"><script type="text/javascript" src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js?v=0.0.0"></script><script type="text/javascript" src="//unpkg.com/gitalk/dist/gitalk.min.js?v=0.0.0"></script><script>var gitalk = new Gitalk({
+  clientID: 'f37f10ebdf132d420475',
+  clientSecret: '8227577172fe3a52fa726354d7382e11d0a34d52',
+  repo: 'rainvalley.github.io',
+  owner: 'rainvalley',
+  admin: ['rainvalley'],
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('container')
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Math/" style="font-size: 15px;">Math</a> <a href="/tags/Google/" style="font-size: 15px;">Google</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/%E4%BE%9B%E7%94%B5/" style="font-size: 15px;">供电</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 15px;">接口</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Bash/" style="font-size: 15px;">Bash</a> <a href="/tags/Script/" style="font-size: 15px;">Script</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 15px;">网络</a> <a href="/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/tags/GFW/" style="font-size: 15px;">GFW</a> <a href="/tags/%E5%8D%8A%E5%AF%BC%E4%BD%93/" style="font-size: 15px;">半导体</a> <a href="/tags/Apple/" style="font-size: 15px;">Apple</a> <a href="/tags/Videos/" style="font-size: 15px;">Videos</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/07/18/Linux_Command_Sed/">Linux命令——Sed</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/16/Linux_Pipe/">Linux重定向与管道（Pipe）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/14/Linux_Bash/">Linux Bash指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/10/Wechat_CloudPrg/">微信小程序云开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/08/CSS/">CSS</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/22/matlab_notes/">Matlab例题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/21/matlab_disp_03/">Matlab导览第三章-绘图</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/21/matlab_math_02/">Matlab导览第二章-数学运算</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/matlab_arry_02/">Matlab导览第一章-数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/matlab_start_01/">Matlab导览第零章-综述</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://blog.iknet.top/" title="秋のかえで" target="_blank">秋のかえで</a><ul></ul><a href="https://www.wygdbb.com/" title="周海棠啦" target="_blank">周海棠啦</a><ul></ul><a href="https://mttblog.cn/" title="MttBlog" target="_blank">MttBlog</a><ul></ul><a href="http://yscode.net/" title="更好小站" target="_blank">更好小站</a><ul></ul><a href="https://honoz.github.io/" title="Honoz" target="_blank">Honoz</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">Chores.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=0.0.0"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

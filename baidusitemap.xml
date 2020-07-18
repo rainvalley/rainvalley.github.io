@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.raincorn.top/2020/07/14/Linux_Bash/</loc>
+    <lastmod>2020-07-18</lastmod>
+  </url>  <url>
+    <loc>https://blog.raincorn.top/2020/07/16/Linux_Pipe/</loc>
+    <lastmod>2020-07-18</lastmod>
+  </url>  <url>
+    <loc>https://blog.raincorn.top/2020/07/18/Linux_Command_Sed/</loc>
+    <lastmod>2020-07-18</lastmod>
+  </url>  <url>
+    <loc>https://blog.raincorn.top/2020/07/08/CSS/</loc>
+    <lastmod>2020-07-18</lastmod>
+  </url>  <url>
+    <loc>https://blog.raincorn.top/2020/07/10/Wechat_CloudPrg/</loc>
+    <lastmod>2020-07-18</lastmod>
+  </url>  <url>
     <loc>https://blog.raincorn.top/2020/06/21/matlab_disp_03/</loc>
     <lastmod>2020-07-11</lastmod>
   </url>  <url>
@@ -8,12 +23,6 @@
     <lastmod>2020-07-11</lastmod>
   </url>  <url>
     <loc>https://blog.raincorn.top/2020/06/22/matlab_notes/</loc>
-    <lastmod>2020-07-11</lastmod>
-  </url>  <url>
-    <loc>https://blog.raincorn.top/2020/07/10/Wechat_CloudPrg/</loc>
-    <lastmod>2020-07-11</lastmod>
-  </url>  <url>
-    <loc>https://blog.raincorn.top/2020/07/08/CSS/</loc>
     <lastmod>2020-07-11</lastmod>
   </url>  <url>
     <loc>https://blog.raincorn.top/2020/01/01/CPU_Regs/</loc>
