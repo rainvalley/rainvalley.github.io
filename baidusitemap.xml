@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.raincorn.top/2020/07/14/Hadoop_Hive/</loc>
+    <lastmod>2020-07-19</lastmod>
+  </url>  <url>
+    <loc>https://blog.raincorn.top/2020/07/15/Hadoop_Zookeeper/</loc>
+    <lastmod>2020-07-19</lastmod>
+  </url>  <url>
+    <loc>https://blog.raincorn.top/2020/07/14/Hadoop_Hive_Install/</loc>
+    <lastmod>2020-07-19</lastmod>
+  </url>  <url>
+    <loc>https://blog.raincorn.top/2020/07/17/Hadoop_Stepup/</loc>
+    <lastmod>2020-07-19</lastmod>
+  </url>  <url>
+    <loc>https://blog.raincorn.top/2020/06/08/Hadoop_Exper/</loc>
+    <lastmod>2020-07-19</lastmod>
+  </url>  <url>
+    <loc>https://blog.raincorn.top/2020/06/08/Hadoop_HDFS_Install/</loc>
+    <lastmod>2020-07-19</lastmod>
+  </url>  <url>
+    <loc>https://blog.raincorn.top/2020/06/07/Hadoop_HDFS_Guide/</loc>
+    <lastmod>2020-07-19</lastmod>
+  </url>  <url>
+    <loc>https://blog.raincorn.top/2018/10/02/Hexo_install/</loc>
+    <lastmod>2020-07-19</lastmod>
+  </url>  <url>
+    <loc>https://blog.raincorn.top/2020/06/10/Hadoop_YARN_Install/</loc>
+    <lastmod>2020-07-19</lastmod>
+  </url>  <url>
+    <loc>https://blog.raincorn.top/2020/07/18/Web_Cookies_Session_CORS/</loc>
+    <lastmod>2020-07-19</lastmod>
+  </url>  <url>
     <loc>https://blog.raincorn.top/2020/07/14/Linux_Bash/</loc>
     <lastmod>2020-07-18</lastmod>
   </url>  <url>
@@ -164,9 +194,6 @@
     <lastmod>2019-10-02</lastmod>
   </url>  <url>
     <loc>https://blog.raincorn.top/2018/10/01/hardware/</loc>
-    <lastmod>2019-10-02</lastmod>
-  </url>  <url>
-    <loc>https://blog.raincorn.top/2018/10/02/Hexo_install/</loc>
     <lastmod>2019-10-02</lastmod>
   </url>  <url>
     <loc>https://blog.raincorn.top/2019/02/03/from_iCloud_to_Google_Drive/</loc>
