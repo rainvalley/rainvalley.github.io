@@ -144,34 +144,6 @@
   </entry>
   
   <entry>
-    <title>Hadoop_Hive</title>
-    <link href="https://blog.raincorn.top/2020/07/14/Hadoop_Hive/"/>
-    <id>https://blog.raincorn.top/2020/07/14/Hadoop_Hive/</id>
-    <published>2020-07-14T17:12:00.000Z</published>
-    <updated>2020-07-19T01:40:18.065Z</updated>
-    
-    <content type="html"><![CDATA[<hr><p><strong><em>Hive是基于Hadoop的数据仓库工具，将SQL语句转换为MapReduce任务。</em></strong></p><h1 id="Hive特点"><a href="#Hive特点" class="headerlink" title="Hive特点"></a>Hive特点</h1><p>数据源采集到数据仓库中需要依靠ETL(Extract-Transform-Load)，数据抽取转换与加载。</p><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul><li>开发周期短，学习成本低。</li><li>扩展性能好，容错性高。</li></ul><h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul><li>HQL语句的表达能力弱，无法做到类似递归等操作。</li><li>执行时需要转换为MapReduce任务，效率低延迟高。</li></ul><p><img src="https://pic.rmb.bdstatic.com/bjh/8c3e253669842d335aa13e3685572612.png" alt="image.png"></p><h1 id="Hive架构"><a href="#Hive架构" class="headerlink" title="Hive架构"></a>Hive架构</h1><p><img src="https://pic.rmb.bdstatic.com/bjh/f9183eeeecf642fcd9573296c4c1f7db.png" alt="image.png"></p><h2 id="用户接口：Client"><a href="#用户接口：Client" class="headerlink" title="用户接口：Client"></a>用户接口：Client</h2><ul><li>CLI：终端，用于与Hive进行交互。</li><li>JDBC/ODBC：JavaDatabase Connectivity/Open Database Connectivity，即数据库API接口，连接到Hive Server。</li><li>Thrift Server：用于可扩展，跨语言开发，使得可以使用其他语言来调用Hive。</li><li>WebUI：通过浏览器来访问&amp;管理Hive的运行。</li></ul><h2 id="元数据储存：Metastore"><a href="#元数据储存：Metastore" class="headerlink" title="元数据储存：Metastore"></a>元数据储存：Metastore</h2><p>元数据：保存数据的描述信息，表名、类型、所在位置等属性。元数据默认储存在Derby中，不适合多用户操作。</p><h2 id="驱动器：Driver"><a href="#驱动器：Driver" class="headerlink" title="驱动器：Driver"></a>驱动器：Driver</h2><p>包括解析器、编译器、优化器、执行器。</p><h2 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h2><p>Hive的数据储存在HDFS上，底层借助MapReduce进行数据查询与处理，执行程序运行在YARN上。</p><h1 id="对比RDBMS"><a href="#对比RDBMS" class="headerlink" title="对比RDBMS"></a>对比RDBMS</h1><p><img src="https://pic.rmb.bdstatic.com/bjh/ee739fd925d3e78e9f2f677bf3d1b43d.png" alt="image.png"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Hive是基于Hadoop的数据仓库工具，将SQL语句转换为MapReduce任务。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;h1 id=&quot;Hive特点&quot;&gt;&lt;a href=&quot;#Hive特点&quot; class=&quot;headerlink&quot; title=
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Hadoop" scheme="https://blog.raincorn.top/tags/Hadoop/"/>
-    
-      <category term="Hive" scheme="https://blog.raincorn.top/tags/Hive/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hadoop_Hive安装</title>
     <link href="https://blog.raincorn.top/2020/07/14/Hadoop_Hive_Install/"/>
     <id>https://blog.raincorn.top/2020/07/14/Hadoop_Hive_Install/</id>
@@ -187,6 +159,34 @@
         &lt;hr&gt;
 &lt;h1 id=&quot;Hive模式&quot;&gt;&lt;a href=&quot;#Hive模式&quot; class=&quot;headerlink&quot; title=&quot;Hive模式&quot;&gt;&lt;/a&gt;Hive模式&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;内嵌模式：数据储存于默认的Derby数据库，每次只能访问一个数据文件，不支持多会话连接
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Hadoop" scheme="https://blog.raincorn.top/tags/Hadoop/"/>
+    
+      <category term="Hive" scheme="https://blog.raincorn.top/tags/Hive/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hadoop_Hive</title>
+    <link href="https://blog.raincorn.top/2020/07/14/Hadoop_Hive/"/>
+    <id>https://blog.raincorn.top/2020/07/14/Hadoop_Hive/</id>
+    <published>2020-07-14T17:12:00.000Z</published>
+    <updated>2020-07-19T01:40:18.065Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p><strong><em>Hive是基于Hadoop的数据仓库工具，将SQL语句转换为MapReduce任务。</em></strong></p><h1 id="Hive特点"><a href="#Hive特点" class="headerlink" title="Hive特点"></a>Hive特点</h1><p>数据源采集到数据仓库中需要依靠ETL(Extract-Transform-Load)，数据抽取转换与加载。</p><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul><li>开发周期短，学习成本低。</li><li>扩展性能好，容错性高。</li></ul><h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul><li>HQL语句的表达能力弱，无法做到类似递归等操作。</li><li>执行时需要转换为MapReduce任务，效率低延迟高。</li></ul><p><img src="https://pic.rmb.bdstatic.com/bjh/8c3e253669842d335aa13e3685572612.png" alt="image.png"></p><h1 id="Hive架构"><a href="#Hive架构" class="headerlink" title="Hive架构"></a>Hive架构</h1><p><img src="https://pic.rmb.bdstatic.com/bjh/f9183eeeecf642fcd9573296c4c1f7db.png" alt="image.png"></p><h2 id="用户接口：Client"><a href="#用户接口：Client" class="headerlink" title="用户接口：Client"></a>用户接口：Client</h2><ul><li>CLI：终端，用于与Hive进行交互。</li><li>JDBC/ODBC：JavaDatabase Connectivity/Open Database Connectivity，即数据库API接口，连接到Hive Server。</li><li>Thrift Server：用于可扩展，跨语言开发，使得可以使用其他语言来调用Hive。</li><li>WebUI：通过浏览器来访问&amp;管理Hive的运行。</li></ul><h2 id="元数据储存：Metastore"><a href="#元数据储存：Metastore" class="headerlink" title="元数据储存：Metastore"></a>元数据储存：Metastore</h2><p>元数据：保存数据的描述信息，表名、类型、所在位置等属性。元数据默认储存在Derby中，不适合多用户操作。</p><h2 id="驱动器：Driver"><a href="#驱动器：Driver" class="headerlink" title="驱动器：Driver"></a>驱动器：Driver</h2><p>包括解析器、编译器、优化器、执行器。</p><h2 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h2><p>Hive的数据储存在HDFS上，底层借助MapReduce进行数据查询与处理，执行程序运行在YARN上。</p><h1 id="对比RDBMS"><a href="#对比RDBMS" class="headerlink" title="对比RDBMS"></a>对比RDBMS</h1><p><img src="https://pic.rmb.bdstatic.com/bjh/ee739fd925d3e78e9f2f677bf3d1b43d.png" alt="image.png"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Hive是基于Hadoop的数据仓库工具，将SQL语句转换为MapReduce任务。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Hive特点&quot;&gt;&lt;a href=&quot;#Hive特点&quot; class=&quot;headerlink&quot; title=
       
     
     </summary>
