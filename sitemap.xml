@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.raincorn.top/2020/07/22/HQL/</loc>
+    
+    <lastmod>2020-07-22T16:00:31.275Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/07/22/HQL_Examples/</loc>
+    
+    <lastmod>2020-07-22T16:00:11.706Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/07/22/Apriori/</loc>
+    
+    <lastmod>2020-07-22T15:59:54.413Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.raincorn.top/2020/07/14/Hadoop_Hive/</loc>
     
     <lastmod>2020-07-19T01:40:18.065Z</lastmod>
