@@ -2,65 +2,576 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.raincorn.top/2020/07/25/8051_LED_Running/</loc>
+    <loc>https://blog.raincorn.top/2020/07/27/CT107D_6_Timer/</loc>
     
-    <lastmod>2020-07-27T03:18:04.044Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/07/26/8051_C_Basis/</loc>
-    
-    <lastmod>2020-07-27T01:05:38.217Z</lastmod>
+    <lastmod>2020-07-28T13:29:32.901Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.raincorn.top/2020/07/22/HQL/</loc>
+    <loc>https://blog.raincorn.top/2020/07/28/CT107D_6_Interrupt/</loc>
     
-    <lastmod>2020-07-22T16:00:31.275Z</lastmod>
+    <lastmod>2020-07-28T13:28:15.203Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/07/26/CT107D_0_C_Basis/</loc>
+    
+    <lastmod>2020-07-28T13:27:04.933Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/07/25/CT107D_2_LED_Running/</loc>
+    
+    <lastmod>2020-07-28T13:26:42.260Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/05/17/XPS_9550_Mac/</loc>
+    
+    <lastmod>2020-07-28T13:06:14.192Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/02/03/Windows_Softwores-Backup/</loc>
+    
+    <lastmod>2020-07-28T13:06:13.984Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/07/09/Windows_Junior/</loc>
+    
+    <lastmod>2020-07-28T13:06:13.424Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/05/13/Windows_DLL_INK/</loc>
+    
+    <lastmod>2020-07-28T13:06:13.184Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/12/21/Windows_Blue_Screen_Of_Death/</loc>
+    
+    <lastmod>2020-07-28T13:06:12.980Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/05/24/Windows10_Unattend/</loc>
+    
+    <lastmod>2020-07-28T13:06:12.764Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/10/29/Weight_Balls/</loc>
+    
+    <lastmod>2020-07-28T13:06:12.532Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/07/10/Wechat_CloudPrg/</loc>
+    
+    <lastmod>2020-07-28T13:06:12.304Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/07/18/Web_Cookies_Session_CORS/</loc>
+    
+    <lastmod>2020-07-28T13:06:12.096Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/04/25/Visual_Studio_Uninit_Error/</loc>
+    
+    <lastmod>2020-07-28T13:06:11.876Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2018/10/01/Videos_Web/</loc>
+    
+    <lastmod>2020-07-28T13:06:11.652Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2018/07/24/USB/</loc>
+    
+    <lastmod>2020-07-28T13:06:11.432Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/06/23/Update_Old_Computer/</loc>
+    
+    <lastmod>2020-07-28T13:06:11.228Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/11/29/The_Future_Of_Communication/</loc>
+    
+    <lastmod>2020-07-28T13:06:11.024Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/05/12/System_Transfer/</loc>
+    
+    <lastmod>2020-07-28T13:06:10.788Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2018/08/08/SSH/</loc>
+    
+    <lastmod>2020-07-28T13:06:10.312Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/03/08/Smart_Car_Preview/</loc>
+    
+    <lastmod>2020-07-28T13:06:10.084Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/05/01/SM-G973U1_Guide/</loc>
+    
+    <lastmod>2020-07-28T13:06:09.860Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/02/04/Select_In_Column/</loc>
+    
+    <lastmod>2020-07-28T13:06:09.440Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2018/08/02/Reliabled_Linux/</loc>
+    
+    <lastmod>2020-07-28T13:06:09.232Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/12/18/Recommended_Plugins_For_Chrome/</loc>
+    
+    <lastmod>2020-07-28T13:06:09.004Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/08/10/Reborn/</loc>
+    
+    <lastmod>2020-07-28T13:06:08.780Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2018/07/20/QWQ/</loc>
+    
+    <lastmod>2020-07-28T13:06:08.580Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/09/15/PS-PR-Guide/</loc>
+    
+    <lastmod>2020-07-28T13:06:08.280Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/11/01/Ouput_Digit/</loc>
+    
+    <lastmod>2020-07-28T13:06:08.056Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/04/26/Microcontroller_Abbreviation/</loc>
+    
+    <lastmod>2020-07-28T13:06:07.840Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/05/30/Matlab_Start_00/</loc>
+    
+    <lastmod>2020-07-28T13:06:07.644Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/06/22/Matlab_Notes/</loc>
+    
+    <lastmod>2020-07-28T13:06:07.452Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/06/21/Matlab_Math_02/</loc>
+    
+    <lastmod>2020-07-28T13:06:07.236Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/06/21/Matlab_Disp_03/</loc>
+    
+    <lastmod>2020-07-28T13:06:07.012Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/05/30/Matlab_Arry_01/</loc>
+    
+    <lastmod>2020-07-28T13:06:06.796Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/05/23/macOS_improve/</loc>
+    
+    <lastmod>2020-07-28T13:06:06.600Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2018/09/22/Look_Google-Developers-Days/</loc>
+    
+    <lastmod>2020-07-28T13:06:06.396Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/07/16/Linux_Pipe/</loc>
+    
+    <lastmod>2020-07-28T13:06:06.172Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/07/18/Linux_Command_Sed/</loc>
+    
+    <lastmod>2020-07-28T13:06:05.948Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/07/14/Linux_Bash/</loc>
+    
+    <lastmod>2020-07-28T13:06:05.748Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2018/08/07/Linux-On-Windows/</loc>
+    
+    <lastmod>2020-07-28T13:06:05.536Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2018/07/29/iPhone-5/</loc>
+    
+    <lastmod>2020-07-28T13:06:05.312Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.raincorn.top/2020/07/22/HQL_Examples/</loc>
     
-    <lastmod>2020-07-22T16:00:11.706Z</lastmod>
+    <lastmod>2020-07-28T13:06:05.092Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.raincorn.top/2020/07/22/Apriori/</loc>
+    <loc>https://blog.raincorn.top/2020/07/22/HQL/</loc>
     
-    <lastmod>2020-07-22T15:59:54.413Z</lastmod>
+    <lastmod>2020-07-28T13:06:04.892Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.raincorn.top/2020/07/14/Hadoop_Hive/</loc>
+    <loc>https://blog.raincorn.top/2019/10/03/How_To_Output_Hello-World%EF%BC%81/</loc>
     
-    <lastmod>2020-07-19T01:40:18.065Z</lastmod>
+    <lastmod>2020-07-28T13:06:04.688Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/10/02/How_To_Measure_Information/</loc>
+    
+    <lastmod>2020-07-28T13:06:04.468Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2018/10/02/Hexo_install/</loc>
+    
+    <lastmod>2020-07-28T13:06:04.240Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2018/10/01/Hardware/</loc>
+    
+    <lastmod>2020-07-28T13:06:04.036Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.raincorn.top/2020/07/15/Hadoop_Zookeeper/</loc>
     
-    <lastmod>2020-07-19T01:36:48.281Z</lastmod>
+    <lastmod>2020-07-28T13:06:03.836Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.raincorn.top/2020/07/14/Hadoop_Hive_Install/</loc>
+    <loc>https://blog.raincorn.top/2020/06/10/Hadoop_YARN_Install/</loc>
     
-    <lastmod>2020-07-19T01:35:05.205Z</lastmod>
+    <lastmod>2020-07-28T13:06:03.616Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.raincorn.top/2020/07/17/Hadoop_Stepup/</loc>
     
-    <lastmod>2020-07-19T01:33:37.410Z</lastmod>
+    <lastmod>2020-07-28T13:06:03.392Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/07/14/Hadoop_Hive_Install/</loc>
+    
+    <lastmod>2020-07-28T13:06:03.176Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/07/14/Hadoop_Hive/</loc>
+    
+    <lastmod>2020-07-28T13:06:02.968Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/06/08/Hadoop_HDFS_Install/</loc>
+    
+    <lastmod>2020-07-28T13:06:02.748Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/06/07/Hadoop_HDFS_Guide/</loc>
+    
+    <lastmod>2020-07-28T13:06:02.524Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/05/04/Guide_To_Phones_Pads/</loc>
+    
+    <lastmod>2020-07-28T13:06:02.096Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2018/10/01/Guide_To_Internet/</loc>
+    
+    <lastmod>2020-07-28T13:06:01.864Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/04/25/Github_New_Repositories/</loc>
+    
+    <lastmod>2020-07-28T13:06:01.639Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/05/10/GitHub_GPGKey/</loc>
+    
+    <lastmod>2020-07-28T13:06:01.435Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/02/03/From_iCloud_to_Google_Drive/</loc>
+    
+    <lastmod>2020-07-28T13:06:01.219Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2018/07/23/Fast-Charge/</loc>
+    
+    <lastmod>2020-07-28T13:06:00.991Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2018/08/29/Environment_Vars/</loc>
+    
+    <lastmod>2020-07-28T13:06:00.767Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/04/29/cURL_Wget/</loc>
+    
+    <lastmod>2020-07-28T13:06:00.567Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/01/26/CT107D_5_Digital_Tube/</loc>
+    
+    <lastmod>2020-07-28T13:06:00.367Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/01/26/CT107D_4_Keyboard/</loc>
+    
+    <lastmod>2020-07-28T13:06:00.147Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/01/25/CT107D_3_Beep_Relay/</loc>
+    
+    <lastmod>2020-07-28T13:05:59.919Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/12/15/CT107D_2_Blink_LED/</loc>
+    
+    <lastmod>2020-07-28T13:05:59.487Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/12/15/CT107D_1_Board_Resource/</loc>
+    
+    <lastmod>2020-07-28T13:05:59.263Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/03/21/CSS_Box_Model/</loc>
+    
+    <lastmod>2020-07-28T13:05:58.831Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/07/08/CSS/</loc>
+    
+    <lastmod>2020-07-28T13:05:58.615Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/01/01/CPU_Regs/</loc>
+    
+    <lastmod>2020-07-28T13:05:58.351Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/11/08/Communication_Applications/</loc>
+    
+    <lastmod>2020-07-28T13:05:58.135Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/04/06/Bing_Max_Spider/</loc>
+    
+    <lastmod>2020-07-28T13:05:57.927Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/03/26/Authorised_Software/</loc>
+    
+    <lastmod>2020-07-28T13:05:57.719Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/07/23/Apriori/</loc>
+    
+    <lastmod>2020-07-28T13:05:57.483Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/03/08/Apple-Hire/</loc>
+    
+    <lastmod>2020-07-28T13:05:57.263Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/02/21/Anaconda_Uninstalled_CMD_Powershell_Error/</loc>
+    
+    <lastmod>2020-07-28T13:05:56.587Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/03/23/About_lf/</loc>
+    
+    <lastmod>2020-07-28T13:05:56.371Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/04/05/8051-Memory-TypeS/</loc>
+    
+    <lastmod>2020-07-28T13:05:56.175Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/01/24/2019/</loc>
+    
+    <lastmod>2020-07-28T13:05:55.967Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/02/04/2018/</loc>
+    
+    <lastmod>2020-07-28T13:05:55.743Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2019/07/05/0-%EF%BC%889%EF%BC%89-1-Issue/</loc>
+    
+    <lastmod>2020-07-28T13:05:55.519Z</lastmod>
     
   </url>
   
@@ -72,303 +583,9 @@
   </url>
   
   <url>
-    <loc>https://blog.raincorn.top/2020/06/08/Hadoop_HDFS_Install/</loc>
-    
-    <lastmod>2020-07-19T01:31:57.610Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/06/07/Hadoop_HDFS_Guide/</loc>
-    
-    <lastmod>2020-07-19T01:30:37.476Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2018/10/02/Hexo_install/</loc>
-    
-    <lastmod>2020-07-19T01:24:31.200Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/06/10/Hadoop_YARN_Install/</loc>
-    
-    <lastmod>2020-07-19T01:24:30.772Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/07/18/Web_Cookies_Session_CORS/</loc>
-    
-    <lastmod>2020-07-19T01:08:58.736Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/07/14/Linux_Bash/</loc>
-    
-    <lastmod>2020-07-18T16:09:47.806Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/07/16/Linux_Pipe/</loc>
-    
-    <lastmod>2020-07-18T16:08:55.782Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/07/18/Linux_Command_Sed/</loc>
-    
-    <lastmod>2020-07-18T16:05:06.948Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/07/08/CSS/</loc>
-    
-    <lastmod>2020-07-18T15:07:08.099Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/07/10/Wechat_CloudPrg/</loc>
-    
-    <lastmod>2020-07-18T14:55:04.883Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/06/21/matlab_disp_03/</loc>
-    
-    <lastmod>2020-07-11T03:41:41.580Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/06/21/matlab_math_02/</loc>
-    
-    <lastmod>2020-07-11T03:41:15.390Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/06/22/matlab_notes/</loc>
-    
-    <lastmod>2020-07-11T03:40:44.436Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/01/01/CPU_Regs/</loc>
-    
-    <lastmod>2020-06-02T13:55:49.416Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/05/30/matlab_arry_02/</loc>
-    
-    <lastmod>2020-05-30T16:07:19.065Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/05/30/matlab_start_01/</loc>
-    
-    <lastmod>2020-05-30T16:05:59.478Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/05/24/Windows10_unattend/</loc>
-    
-    <lastmod>2020-05-24T15:12:55.836Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/05/23/macOS_improve/</loc>
-    
-    <lastmod>2020-05-24T14:54:42.124Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/05/17/XPS_9550_mac/</loc>
-    
-    <lastmod>2020-05-17T16:43:32.973Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/05/12/System_Transfer/</loc>
-    
-    <lastmod>2020-05-13T14:52:32.039Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/05/13/Windows_DLL_INK/</loc>
-    
-    <lastmod>2020-05-13T14:43:25.807Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/05/10/GitHub_GPGKey/</loc>
-    
-    <lastmod>2020-05-10T15:45:03.323Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/05/04/Guide_to_phones_pads/</loc>
-    
-    <lastmod>2020-05-10T14:05:59.186Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.raincorn.top/404.html</loc>
     
     <lastmod>2020-05-02T13:25:19.074Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/05/01/SM-G973U1_Guide/</loc>
-    
-    <lastmod>2020-05-01T15:58:14.708Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/04/06/Bing_max_spider/</loc>
-    
-    <lastmod>2020-05-01T12:23:15.882Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/04/29/cURL_Wget/</loc>
-    
-    <lastmod>2020-05-01T12:11:11.833Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/04/26/Microcontroller%E2%80%99s-abbreviation/</loc>
-    
-    <lastmod>2020-04-26T15:36:46.216Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/04/25/Visual_Studio_uninit_error/</loc>
-    
-    <lastmod>2020-04-25T15:54:04.431Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/04/25/github_new_repositories/</loc>
-    
-    <lastmod>2020-04-25T15:16:26.575Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2018/08/02/reliabled_Linux/</loc>
-    
-    <lastmod>2020-04-25T12:28:35.420Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/04/05/8051-Memory-TypeS/</loc>
-    
-    <lastmod>2020-04-05T14:54:22.724Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/03/26/authorised_software/</loc>
-    
-    <lastmod>2020-03-27T14:38:03.923Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/03/23/about_lf/</loc>
-    
-    <lastmod>2020-03-23T14:58:46.770Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/03/21/CSS_box_model/</loc>
-    
-    <lastmod>2020-03-22T04:27:05.010Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/03/08/Apple-hire/</loc>
-    
-    <lastmod>2020-03-12T03:15:11.415Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/03/08/smart_car_preview/</loc>
-    
-    <lastmod>2020-03-08T08:16:43.534Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/02/21/Anaconda_uninstalled_cmd_powershell_error/</loc>
-    
-    <lastmod>2020-02-22T03:16:53.965Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/02/04/select_in_column/</loc>
-    
-    <lastmod>2020-02-04T11:51:01.595Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/01/26/ct107d-5/</loc>
-    
-    <lastmod>2020-01-27T07:31:24.603Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/01/26/ct107d_4/</loc>
-    
-    <lastmod>2020-01-26T10:13:48.908Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/12/15/ct107d_1/</loc>
-    
-    <lastmod>2020-01-26T07:01:11.436Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/01/25/ct107d_3/</loc>
-    
-    <lastmod>2020-01-26T06:56:53.210Z</lastmod>
     
   </url>
   
@@ -380,111 +597,6 @@
   </url>
   
   <url>
-    <loc>https://blog.raincorn.top/2019/12/15/ct107d_2/</loc>
-    
-    <lastmod>2020-01-25T11:54:15.460Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2020/01/24/2019/</loc>
-    
-    <lastmod>2020-01-24T15:41:09.410Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/12/21/Windows_blue_screen_of_death/</loc>
-    
-    <lastmod>2019-12-21T15:18:24.429Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/12/18/Recommended_plugins_for_chrome/</loc>
-    
-    <lastmod>2019-12-19T08:59:22.259Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2018/07/24/USB/</loc>
-    
-    <lastmod>2019-12-19T07:43:55.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/07/09/Windows-junior/</loc>
-    
-    <lastmod>2019-12-19T07:20:35.764Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2018/10/01/videos_web/</loc>
-    
-    <lastmod>2019-11-29T14:52:34.671Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/11/29/the_future_of_communication/</loc>
-    
-    <lastmod>2019-11-29T14:40:32.675Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/11/08/communication_applications/</loc>
-    
-    <lastmod>2019-11-08T15:57:34.741Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/10/03/how_to_output_Hello-World%EF%BC%81/</loc>
-    
-    <lastmod>2019-11-08T10:48:22.132Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/10/29/Weight_balls/</loc>
-    
-    <lastmod>2019-11-02T03:27:49.942Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/11/01/ouput_digit/</loc>
-    
-    <lastmod>2019-11-02T03:25:49.187Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/10/02/how_to_measure_information/</loc>
-    
-    <lastmod>2019-10-02T15:27:47.214Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2018/09/22/look_Google-Developers-Days/</loc>
-    
-    <lastmod>2019-10-02T14:10:45.056Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2018/08/29/environment_vars/</loc>
-    
-    <lastmod>2019-10-02T14:10:28.972Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.raincorn.top/2018/09/23/Android_Lock/</loc>
     
     <lastmod>2019-10-02T14:08:52.476Z</lastmod>
@@ -492,107 +604,9 @@
   </url>
   
   <url>
-    <loc>https://blog.raincorn.top/2018/10/01/guide_to_Internet-1/</loc>
-    
-    <lastmod>2019-10-02T14:08:26.724Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2018/10/01/hardware/</loc>
-    
-    <lastmod>2019-10-02T14:08:10.039Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/02/03/from_iCloud_to_Google_Drive/</loc>
-    
-    <lastmod>2019-10-02T14:07:41.490Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/02/03/Windows_softwores-backup/</loc>
-    
-    <lastmod>2019-10-02T14:07:13.653Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/02/04/2018annuall/</loc>
-    
-    <lastmod>2019-10-02T14:07:07.305Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/06/23/update-2019-06-23/</loc>
-    
-    <lastmod>2019-10-02T14:06:54.404Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/07/05/0-%EF%BC%889%EF%BC%89-1-issue/</loc>
-    
-    <lastmod>2019-10-02T14:06:05.506Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/09/15/PS-PR-Guide/</loc>
-    
-    <lastmod>2019-10-02T14:03:29.993Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2018/07/23/Fast-Charge/</loc>
-    
-    <lastmod>2019-10-02T13:57:34.084Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2019/08/10/Reborn/</loc>
-    
-    <lastmod>2019-08-10T15:04:34.972Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.raincorn.top/About/index.html</loc>
     
     <lastmod>2019-08-09T15:17:19.288Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2018/08/08/SSH/</loc>
-    
-    <lastmod>2019-08-09T14:39:53.166Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2018/07/20/QWQ/</loc>
-    
-    <lastmod>2019-08-09T14:39:53.078Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2018/08/07/Linux-on-Windows/</loc>
-    
-    <lastmod>2019-08-09T14:39:52.926Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.raincorn.top/2018/07/29/iPhone-5/</loc>
-    
-    <lastmod>2019-08-09T14:39:52.842Z</lastmod>
     
   </url>
   
