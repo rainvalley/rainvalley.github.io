@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是我的博客，记录一些琐事。"><title>0—8051位操作 | Chores</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="/css/dark.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 4.2.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">0—8051位操作</h1><a id="logo" href="/.">Chores</a><p class="description">宁愿卑微如土，不愿蜷曲如虫。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">0—8051位操作</h1><div class="post-meta">2020-07-31<span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 546</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 2</span><span class="post-meta-item-text"> 分钟</span></span></span></div><div class="post-content"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于在单片机编程中能够直接控制硬件，使得位运算能够提供更快的运算效率与端口处理能力。</p>
+<h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;</td>
+<td>按位与</td>
+</tr>
+<tr>
+<td>\</td>
+<td>按位或</td>
+</tr>
+<tr>
+<td>^</td>
+<td>按位异或</td>
+</tr>
+<tr>
+<td>~</td>
+<td>按位取反</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>左移</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>右移</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="与"><a href="#与" class="headerlink" title="与"></a>与</h1><p>a&amp;b，当a与b均为1时结果为1，例如（负数以补码储存）：</p>
+<ul>
+<li>1&amp;2 = (0b 0001)&amp;(0b 0010) = 0b 0000 = 0</li>
+<li>-1&amp;-2 =(0b 1111)&amp;(0b 1110) = 0b 1110 = -2<blockquote>
+<p>应用</p>
+</blockquote>
+</li>
+<li>&amp;1——保留：1&amp;1 = 1；0&amp;1 = 0，与1相与能够保留原始位上的数据。</li>
+<li>&amp;0——清零：1&amp;0 = 0；0&amp;0 = 0，与0相与能够清除当前位上的数据。</li>
+</ul>
+<h1 id="或"><a href="#或" class="headerlink" title="或"></a>或</h1><p>a|b，当a与b有1时结果即为1。</p>
+<blockquote>
+<p>应用</p>
+<ul>
+<li>|0——保留：1|0 = 1；0|0 = 0，与0相或能够保留原始位上的数据。</li>
+<li>|1——置1：1|1 =1；0|1 =1，与1相或能够将当前位置为1。</li>
+</ul>
+<p>配合使用</p>
+<ul>
+<li>清零——a&amp;0xfe：清除第零位，并保留其他位置</li>
+<li>检测/保留——a&amp;0x01：检测第零位，并清零其他位</li>
+<li>检测/保留——a|0xfe：保留第零位，并将其他位置一</li>
+<li>仅修改第零位，而不改变其它七位：TMOD |= 0x01</li>
+<li>置零后修改第四位：P2=(P2&amp;0X1f)|0X80;</li>
+</ul>
+</blockquote>
+<h1 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h1><p>a^b，当a与b相同时为0，不同时为1，例如：0x48^0x2f = 0x67</p>
+<blockquote>
+<p>应用</p>
+<ul>
+<li>^1——翻转：1^1 = 0；0^1 = 1。与1相异或能够将该位电平翻转。</li>
+<li>^0——检测/保留：0^0 = 0；1^0 = 1。与0相异或能够保留原位的数据。</li>
+<li>例如键盘扫描程序中<code>read_data = P3^0xff</code>：如果对应按键按下，该位置为1。</li>
+</ul>
+</blockquote>
+<h1 id="左移"><a href="#左移" class="headerlink" title="左移"></a>左移</h1><p>注意左右移位时需要考虑变量类型，假设unsigned char类型：</p>
+<ul>
+<li>4&lt;&lt;2 = (0b 0000 0100)&lt;&lt;2 = 0b 0001 0000 = 16 //左移N位，相当于变量乘2N</li>
+<li>64&lt;&lt;2 = (0b 0100 0000)&lt;&lt;2 = 0b 0000 0000 = 0 //变量溢出，填充为0</li>
+</ul>
+<h1 id="右移"><a href="#右移" class="headerlink" title="右移"></a>右移</h1><p>右移N位相当于除2N，Keil使用<strong>算数右移</strong>，因此在处理负数的时候会将移位填充1。</p>
+<ul>
+<li>32&gt;&gt;1 = (0b 0010 0000)&gt;&gt;1 = 0b 0001 0000 = 16</li>
+<li>-32&gt;&gt;1 = (0b 1111 1110)&gt;&gt;1 = 0b 1111 1111 = -16</li>
+</ul>
+</div><div class="post-copyright"><script type="text/javascript" src="/js/copyright.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copyright.css"><p><span>本文标题：</span>0—8051位操作</p><p><span>文章作者：</span>Raincorn</p><p><span>发布时间：</span>2020-07-31</p><p><span>最后更新：</span>2020-08-01</p><p><span>原始链接：</span><a href="/2020/07/31/CT107D_0_Bits_Operations/">https://blog.raincorn.top/2020/07/31/CT107D_0_Bits_Operations/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="https://blog.raincorn.top/2020/07/31/CT107D_0_Bits_Operations/"></i></span></p><p><span>版权声明：</span>本文采用知识共享署名-非商业性使用 4.0 国际许可协议进行许可</p></div><br><div class="tags"><a href="/tags/8051/"><i class="fa fa-tag"></i>8051</a><a href="/tags/CT107D/"><i class="fa fa-tag"></i>CT107D</a><a href="/tags/C/"><i class="fa fa-tag"></i>C</a><a href="/tags/%E4%BD%8D%E6%93%8D%E4%BD%9C/"><i class="fa fa-tag"></i>位操作</a></div><div class="post-nav"><a class="pre" href="/2020/07/31/CT107D_7_Scan_Keys/">7—按键扫描修正</a><a class="next" href="/2020/07/28/CT107D_6_Interrupt/">6—单片机中断系统</a></div><div id="container"></div><link rel="stylesheet" type="text/css" href="//unpkg.com/gitalk/dist/gitalk.css?v=0.0.0"><script type="text/javascript" src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js?v=0.0.0"></script><script type="text/javascript" src="//unpkg.com/gitalk/dist/gitalk.min.js?v=0.0.0"></script><script>var gitalk = new Gitalk({
+  clientID: 'f37f10ebdf132d420475',
+  clientSecret: '8227577172fe3a52fa726354d7382e11d0a34d52',
+  repo: 'rainvalley.github.io',
+  owner: 'rainvalley',
+  admin: ['rainvalley'],
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('container')
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Math/" style="font-size: 15px;">Math</a> <a href="/tags/Google/" style="font-size: 15px;">Google</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/%E4%BE%9B%E7%94%B5/" style="font-size: 15px;">供电</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 15px;">接口</a> <a href="/tags/Hadoop/" style="font-size: 15px;">Hadoop</a> <a href="/tags/HDFS/" style="font-size: 15px;">HDFS</a> <a href="/tags/Hive/" style="font-size: 15px;">Hive</a> <a href="/tags/Yarn/" style="font-size: 15px;">Yarn</a> <a href="/tags/ZooKeeper/" style="font-size: 15px;">ZooKeeper</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Bash/" style="font-size: 15px;">Bash</a> <a href="/tags/Script/" style="font-size: 15px;">Script</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 15px;">网络</a> <a href="/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/tags/GFW/" style="font-size: 15px;">GFW</a> <a href="/tags/%E5%8D%8A%E5%AF%BC%E4%BD%93/" style="font-size: 15px;">半导体</a> <a href="/tags/Apple/" style="font-size: 15px;">Apple</a> <a href="/tags/Videos/" style="font-size: 15px;">Videos</a> <a href="/tags/8051/" style="font-size: 15px;">8051</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 15px;">杂谈</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 15px;">软件</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 15px;">爬虫</a> <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/%E6%A8%A1%E5%9E%8B/" style="font-size: 15px;">模型</a> <a href="/tags/CT107D/" style="font-size: 15px;">CT107D</a> <a href="/tags/%E7%82%B9%E7%81%AF/" style="font-size: 15px;">点灯</a> <a href="/tags/%E9%94%AE%E7%9B%98/" style="font-size: 15px;">键盘</a> <a href="/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 15px;">作业</a> <a href="/tags/%E7%B3%BB%E7%BB%9F/" style="font-size: 15px;">系统</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 15px;">迁移</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/iPhone/" style="font-size: 15px;">iPhone</a> <a href="/tags/iPad/" style="font-size: 15px;">iPad</a> <a href="/tags/%E6%8D%A1%E5%9E%83%E5%9C%BE/" style="font-size: 15px;">捡垃圾</a> <a href="/tags/C/" style="font-size: 15px;">C</a> <a href="/tags/WSL/" style="font-size: 15px;">WSL</a> <a href="/tags/GDD/" style="font-size: 15px;">GDD</a> <a href="/tags/Matlab/" style="font-size: 15px;">Matlab</a> <a href="/tags/Chrome/" style="font-size: 15px;">Chrome</a> <a href="/tags/%E6%8F%92%E4%BB%B6/" style="font-size: 15px;">插件</a> <a href="/tags/%E8%BF%9B%E7%A8%8B/" style="font-size: 15px;">进程</a> <a href="/tags/%E7%BC%96%E8%BE%91/" style="font-size: 15px;">编辑</a> <a href="/tags/%E6%99%BA%E8%83%BD%E8%BD%A6/" style="font-size: 15px;">智能车</a> <a href="/tags/%E5%8D%87%E7%BA%A7/" style="font-size: 15px;">升级</a> <a href="/tags/VisualStudio/" style="font-size: 15px;">VisualStudio</a> <a href="/tags/%E6%97%A0%E4%BA%BA%E5%80%BC%E5%AE%88/" style="font-size: 15px;">无人值守</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 15px;">安装</a> <a href="/tags/%E8%93%9D%E5%B1%8F/" style="font-size: 15px;">蓝屏</a> <a href="/tags/BSOD/" style="font-size: 15px;">BSOD</a> <a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 15px;">黑苹果</a> <a href="/tags/%E5%B9%B4%E5%BA%A6/" style="font-size: 15px;">年度</a> <a href="/tags/Memory/" style="font-size: 15px;">Memory</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 15px;">大数据</a> <a href="/tags/CPU/" style="font-size: 15px;">CPU</a> <a href="/tags/%E5%AF%84%E5%AD%98%E5%99%A8/" style="font-size: 15px;">寄存器</a> <a href="/tags/Web/" style="font-size: 15px;">Web</a> <a href="/tags/SSH-KEY/" style="font-size: 15px;">SSH KEY</a> <a href="/tags/HQL/" style="font-size: 15px;">HQL</a> <a href="/tags/%E7%AE%A1%E9%81%93/" style="font-size: 15px;">管道</a> <a href="/tags/PS/" style="font-size: 15px;">PS</a> <a href="/tags/PR/" style="font-size: 15px;">PR</a> <a href="/tags/%E7%A0%B4%E8%A7%A3/" style="font-size: 15px;">破解</a> <a href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" style="font-size: 15px;">人生感悟</a> <a href="/tags/%E4%B8%89%E6%98%9FS10/" style="font-size: 15px;">三星S10</a> <a href="/tags/SSH/" style="font-size: 15px;">SSH</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%BF%81%E7%A7%BB/" style="font-size: 15px;">系统迁移</a> <a href="/tags/USB/" style="font-size: 15px;">USB</a> <a href="/tags/Cookie/" style="font-size: 15px;">Cookie</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 15px;">小程序</a> <a href="/tags/%E4%BA%91%E5%BC%80%E5%8F%91/" style="font-size: 15px;">云开发</a> <a href="/tags/DLL/" style="font-size: 15px;">DLL</a> <a href="/tags/LIB/" style="font-size: 15px;">LIB</a> <a href="/tags/%E9%93%BE%E6%8E%A5/" style="font-size: 15px;">链接</a> <a href="/tags/MacOS/" style="font-size: 15px;">MacOS</a> <a href="/tags/%E4%BD%8D%E6%93%8D%E4%BD%9C/" style="font-size: 15px;">位操作</a> <a href="/tags/%E6%95%B0%E7%A0%81%E7%AE%A1/" style="font-size: 15px;">数码管</a> <a href="/tags/UART/" style="font-size: 15px;">UART</a> <a href="/tags/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" style="font-size: 15px;">通信协议</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/07/31/CT107D_8_UART/">8—串口原理与应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/31/CT107D_7_Scan_Keys/">7—按键扫描修正</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/31/CT107D_0_Bits_Operations/">0—8051位操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/28/CT107D_6_Interrupt/">6—单片机中断系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/27/CT107D_6_Timer/">6—定时器应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/27/CT107D_5_Digital_Tube/">5—数码管的动态显示</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/26/CT107D_0_C_Basis/">0—C语言基础与差异</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/25/CT107D_2_LED_Running/">2—流水灯实操</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/23/Apriori/">Apriori</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/22/HQL_Examples/">HQL示例</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://blog.iknet.top/" title="秋のかえで" target="_blank">秋のかえで</a><ul></ul><a href="https://www.wygdbb.com/" title="周海棠啦" target="_blank">周海棠啦</a><ul></ul><a href="https://mttblog.cn/" title="MttBlog" target="_blank">MttBlog</a><ul></ul><a href="http://yscode.net/" title="更好小站" target="_blank">更好小站</a><ul></ul><a href="https://honoz.github.io/" title="Honoz" target="_blank">Honoz</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">Chores.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=0.0.0"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
