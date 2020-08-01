@@ -263,30 +263,6 @@
   </entry>
   
   <entry>
-    <title>HQL示例</title>
-    <link href="https://blog.raincorn.top/2020/07/22/HQL_Examples/"/>
-    <id>https://blog.raincorn.top/2020/07/22/HQL_Examples/</id>
-    <published>2020-07-22T15:01:00.000Z</published>
-    <updated>2020-07-28T13:06:05.092Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="创建并导入表单"><a href="#创建并导入表单" class="headerlink" title="创建并导入表单"></a>创建并导入表单</h1><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">info</span>(id <span class="type">int</span>,<span class="type">name</span> string,sal <span class="type">int</span>) <span class="keyword">row</span> <span class="keyword">format</span> delimited fields terminated <span class="keyword">by</span> <span class="string">'\t'</span> lines terminated <span class="keyword">by</span> <span class="string">'\n'</span>;</span><br><span class="line">OK</span><br><span class="line"><span class="type">Time</span> taken: <span class="number">0.388</span> seconds</span><br><span class="line"></span><br><span class="line">hive&gt; <span class="keyword">load</span> data inpath <span class="string">'/info.txt'</span> overwrite <span class="keyword">into</span> <span class="keyword">table</span> <span class="keyword">info</span>;</span><br><span class="line">Loading data <span class="keyword">to</span> <span class="keyword">table</span> hive.<span class="keyword">info</span></span><br><span class="line">OK</span><br><span class="line"><span class="type">Time</span> taken: <span class="number">0.194</span> seconds</span><br><span class="line"></span><br><span class="line">hive&gt; <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">info</span>;</span><br><span class="line">OK</span><br><span class="line"><span class="number">1</span>       hu      <span class="number">2000</span></span><br><span class="line"><span class="number">2</span>       ya      <span class="number">7500</span></span><br><span class="line"><span class="number">3</span>       dong    <span class="number">1765</span></span><br><span class="line"><span class="number">4</span>       win     <span class="number">8000</span></span><br><span class="line"><span class="number">5</span>       goo     <span class="number">9000</span></span><br><span class="line"><span class="number">6</span>       app     <span class="number">65000</span></span><br><span class="line"><span class="type">Time</span> taken: <span class="number">0.061</span> seconds, Fetched: <span class="number">6</span> <span class="keyword">row</span>(s)</span><br></pre></td></tr></table></figure><h1 id="查询（select）"><a href="#查询（select）" class="headerlink" title="查询（select）"></a>查询（select）</h1><ul><li>查询条目数：<code>select count(*) from info;</code></li><li>获取总薪水：<code>select sum(sal) from info;</code></li><li>获取薪水最高的3个ID与对应薪水：’select id,sal from info order by sal desc limit 3;’</li><li>获取大部分人的薪水状况：<code>select sal,count(*) as sum from info group by sal order by sum desc;</code>————以薪水为组别按照出现次数降序排序</li><li>以2000为区间统计薪水分布区间：<code>select concat(floor(sal/2000)*2000,&#39;-&#39;,(floor(sal/2000)+1)*2000),count(*) from info group by floor(sal/2000);</code>————对sal除以2000向下取整作为分组依据，可以取得一定范围内的数值，例如floor(3000/2000)=1；floor(3600/2000)=1。</li><li>获取薪水大于8000的员工的姓名：<code>hive&gt; select name,sal from info where sal&gt;8000;</code></li><li>获取每个ID的总工资：<code>select id,sum(sal) from info group by id;</code></li><li>获取每个ID的平均工资并按照工资降序排列：<code>select id,avg(sal) as avg_sal from info group by id order by avg_sal desc;</code></li></ul><h1 id="表单导出"><a href="#表单导出" class="headerlink" title="表单导出"></a>表单导出</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> overwrite <span class="keyword">local</span> <span class="keyword">directory</span> <span class="string">'/root/'</span> <span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span> <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">'\t'</span> <span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> loan</span><br></pre></td></tr></table></figure><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ul><li>区间分析：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">length</span>(<span class="built_in">text</span>) <span class="keyword">between</span> <span class="number">0</span> <span class="keyword">and</span> <span class="number">20</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> text1,</span><br><span class="line"><span class="keyword">count</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">length</span>(<span class="built_in">text</span>) <span class="keyword">between</span> <span class="number">21</span> <span class="keyword">and</span> <span class="number">40</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> text2,</span><br><span class="line"><span class="keyword">count</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">length</span>(<span class="built_in">text</span>) <span class="keyword">between</span> <span class="number">41</span> <span class="keyword">and</span> <span class="number">60</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> text3,</span><br><span class="line"><span class="keyword">count</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">length</span>(<span class="built_in">text</span>) <span class="keyword">between</span> <span class="number">61</span> <span class="keyword">and</span> <span class="number">80</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> text4,</span><br><span class="line"><span class="keyword">count</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">length</span>(<span class="built_in">text</span>) <span class="keyword">between</span> <span class="number">81</span> <span class="keyword">and</span> <span class="number">100</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> text5,</span><br><span class="line"><span class="keyword">count</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">length</span>(<span class="built_in">text</span>) &amp;gt; 100 then 1 <span class="keyword">end</span>) <span class="keyword">as</span> text6</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span>;</span><br></pre></td></tr></table></figure></li></ul><h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="http://blog.coinidea.com/%E5%A4%A7%E6%95%B0%E6%8D%AE-1079.html" target="_blank" rel="noopener">Hive SQL 分区间统计问题</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;创建并导入表单&quot;&gt;&lt;a href=&quot;#创建并导入表单&quot; class=&quot;headerlink&quot; title=&quot;创建并导入表单&quot;&gt;&lt;/a&gt;创建并导入表单&lt;/h1&gt;&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=
-      
-    
-    </summary>
-    
-    
-    
-      <category term="HQL" scheme="https://blog.raincorn.top/tags/HQL/"/>
-    
-  </entry>
-  
-  <entry>
     <title>HQL</title>
     <link href="https://blog.raincorn.top/2020/07/22/HQL/"/>
     <id>https://blog.raincorn.top/2020/07/22/HQL/</id>
@@ -301,6 +277,30 @@
       
         &lt;p&gt;&lt;strong&gt;HQL语法与SQL类似，不区分大小写，语句以分号（;）结束。&lt;/strong&gt;&lt;/p&gt;
 &lt;h1 id=&quot;Hive基本操作&quot;&gt;&lt;a href=&quot;#Hive基本操作&quot; class=&quot;headerlink&quot; title=&quot;Hive基本操作&quot;&gt;&lt;/a&gt;Hive基本操
+      
+    
+    </summary>
+    
+    
+    
+      <category term="HQL" scheme="https://blog.raincorn.top/tags/HQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HQL示例</title>
+    <link href="https://blog.raincorn.top/2020/07/22/HQL_Examples/"/>
+    <id>https://blog.raincorn.top/2020/07/22/HQL_Examples/</id>
+    <published>2020-07-22T15:01:00.000Z</published>
+    <updated>2020-07-28T13:06:05.092Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="创建并导入表单"><a href="#创建并导入表单" class="headerlink" title="创建并导入表单"></a>创建并导入表单</h1><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">info</span>(id <span class="type">int</span>,<span class="type">name</span> string,sal <span class="type">int</span>) <span class="keyword">row</span> <span class="keyword">format</span> delimited fields terminated <span class="keyword">by</span> <span class="string">'\t'</span> lines terminated <span class="keyword">by</span> <span class="string">'\n'</span>;</span><br><span class="line">OK</span><br><span class="line"><span class="type">Time</span> taken: <span class="number">0.388</span> seconds</span><br><span class="line"></span><br><span class="line">hive&gt; <span class="keyword">load</span> data inpath <span class="string">'/info.txt'</span> overwrite <span class="keyword">into</span> <span class="keyword">table</span> <span class="keyword">info</span>;</span><br><span class="line">Loading data <span class="keyword">to</span> <span class="keyword">table</span> hive.<span class="keyword">info</span></span><br><span class="line">OK</span><br><span class="line"><span class="type">Time</span> taken: <span class="number">0.194</span> seconds</span><br><span class="line"></span><br><span class="line">hive&gt; <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">info</span>;</span><br><span class="line">OK</span><br><span class="line"><span class="number">1</span>       hu      <span class="number">2000</span></span><br><span class="line"><span class="number">2</span>       ya      <span class="number">7500</span></span><br><span class="line"><span class="number">3</span>       dong    <span class="number">1765</span></span><br><span class="line"><span class="number">4</span>       win     <span class="number">8000</span></span><br><span class="line"><span class="number">5</span>       goo     <span class="number">9000</span></span><br><span class="line"><span class="number">6</span>       app     <span class="number">65000</span></span><br><span class="line"><span class="type">Time</span> taken: <span class="number">0.061</span> seconds, Fetched: <span class="number">6</span> <span class="keyword">row</span>(s)</span><br></pre></td></tr></table></figure><h1 id="查询（select）"><a href="#查询（select）" class="headerlink" title="查询（select）"></a>查询（select）</h1><ul><li>查询条目数：<code>select count(*) from info;</code></li><li>获取总薪水：<code>select sum(sal) from info;</code></li><li>获取薪水最高的3个ID与对应薪水：’select id,sal from info order by sal desc limit 3;’</li><li>获取大部分人的薪水状况：<code>select sal,count(*) as sum from info group by sal order by sum desc;</code>————以薪水为组别按照出现次数降序排序</li><li>以2000为区间统计薪水分布区间：<code>select concat(floor(sal/2000)*2000,&#39;-&#39;,(floor(sal/2000)+1)*2000),count(*) from info group by floor(sal/2000);</code>————对sal除以2000向下取整作为分组依据，可以取得一定范围内的数值，例如floor(3000/2000)=1；floor(3600/2000)=1。</li><li>获取薪水大于8000的员工的姓名：<code>hive&gt; select name,sal from info where sal&gt;8000;</code></li><li>获取每个ID的总工资：<code>select id,sum(sal) from info group by id;</code></li><li>获取每个ID的平均工资并按照工资降序排列：<code>select id,avg(sal) as avg_sal from info group by id order by avg_sal desc;</code></li></ul><h1 id="表单导出"><a href="#表单导出" class="headerlink" title="表单导出"></a>表单导出</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> overwrite <span class="keyword">local</span> <span class="keyword">directory</span> <span class="string">'/root/'</span> <span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span> <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">'\t'</span> <span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> loan</span><br></pre></td></tr></table></figure><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ul><li>区间分析：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">length</span>(<span class="built_in">text</span>) <span class="keyword">between</span> <span class="number">0</span> <span class="keyword">and</span> <span class="number">20</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> text1,</span><br><span class="line"><span class="keyword">count</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">length</span>(<span class="built_in">text</span>) <span class="keyword">between</span> <span class="number">21</span> <span class="keyword">and</span> <span class="number">40</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> text2,</span><br><span class="line"><span class="keyword">count</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">length</span>(<span class="built_in">text</span>) <span class="keyword">between</span> <span class="number">41</span> <span class="keyword">and</span> <span class="number">60</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> text3,</span><br><span class="line"><span class="keyword">count</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">length</span>(<span class="built_in">text</span>) <span class="keyword">between</span> <span class="number">61</span> <span class="keyword">and</span> <span class="number">80</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> text4,</span><br><span class="line"><span class="keyword">count</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">length</span>(<span class="built_in">text</span>) <span class="keyword">between</span> <span class="number">81</span> <span class="keyword">and</span> <span class="number">100</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> text5,</span><br><span class="line"><span class="keyword">count</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">length</span>(<span class="built_in">text</span>) &amp;gt; 100 then 1 <span class="keyword">end</span>) <span class="keyword">as</span> text6</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span>;</span><br></pre></td></tr></table></figure></li></ul><h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="http://blog.coinidea.com/%E5%A4%A7%E6%95%B0%E6%8D%AE-1079.html" target="_blank" rel="noopener">Hive SQL 分区间统计问题</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;创建并导入表单&quot;&gt;&lt;a href=&quot;#创建并导入表单&quot; class=&quot;headerlink&quot; title=&quot;创建并导入表单&quot;&gt;&lt;/a&gt;创建并导入表单&lt;/h1&gt;&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=
       
     
     </summary>
@@ -386,9 +386,9 @@
     
     
     
-      <category term="Hadoop" scheme="https://blog.raincorn.top/tags/Hadoop/"/>
-    
       <category term="大数据" scheme="https://blog.raincorn.top/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Hadoop" scheme="https://blog.raincorn.top/tags/Hadoop/"/>
     
   </entry>
   
@@ -444,11 +444,11 @@
     
     
     
+      <category term="大数据" scheme="https://blog.raincorn.top/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
       <category term="Hadoop" scheme="https://blog.raincorn.top/tags/Hadoop/"/>
     
       <category term="ZooKeeper" scheme="https://blog.raincorn.top/tags/ZooKeeper/"/>
-    
-      <category term="大数据" scheme="https://blog.raincorn.top/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -474,11 +474,11 @@
     
     
     
+      <category term="大数据" scheme="https://blog.raincorn.top/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
       <category term="Hadoop" scheme="https://blog.raincorn.top/tags/Hadoop/"/>
     
       <category term="Hive" scheme="https://blog.raincorn.top/tags/Hive/"/>
-    
-      <category term="大数据" scheme="https://blog.raincorn.top/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -504,13 +504,13 @@
     
     
     
-      <category term="Hadoop" scheme="https://blog.raincorn.top/tags/Hadoop/"/>
+      <category term="大数据" scheme="https://blog.raincorn.top/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
-      <category term="Hive" scheme="https://blog.raincorn.top/tags/Hive/"/>
+      <category term="Hadoop" scheme="https://blog.raincorn.top/tags/Hadoop/"/>
     
       <category term="安装" scheme="https://blog.raincorn.top/tags/%E5%AE%89%E8%A3%85/"/>
     
-      <category term="大数据" scheme="https://blog.raincorn.top/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+      <category term="Hive" scheme="https://blog.raincorn.top/tags/Hive/"/>
     
   </entry>
   
