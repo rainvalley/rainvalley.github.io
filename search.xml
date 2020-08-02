@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Kindle推送与格式划分</title>
+      <link href="/2020/08/02/Kindle_Sync_Format/"/>
+      <url>/2020/08/02/Kindle_Sync_Format/</url>
+      
+        <content type="html"><![CDATA[<h1 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h1><p>以下推送方式不依靠亚马逊（多看）账号，理论上只需要推送邮箱即可。</p><ul><li>Windows/MacOS：Calibre，绑定邮箱后可用来管理与推送书籍，推荐。</li></ul><p><img src="https://imgs.raincorn.top/imgs/20200801210811.png" alt="Calibre"></p><ul><li>Chrome插件：Push to Kindle，用于重排推送网页。</li></ul><p><img src="https://imgs.raincorn.top/imgs/20200801210850.png" alt="Push to Kindle"></p><p><img src="https://imgs.raincorn.top/imgs/20200801211120.png" alt="网页重排"></p><ul><li>Android：Push to Kindle by FiveFilters.org，可以将任意可分享内容重排并推送至Kindle。例如可以将公众号文章，网页，文档等发送给Kindle。</li></ul><p><img src="https://imgs.raincorn.top/imgs/20200801211134.png" alt="Push to Kindle by FiveFilters.org"></p><ul><li><p>RSS订阅：<a href="https://inkread.com/" target="_blank" rel="noopener">Kindle4RSS</a>，推送已订阅的RSS内容至Kindle，定时推送需要付费订阅。或者选择自建RSS推送<a href="https://github.com/cdhigh/KindleEar" target="_blank" rel="noopener">KindleEar</a>。</p></li><li><p>杂志推送：微信公众号中搜索<code>Kindle杂志公社</code>即可，推送如下图：</p></li></ul><p><img src="https://imgs.raincorn.top/imgs/20200802223149.jpg" alt=""></p><h1 id="文档格式"><a href="#文档格式" class="headerlink" title="文档格式"></a>文档格式</h1><p>在kindle上阅读，必须忍受低分辨率的屏幕与刷新率，因此推荐epub作为主要格式。</p><ul><li>txt：纯文本，无任何排版插图功能。</li><li>chm：微软开发，相对于纯文本增加了章节与超链接，但仍然不支持图片。</li><li>rtf：微软开发，富文本格式，相当于简化的doc。</li><li>pdf：适合复杂排版，能做到最好的排版还原效果，在kindle上极其不建议使用。</li><li>epub：开源，基于HTML技术，提供接近pdf的排版体验。</li><li>mobi：与epub体验类似，但闭源。</li><li>azw3：亚马逊主推格式，也是亚马逊在售书籍的主要格式，目前仅用于Kindle。</li><li>caj：知网下载论文的格式，使用CAJViewer打开。</li><li>pdg：数字图书，主要用于超星图书的储存与分发。</li></ul><p>Calibre支持的格式转换：<br><img src="https://imgs.raincorn.top/imgs/20200802221720.png" alt=""></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>8—串口原理与应用</title>
       <link href="/2020/07/31/CT107D_8_UART/"/>
       <url>/2020/07/31/CT107D_8_UART/</url>
