@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.raincorn.top/2020/08/04/CT107D_9_DS1302_SPI/</loc>
+    
+    <lastmod>2020-08-07T10:05:29.033Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.raincorn.top/2020/08/02/Kindle_Sync_Format/</loc>
     
-    <lastmod>2020-08-02T14:31:55.671Z</lastmod>
+    <lastmod>2020-08-07T09:45:57.782Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/08/06/CT107D_12_PCF8591_IIC/</loc>
+    
+    <lastmod>2020-08-07T09:44:44.344Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/08/06/CT107D_11_AT24C02_IIC/</loc>
+    
+    <lastmod>2020-08-07T09:44:22.591Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.raincorn.top/2020/08/06/CT107D_10_DS18B20_OneWire/</loc>
+    
+    <lastmod>2020-08-07T09:44:04.693Z</lastmod>
     
   </url>
   

@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.raincorn.top/2020/08/04/CT107D_9_DS1302_SPI/</loc>
+    <lastmod>2020-08-07</lastmod>
+  </url>  <url>
     <loc>https://blog.raincorn.top/2020/08/02/Kindle_Sync_Format/</loc>
-    <lastmod>2020-08-02</lastmod>
+    <lastmod>2020-08-07</lastmod>
+  </url>  <url>
+    <loc>https://blog.raincorn.top/2020/08/06/CT107D_12_PCF8591_IIC/</loc>
+    <lastmod>2020-08-07</lastmod>
+  </url>  <url>
+    <loc>https://blog.raincorn.top/2020/08/06/CT107D_11_AT24C02_IIC/</loc>
+    <lastmod>2020-08-07</lastmod>
+  </url>  <url>
+    <loc>https://blog.raincorn.top/2020/08/06/CT107D_10_DS18B20_OneWire/</loc>
+    <lastmod>2020-08-07</lastmod>
   </url>  <url>
     <loc>https://blog.raincorn.top/2020/07/31/CT107D_8_UART/</loc>
     <lastmod>2020-08-01</lastmod>
