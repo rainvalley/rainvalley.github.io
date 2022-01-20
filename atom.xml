@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://rainvalley.github.io</id>
+    <title>Chores</title>
+    <updated>2022-01-20T16:35:00.204Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://rainvalley.github.io"/>
+    <link rel="self" href="https://rainvalley.github.io/atom.xml"/>
+    <subtitle>傅立叶是一首数学的诗，黑格尔是一首辩证法的诗。</subtitle>
+    <logo>https://rainvalley.github.io/images/avatar.png</logo>
+    <icon>https://rainvalley.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2022, Chores</rights>
+    <entry>
+        <title type="html"><![CDATA[AM调制解调的MATLAB与FPGA实现]]></title>
+        <id>https://rainvalley.github.io/AM_Mod_and_Demod/</id>
+        <link href="https://rainvalley.github.io/AM_Mod_and_Demod/">
+        </link>
+        <updated>2022-01-20T15:03:43.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="新手福利-am信号调制解调">新手福利 --- AM信号调制解调</h1>
+<p>在模拟通信系统中，基带信号通过对载波波形幅度，相位，频率的调制以达到将信号在载波上传输信息的目的。根据基带信号的类型可分为：模拟调制 &amp; 数字调制。</p>
+<h1 id="调制原理">调制原理</h1>
+<p>本文所述AM（<em>Amplitude Modulation</em>）调制，即是模拟信号对载波幅度进行调制，通过与载波信号相乘来进行频谱搬移。其中第一个公式为时域表达式，第二个公式为频域表达式。</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mrow><mi>A</mi><mi>M</mi></mrow></msub><mo>=</mo><mo>(</mo><msub><mi>A</mi><mn>0</mn></msub><mo>+</mo><mi>m</mi><mo>(</mo><mi>t</mi><mo>)</mo><mo>)</mo><mo>∗</mo><mi>c</mi><mi>o</mi><mi>s</mi><mo>(</mo><msub><mi>w</mi><mi>c</mi></msub><mi>t</mi><mo>+</mo><msub><mi>ϕ</mi><mi>c</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">S_{AM}=(A_0+m(t))*cos(w_ct+\phi_c)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mrow><mi>A</mi><mi>M</mi></mrow></msub><mo>(</mo><mi>ω</mi><mo>)</mo><mo>=</mo><mfrac><msub><mi>A</mi><mn>0</mn></msub><mn>2</mn></mfrac><mo>∗</mo><mo>[</mo><mi>M</mi><mo>(</mo><mi>ω</mi><mo>+</mo><msub><mi>ω</mi><mi>c</mi></msub><mo>)</mo><mo>+</mo><mi>M</mi><mo>(</mo><mi>ω</mi><mo>−</mo><msub><mi>ω</mi><mi>c</mi></msub><mo>)</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">S_{AM}(\omega)=\frac{A_0}{2}*[M(\omega+\omega_c)+M(\omega-\omega_c)]
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.04633em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">]</span></span></span></span></span></p>
+<p>在上文的公式中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mo>(</mo><mi>t</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">m(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span></span></span></span>为基带信号（一般为低频信号），<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>A</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">A_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>为直流偏置，用来将基带信号叠加到正半轴，使得在调制后信号仍然保持着<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mo>(</mo><mi>t</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">m(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span></span></span></span>的包络。其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>o</mi><mi>s</mi><mo>(</mo><msub><mi>w</mi><mi>c</mi></msub><mi>t</mi><mo>+</mo><msub><mi>ϕ</mi><mi>c</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">cos(w_ct+\phi_c)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>为载波信号，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>ω</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">\omega_c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>为载波角频率。</p>
+<p>在描述AM信号的调制深度时，常定义为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi>m</mi><mo>(</mo><mi>t</mi><msub><mo>)</mo><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow><msub><mi>A</mi><mn>0</mn></msub></mfrac></mrow><annotation encoding="application/x-tex">\frac{m(t)_{max}}{A_0}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.4550999999999998em;vertical-align:-0.44509999999999994em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">t</span><span class="mclose mtight"><span class="mclose mtight">)</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.44509999999999994em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，当调制深度大于1时为过调幅现象，此时因为存在相位突变，调制后的信号包络无法反映原始信号<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mo>(</mo><mi>t</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">m(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span></span></span></span>。</p>
+<h1 id="matlab仿真">MATLAB仿真</h1>
+<blockquote>
+<p>在开始之前，先阐述一下各项参数：</p>
+<ul>
+<li>采样率：10M</li>
+<li>基带信号频率：100K</li>
+<li>载波信号频率：1M</li>
+<li>采样点数：1000点（为了对齐一个周期的正弦波，避免FPGA仿真时出现相位的突变）</li>
+</ul>
+</blockquote>
+<h2 id="调制">调制</h2>
+<p>在MATLAB调制的仿真中，我们需要将基带信号输出到TXT文档，供FPGA仿真时读取，作为AD采样的数值。同时绘制调制后的频域波形与时域波形，便于直观对照。</p>
+<pre><code class="language-matlab">close all;clear;clc;
+fs=10e6;
+f1=100e3;
+f2=1e6;
+n=1000;
+t=0:1/fs:(n-1)/fs;
+s1=sin(2*pi*f1*t); %基带信号
+s=(s1+max(s1)).*sin(2*pi*f2*t); %调制后的信号
+s_fft=fft(s);s_fft_abs=abs(s_fft);
+subplot(311);plot(s1(1:500));title(&quot;基带信号时域波形&quot;);
+subplot(312);plot(s(1:500));title(&quot;调制信号时域波形&quot;);
+subplot(313);plot(s_fft_abs(1:length(s_fft)/2));title(&quot;调制信号频域波形&quot;);
+
+Q=8; %此处是量化位数，为了与ADC对应此处设置为8位
+s1=s1/max(abs(s1));
+Q_s=round(s1*(2^(Q-1)-1));
+Q_s=Q_s+(2^(Q-1)-1);
+fid=fopen(&quot;am_mod.txt&quot;,&quot;w&quot;);
+for i=1:length(Q_s)
+    Q_data=dec2bin(Q_s(i),Q); %与ADC对应，输出为无符号二进制数，注意在新版MATLAB中此函数有变化
+    fprintf(fid,&quot;%s\r\n&quot;,Q_data);
+end
+fprintf(fid,&quot;;&quot;);
+fclose(fid);
+</code></pre>
+<p>其绘制的图片如下，可以观察到在调制后的频域上有三个尖峰，分别对应0.9，1.0，1.1三个频点：</p>
+<figure data-type="image" tabindex="1"><img src="https://imgs.raincorn.top/imgs/202110081603451.png" alt="image-20211008090850756" loading="lazy"></figure>
+<h2 id="解调">解调</h2>
+<p><s>其实不用写代码的</s></p>
+<p>在MATLAB信号分析其中拖入变量s，分析器中选择包络即可提取信号包络，然后再经过一个低通滤波器即可。提取上包络后的波形如下图：</p>
+<figure data-type="image" tabindex="2"><img src="https://imgs.raincorn.top/imgs/202110081603802.png" alt="image-20211008150157310" loading="lazy"></figure>
+<h1 id="fpga仿真">FPGA仿真</h1>
+<p>本仿真在Vivado 2018.2上测试，元件选择为Xilinx XC7Z010CLG400，需要用到的IP核介绍如下。</p>
+<h2 id="ip核">IP核</h2>
+<h3 id="clocking-wizard">Clocking Wizard</h3>
+<p>该IP核通过MMCM与PLL来输出特定频率到所需的模块，其中PLL可看作MMCM的子集。该IP核较为简单，介绍一个容易出问题的地方。</p>
+<figure data-type="image" tabindex="3"><img src="https://imgs.raincorn.top/imgs/202110081603819.png" alt="image-20211008091817238" loading="lazy"></figure>
+<p>如上图所示，在Input Clock Information的Source一栏中可以选择时钟来源，分别为：</p>
+<ul>
+<li>单端时钟：在后续的引脚选择上，必须与器件的专用时钟端口对应。</li>
+<li>差分时钟：类似于HDMI中的CLK+，CLK-，通过差分来抵消传输过程中的干扰。</li>
+<li>全局时钟：当该IP核的输入来自工程内的其他模块时，需要选择此。</li>
+<li>不缓冲输入：当从普通IO口引入时钟时，由于已经添加了一个Buffer，故此处不必再添加Buffer。</li>
+</ul>
+<h3 id="dds-compiler">DDS Compiler</h3>
+<p>该IP核可以用于输出特定频率的正余弦波以及相位变化，可以通过AXI4接口配置其初始相位以及相位增量（改变输出频率），相关介绍如下：</p>
+<h4 id="configuration">Configuration</h4>
+<ul>
+<li>Configuration Options：配置为相位生成或正余弦波生成，或二者兼有。</li>
+<li>System Requirements：配置输入频率，通道数与参数设置，这里一般选择为System Parameters，便于在后面直接配置输出频率。</li>
+<li>System Parameters：可配置杂散范围与频率分辨率的数值，此配置将会决定相位宽度。</li>
+</ul>
+<h4 id="implementation">Implementation</h4>
+<ul>
+<li>Phase Increment Programmability：配置相位增量是否可调，可用来改变输出频率。</li>
+<li>Phase Offset Programmability：配置相位偏移是否可调。</li>
+<li>Output：配置输出波形（正，余弦或二者兼有），输出极性（是否反转，幅度范围），是否有相位输出（我经常不勾选）。</li>
+</ul>
+<h4 id="output-frequencies">Output Frequencies</h4>
+<p>此处可用于配置各个通道的频率，前提是在Configuration中勾选到System Requirements。</p>
+<p>本设计所用到的IP核Summary如下：</p>
+<figure data-type="image" tabindex="4"><img src="https://imgs.raincorn.top/imgs/202110081602864.png" alt="image-20211008083826319" loading="lazy"></figure>
+<h3 id="multiplier">Multiplier</h3>
+<p>该IP核用于将两个输出相乘，最后输出的位宽等于两个输入位宽之和，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo>=</mo><mi>A</mi><mo>∗</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">P=A*B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>。在使用该IP核时，一定要注意输入位宽与是否为有符号数匹配。有符号与无符号数在该IP核内的处理方式不同，可能会造成乘法错误。</p>
+<h3 id="fir-compiler">FIR Compiler</h3>
+<p>该IP核用于将输入信号进行FIR滤波，系数可从MATLAB的FDATOOL中导入，注意导入的数据需要在FDATOOL中量化为定点。</p>
+<h4 id="filter-options">Filter Options</h4>
+<ul>
+<li>Filter Coefficients：此处可以手动输入抽头系数，或者由MATLAB导出。</li>
+<li>Filter Specification：配置多速率FIR滤波器，出于性能问题在实际设计中常常使用CIC滤波器做多速率转换。</li>
+</ul>
+<h4 id="channel-specification">Channel Specification</h4>
+<p>本页面需要关注Hardware Oversampling Specification，该选项可以指定时钟频率与采样率的关系。</p>
+<h4 id="implementation-2">Implementation</h4>
+<ul>
+<li>Coefficient Type：输入抽头系数的数据类型，从MATLAB导入后保持默认即可。Coefficient Structure，此项用来指定抽头系数的类型：由系统推断，非对称与对称。</li>
+<li>Data Path Options：设置输入输出数据的位宽，输出数据有一个Rounding Mode需要注意。Truncate LSBs可用于直接将低位舍去，保留高位，但我更倾向于仿真后手动截位。</li>
+</ul>
+<figure data-type="image" tabindex="5"><img src="https://imgs.raincorn.top/imgs/202110081602034.png" alt="image-20211008103433205" loading="lazy"></figure>
+<p>本设计所用到的IP核Summary如下：</p>
+<figure data-type="image" tabindex="6"><img src="https://imgs.raincorn.top/imgs/202110081602998.png" alt="image-20211008103639198" loading="lazy"></figure>
+<h2 id="调制源文件">调制源文件</h2>
+<pre><code class="language-verilog">`timescale 1ns / 1ps
+
+module am_mod(
+    input sys_clk,
+    input sys_rst_n,
+    input [7:0] adc_data_unsigned,
+    output adc_clk,
+    output [15:0] am_mod
+    );
+
+wire clk_10m,locked,valid;
+assign valid = sys_rst_n &amp; locked;
+assign adc_clk = valid ? clk_10m : 1'b0; //clk_10m时钟有效时输出到adc_clk，以10M的ADC时钟采样到adc_data_unsigned
+ip_pll inst0(
+    // Clock out ports
+    .clk_10m(clk_10m),     // output clk_10m
+    // Status and control signals
+    .resetn(sys_rst_n), // input resetn
+    .locked(locked),       // output locked
+   // Clock in ports
+    .clk_in(sys_clk)
+);      // input clk_in
+
+wire signed [7:0] carry_data;
+wire carry_valid;
+ip_dds inst1 (
+  .aclk(sys_clk),                              // input wire aclk
+  .aresetn(sys_rst_n),                        // input wire aresetn
+  .m_axis_data_tvalid(carry_valid),  // output wire m_axis_data_tvalid
+  .m_axis_data_tdata(carry_data)    // output wire [7 : 0] m_axis_data_tdata
+);
+
+parameter depth_inv = 2; //用来配置调制深度
+wire signed [15:0] mult_data;
+wire signed [7:0] adc_data;
+assign adc_data = ((adc_data_unsigned - 8'd128) + depth_inv * 8'd128)/(depth_inv + 1);
+assign am_mod = mult_data;
+ip_mult inst2 (
+  .CLK(sys_clk),  // input wire CLK
+  .A(adc_data),      // input wire [7 : 0] A
+  .B(carry_data),      // input wire [7 : 0] B
+  .CE(valid),   // input wire CE
+  .P(mult_data)      // output wire [15 : 0] P
+);
+    
+endmodule
+</code></pre>
+<h2 id="调制testbench">调制TestBench</h2>
+<p>注意此处的文件读写操作，用来输入基带信号，输出调制信号，输出到TXT的数据可在MATLAB中进一步的验证正确性。此外，fdisplay这个函数会根据wire或者reg在程序中定义的类型进行输出，此处定义为signed，默认为unsigned。注意将所需要的调试文件设为顶层设计。</p>
+<pre><code class="language-verilog">`timescale 1ns / 1ps
+
+module am_mod_tb(
+    );
+
+reg sys_clk;
+reg sys_rst_n;  
+reg [7:0] adc_data_unsigned;
+wire adc_clk;
+wire signed [15:0] am_mod;  
+am_mod inst0(
+    .sys_clk (sys_clk),
+    .sys_rst_n (sys_rst_n),
+    .adc_data_unsigned (adc_data_unsigned),
+    .adc_clk (adc_clk),
+    .am_mod (am_mod)
+);
+parameter clk_period = 20;
+parameter data_num = 1000;
+
+initial begin
+    $readmemb(&quot;am_mod.txt&quot;,stimulus);
+    sys_clk = 1'b0;
+    sys_rst_n = 1'b0;
+    adc_data_unsigned = 8'd0;
+    #100 sys_rst_n = 1'b1;   
+end
+
+always #10 sys_clk = ~sys_clk;
+
+integer pattern;
+reg [7:0] stimulus [1:data_num];
+always@(posedge adc_clk or negedge sys_rst_n) begin
+    if(!sys_rst_n) begin
+        adc_data_unsigned &lt;= 8'd0;
+        pattern = 1; 
+    end else if (pattern == data_num)begin
+        adc_data_unsigned &lt;= stimulus[pattern];
+        pattern = 1;
+    end else begin
+        adc_data_unsigned &lt;= stimulus[pattern];
+        pattern = pattern + 1;
+    end
+end
+
+integer file_out;
+initial begin
+    file_out = $fopen(&quot;am_mod_data.txt&quot;);
+    if(!file_out) begin
+        $display(&quot;Cloud open file!&quot;);
+        $finish;
+    end
+end
+wire write_clk;
+assign write_clk = adc_clk &amp; sys_rst_n;
+always@(posedge write_clk) begin
+    $fdisplay(file_out,&quot;%d&quot;,am_mod);
+end
+    
+endmodule
+
+</code></pre>
+<h2 id="调制结果">调制结果</h2>
+<p>该图为仿真结果，可以看到am_mod信号的波形幅度与输入信号幅度同步变化，其包络大致与基带信号相同。此外16位am_mod的14位和15位同步变化，在后文将am_mod截断为8位无符号时将会利用此波形进行变换。</p>
+<figure data-type="image" tabindex="7"><img src="https://imgs.raincorn.top/imgs/202110081602581.png" alt="image-20211008105707918" loading="lazy"></figure>
+<p>将调试后输出的数据导入到MATLAB中分析频谱既可以观察到在归一化频率的0.19、0.2、0.21附近有尖峰，满足设计预期。</p>
+<figure data-type="image" tabindex="8"><img src="https://imgs.raincorn.top/imgs/202110081602436.png" alt="image-20211008110042168" loading="lazy"></figure>
+<h2 id="调制截位">调制截位</h2>
+<p>由于我们使用的AD/DA模块是黑金的AN108，其输入输出均为8bit无符号数据，因此需要进行转换。注意此处因为第15位与14位相同，故此处直接将第15位作为符号位，以提高截位后的精度。</p>
+<pre><code class="language-verilog">assign am_mod = {mult_data[15],mult_data[13:7]} + 8'd128;
+</code></pre>
+<h2 id="解调源文件">解调源文件</h2>
+<p>AM信号的调制可以直接采用包络检波，在大信噪比的时候其性能与相干解调差距不大。使用Verilog来进行包络检波总体分为：整流&amp;滤波。其中整流即是对原始信号取绝对值操作，本工程中通过判断am_mod最高位来实现。滤波即使用FIR IP核来进行，通过在FDATOOL中设计一个通带归一化频率为0.02的滤波器，将系数导入到Vivado即可。注意在仿真数据出来以后可以将其放入信号分析器观察频谱，调整通阻带增益来达到更好的解调效果。</p>
+<pre><code class="language-verilog">`timescale 1ns / 1ps
+
+module am_demod(
+    input sys_clk,
+    input sys_rst_n,
+    input [7:0] am_mod_unsigned,
+    output adc_clk,
+    output [7:0] m
+    );
+
+wire clk_10m,locked,valid;
+assign valid = sys_rst_n &amp; locked;
+assign adc_clk = valid ? clk_10m : 1'b0; //clk_10m时钟有效时输出到adc_clk，以10M的ADC时钟采样到adc_data_unsigned
+ip_pll inst0(
+    // Clock out ports
+    .clk_10m(clk_10m),     // output clk_10m
+    // Status and control signals
+    .resetn(sys_rst_n), // input resetn
+    .locked(locked),       // output locked
+   // Clock in ports
+    .clk_in(sys_clk)
+);      // input clk_in    
+
+wire signed [7:0] am_mod;
+reg signed [7:0] am_abs;
+assign am_mod = am_mod_unsigned - 8'd128;
+always@(posedge sys_clk or negedge sys_rst_n) begin
+    if(!sys_rst_n) begin
+        am_abs &lt;= 8'd0;
+    end else if(am_mod[7]) begin
+        am_abs &lt;= -am_mod;
+    end else begin
+        am_abs &lt;= am_mod;
+    end
+end
+
+wire inst1_s_axis_data_tready,inst1_m_axis_data_tvalid;
+wire [31:0] inst1_m;
+assign m = inst1_m[26:19] + 8'd128;
+ip_fir inst1 (
+  .aclk(clk_10m),                              // input wire aclk
+  .s_axis_data_tvalid(valid),  // input wire s_axis_data_tvalid
+  .s_axis_data_tready(inst1_s_axis_data_tready),  // output wire s_axis_data_tready
+  .s_axis_data_tdata(am_abs),    // input wire [7 : 0] s_axis_data_tdata
+  .m_axis_data_tvalid(inst1_m_axis_data_tvalid),  // output wire m_axis_data_tvalid
+  .m_axis_data_tdata(inst1_m)    // output wire [31 : 0] m_axis_data_tdata
+);
+    
+endmodule
+</code></pre>
+<h2 id="解调testbench">解调TestBench</h2>
+<pre><code class="language-verilog">`timescale 1ns / 1ps
+
+module am_demod_tb(
+    );
+reg sys_clk,sys_rst_n;
+reg [7:0] adc_data_unsigned;
+wire adc_clk,inst1_adc_clk;
+wire [7:0] am_mod;    
+wire [7:0] m;
+am_mod inst0(
+    .sys_clk (sys_clk),
+    .sys_rst_n (sys_rst_n),
+    .adc_data_unsigned (adc_data_unsigned),
+    .adc_clk (adc_clk),
+    .am_mod (am_mod)
+);    
+
+am_demod inst1(
+    .sys_clk (sys_clk),
+    .sys_rst_n (sys_rst_n),
+    .am_mod_unsigned (am_mod),
+    .adc_clk (inst1_adc_clk),
+    .m (m)
+);
+
+parameter clk_period = 20;
+parameter data_num = 1000;
+
+initial begin
+    $readmemb(&quot;am_mod.txt&quot;,stimulus);
+    sys_clk = 1'b0;
+    sys_rst_n = 1'b0;
+    adc_data_unsigned = 8'd0;
+    #100 sys_rst_n = 1'b1;   
+end
+
+always #10 sys_clk = ~sys_clk;
+
+integer pattern;
+reg [7:0] stimulus [1:data_num];
+always@(posedge adc_clk or negedge sys_rst_n) begin
+    if(!sys_rst_n) begin
+        adc_data_unsigned &lt;= 8'd0;
+        pattern = 1; 
+    end else if (pattern == data_num)begin
+        adc_data_unsigned &lt;= stimulus[pattern];
+        pattern = 1;
+    end else begin
+        adc_data_unsigned &lt;= stimulus[pattern];
+        pattern = pattern + 1;
+    end
+end
+
+integer file_out;
+initial begin
+    file_out = $fopen(&quot;am_demod_data.txt&quot;);
+    if(!file_out) begin
+        $display(&quot;Cloud open file!&quot;);
+        $finish;
+    end
+end
+wire write_clk;
+assign write_clk = adc_clk &amp; sys_rst_n;
+always@(posedge write_clk) begin
+    $fdisplay(file_out,&quot;%d&quot;,m);
+end
+    
+endmodule
+</code></pre>
+<h2 id="解调结果">解调结果</h2>
+<p>FPGA仿真后的波形如下图所示，FIR滤波器存在相位延迟，故在一段时间内输出的波形不正确。</p>
+<figure data-type="image" tabindex="9"><img src="https://imgs.raincorn.top/imgs/202110081601649.png" alt="image-20211008104710570" loading="lazy"></figure>
+<p>将输出的波形导入到信号分析器，既可以观察到在0（直流分量）与0.02（100KHz的基带信号）附近有频点。如果希望波形还原更加完善，可以在FDATOOL中提高阻带权重，以滤除0.4（二次谐波）与0.8附近的频率。</p>
+<figure data-type="image" tabindex="10"><img src="https://imgs.raincorn.top/imgs/202110081601907.png" alt="image-20211008105049483" loading="lazy"></figure>
+<h1 id="其他">其他</h1>
+<ul>
+<li>AM调制的调制效率最大为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，信号利用率较低，频带利用率也较低。但是由于其可通过包络检波直接提取原始信号，故其成本极低，现在仍被用于无线电广播。</li>
+<li>在FPGA仿真后，需要对仿真数据进行分析。此时建议使用MATLAB的“信号分析器”来对频谱进行分析，此APP的功能强大且易用。可用于查看信号频谱，滤波器初步设计，包络提取等功能，推荐。</li>
+<li>FPGA的操作中受限于资源所限，常常会对数据进行截位，此时可以根据信号的仿真波形以及IP核的Implementation上的接口说明来撰写截位代码。</li>
+</ul>
+<h1 id="参考文献">参考文献</h1>
+<blockquote>
+<p>《通信原理（第七版）》樊昌信 曹丽娜著</p>
+</blockquote>
+<blockquote>
+<p>《数字调制解调技术的MATLAB与FPGA实现》 杜勇著</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于]]></title>
+        <id>https://rainvalley.github.io/about/</id>
+        <link href="https://rainvalley.github.io/about/">
+        </link>
+        <updated>2022-01-20T12:19:56.000Z</updated>
+        <content type="html"><![CDATA[<p>Hello，由于之前站点的备份丢失，Markdown源文件已无法恢复。原站点已作归档处理，归档在<a href="https://old.raincorn.top">old.raincorn.top</a>。</p>
+<h1 id="博主是谁">博主是谁</h1>
+<p>在校学生。</p>
+<h1 id="擅长什么">擅长什么</h1>
+<p>软硬件都略有涉猎，目前的精力主要集中在FPGA/ASIC开发上，当然通信是老本行。</p>
+<h1 id="联系方式">联系方式</h1>
+<p>我的邮箱为：i@raincorn.top 。</p>
+]]></content>
+    </entry>
+</feed>
