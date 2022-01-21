@@ -1,123 +1,116 @@
 <html>
-<head>
-    <meta charset="utf-8"/>
-<meta name="description" content=""/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>AM调制解调的MATLAB与FPGA实现 | Chores</title>
-
-<link rel="shortcut icon" href="https://raincorn.top/favicon.ico?v=1642738649783">
-
-<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://raincorn.top/favicon.ico?v=1642750140019">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://raincorn.top/styles/main.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
-
-<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
-<!-- DEMO JS -->
-<!--<script src="media/scripts/index.js"></script>-->
+<link rel="alternate" type="application/atom+xml" title="AM调制解调的MATLAB与FPGA实现 | Chores - Atom Feed" href="https://raincorn.top/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
-</head>
-<body>
-<div class="main gt-bg-theme-color-first">
-    <nav class="navbar navbar-expand-lg">
-    <div class="navbar-brand">
-        <img class="user-avatar" src="/images/avatar.png" alt="头像">
-        <div class="site-name gt-c-content-color-first">
-            Chores
-        </div>
-    </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav mr-auto" style="text-align: center">
+    <meta name="description" content="新手福利 --- AM信号调制解调
+在模拟通信系统中，基带信号通过对载波波形幅度，相位，频率的调制以达到将信号在载波上传输信息的目的。根据基带信号的类型可分为：模拟调制 &amp; 数字调制。
+调制原理
+本文所述AM（Amplitude M..." />
+    <meta name="keywords" content="FPGA,MATLAB,Communication" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://raincorn.top">
+  <img class="avatar" src="https://raincorn.top/images/avatar.png?v=1642750140019" alt="">
+  </a>
+  <h1 class="site-title">
+    Chores
+  </h1>
+  <p class="site-description">
+    傅立叶是一首数学的诗，黑格尔是一首辩证法的诗。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              AM调制解调的MATLAB与FPGA实现
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-01-20
+              </span>
+              <span>
+                14 min read
+              </span>
+              
+                <a href="https://raincorn.top/dYuK3v1f0/" class="post-tag">
+                  # FPGA
+                </a>
+              
+                <a href="https://raincorn.top/CLW8Ujhs1p/" class="post-tag">
+                  # MATLAB
+                </a>
+              
+                <a href="https://raincorn.top/p0it-EpF9y/" class="post-tag">
+                  # Communication
+                </a>
+              
+            </div>
             
-                <div class="nav-item">
-                    
-                        <a href="/" class="menu gt-a-link">
-                            首页
-                        </a>
-                    
-                </div>
+              <img class="post-feature-image" src="https://imgs.raincorn.top/imgs/202110081602581.png" alt="">
             
-                <div class="nav-item">
-                    
-                        <a href="/archives" class="menu gt-a-link">
-                            归档
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="/tags" class="menu gt-a-link">
-                            标签
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="/about" class="menu gt-a-link">
-                            关于
-                        </a>
-                    
-                </div>
-            
-        </div>
-        <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1642738649783" action="/search/index.html">
-                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
-                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
-            </form>
-        </div>
-    </div>
-</nav>
-
-    <div class="post-container">
-        <div class="post-detail gt-bg-theme-color-second">
-            <article class="gt-post-content">
-                <h2 class="post-title">
-                    AM调制解调的MATLAB与FPGA实现
-                </h2>
-                <div class="post-info">
-                    <time class="post-time gt-c-content-color-first">
-                        · 2022-01-20 ·
-                    </time>
-                    
-                        <a href="https://raincorn.top/dYuK3v1f0/" class="post-tags">
-                            # FPGA
-                        </a>
-                    
-                        <a href="https://raincorn.top/CLW8Ujhs1p/" class="post-tags">
-                            # MATLAB
-                        </a>
-                    
-                        <a href="https://raincorn.top/p0it-EpF9y/" class="post-tags">
-                            # Communication
-                        </a>
-                    
-                </div>
-                <div class="post-content">
-                    <h1 id="新手福利-am信号调制解调">新手福利 --- AM信号调制解调</h1>
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="新手福利-am信号调制解调">新手福利 --- AM信号调制解调</h1>
 <p>在模拟通信系统中，基带信号通过对载波波形幅度，相位，频率的调制以达到将信号在载波上传输信息的目的。根据基带信号的类型可分为：模拟调制 &amp; 数字调制。</p>
 <h1 id="调制原理">调制原理</h1>
-<p>本文所述AM（<em>Amplitude Modulation</em>）调制，即是模拟信号对载波幅度进行调制，通过与载波信号相乘来进行频谱搬移。其中第一个公式为时域表达式，第二个公式为频域表达式。</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mrow><mi>A</mi><mi>M</mi></mrow></msub><mo>=</mo><mo>(</mo><msub><mi>A</mi><mn>0</mn></msub><mo>+</mo><mi>m</mi><mo>(</mo><mi>t</mi><mo>)</mo><mo>)</mo><mo>∗</mo><mi>c</mi><mi>o</mi><mi>s</mi><mo>(</mo><msub><mi>w</mi><mi>c</mi></msub><mi>t</mi><mo>+</mo><msub><mi>ϕ</mi><mi>c</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">S_{AM}=(A_0+m(t))*cos(w_ct+\phi_c)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mrow><mi>A</mi><mi>M</mi></mrow></msub><mo>(</mo><mi>ω</mi><mo>)</mo><mo>=</mo><mfrac><msub><mi>A</mi><mn>0</mn></msub><mn>2</mn></mfrac><mo>∗</mo><mo>[</mo><mi>M</mi><mo>(</mo><mi>ω</mi><mo>+</mo><msub><mi>ω</mi><mi>c</mi></msub><mo>)</mo><mo>+</mo><mi>M</mi><mo>(</mo><mi>ω</mi><mo>−</mo><msub><mi>ω</mi><mi>c</mi></msub><mo>)</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">S_{AM}(\omega)=\frac{A_0}{2}*[M(\omega+\omega_c)+M(\omega-\omega_c)]
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.04633em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">]</span></span></span></span></span></p>
+<p>本文所述AM（<em>Amplitude Modulation</em>）调制，即是模拟信号对载波幅度进行调制，通过与载波信号相乘来进行频谱搬移。其中第一个公式为时域表达式，第二个公式为频域表达式。<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mrow><mi>A</mi><mi>M</mi></mrow></msub><mo>=</mo><mo>(</mo><msub><mi>A</mi><mn>0</mn></msub><mo>+</mo><mi>m</mi><mo>(</mo><mi>t</mi><mo>)</mo><mo>)</mo><mo>∗</mo><mi>c</mi><mi>o</mi><mi>s</mi><mo>(</mo><msub><mi>w</mi><mi>c</mi></msub><mi>t</mi><mo>+</mo><msub><mi>ϕ</mi><mi>c</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">S_{AM}=(A_0+m(t))*cos(w_ct+\phi_c)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mrow><mi>A</mi><mi>M</mi></mrow></msub><mo>(</mo><mi>ω</mi><mo>)</mo><mo>=</mo><mfrac><msub><mi>A</mi><mn>0</mn></msub><mn>2</mn></mfrac><mo>∗</mo><mo>[</mo><mi>M</mi><mo>(</mo><mi>ω</mi><mo>+</mo><msub><mi>ω</mi><mi>c</mi></msub><mo>)</mo><mo>+</mo><mi>M</mi><mo>(</mo><mi>ω</mi><mo>−</mo><msub><mi>ω</mi><mi>c</mi></msub><mo>)</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">S_{AM}(\omega)=\frac{A_0}{2}*[M(\omega+\omega_c)+M(\omega-\omega_c)]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.233431em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8884309999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4101em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">]</span></span></span></span></p>
 <p>在上文的公式中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mo>(</mo><mi>t</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">m(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span></span></span></span>为基带信号（一般为低频信号），<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>A</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">A_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>为直流偏置，用来将基带信号叠加到正半轴，使得在调制后信号仍然保持着<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mo>(</mo><mi>t</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">m(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span></span></span></span>的包络。其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>o</mi><mi>s</mi><mo>(</mo><msub><mi>w</mi><mi>c</mi></msub><mi>t</mi><mo>+</mo><msub><mi>ϕ</mi><mi>c</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">cos(w_ct+\phi_c)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>为载波信号，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>ω</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">\omega_c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>为载波角频率。</p>
 <p>在描述AM信号的调制深度时，常定义为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi>m</mi><mo>(</mo><mi>t</mi><msub><mo>)</mo><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow><msub><mi>A</mi><mn>0</mn></msub></mfrac></mrow><annotation encoding="application/x-tex">\frac{m(t)_{max}}{A_0}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.4550999999999998em;vertical-align:-0.44509999999999994em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">t</span><span class="mclose mtight"><span class="mclose mtight">)</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.44509999999999994em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，当调制深度大于1时为过调幅现象，此时因为存在相位突变，调制后的信号包络无法反映原始信号<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mo>(</mo><mi>t</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">m(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span></span></span></span>。</p>
 <h1 id="matlab仿真">MATLAB仿真</h1>
@@ -132,7 +125,7 @@
 </blockquote>
 <h2 id="调制">调制</h2>
 <p>在MATLAB调制的仿真中，我们需要将基带信号输出到TXT文档，供FPGA仿真时读取，作为AD采样的数值。同时绘制调制后的频域波形与时域波形，便于直观对照。</p>
-<pre><code class="language-matlab">close all;clear;clc;
+<pre><code class="language-txt">close all;clear;clc;
 fs=10e6;
 f1=100e3;
 f2=1e6;
@@ -214,7 +207,7 @@ fclose(fid);
 <p>本设计所用到的IP核Summary如下：</p>
 <figure data-type="image" tabindex="6"><img src="https://imgs.raincorn.top/imgs/202110081602998.png" alt="image-20211008103639198" loading="lazy"></figure>
 <h2 id="调制源文件">调制源文件</h2>
-<pre><code class="language-verilog">`timescale 1ns / 1ps
+<pre><code class="language-txt">`timescale 1ns / 1ps
 
 module am_mod(
     input sys_clk,
@@ -263,7 +256,7 @@ endmodule
 </code></pre>
 <h2 id="调制testbench">调制TestBench</h2>
 <p>注意此处的文件读写操作，用来输入基带信号，输出调制信号，输出到TXT的数据可在MATLAB中进一步的验证正确性。此外，fdisplay这个函数会根据wire或者reg在程序中定义的类型进行输出，此处定义为signed，默认为unsigned。注意将所需要的调试文件设为顶层设计。</p>
-<pre><code class="language-verilog">`timescale 1ns / 1ps
+<pre><code class="language-txt">`timescale 1ns / 1ps
 
 module am_mod_tb(
     );
@@ -332,11 +325,11 @@ endmodule
 <figure data-type="image" tabindex="8"><img src="https://imgs.raincorn.top/imgs/202110081602436.png" alt="image-20211008110042168" loading="lazy"></figure>
 <h2 id="调制截位">调制截位</h2>
 <p>由于我们使用的AD/DA模块是黑金的AN108，其输入输出均为8bit无符号数据，因此需要进行转换。注意此处因为第15位与14位相同，故此处直接将第15位作为符号位，以提高截位后的精度。</p>
-<pre><code class="language-verilog">assign am_mod = {mult_data[15],mult_data[13:7]} + 8'd128;
+<pre><code class="language-txt">assign am_mod = {mult_data[15],mult_data[13:7]} + 8'd128;
 </code></pre>
 <h2 id="解调源文件">解调源文件</h2>
 <p>AM信号的调制可以直接采用包络检波，在大信噪比的时候其性能与相干解调差距不大。使用Verilog来进行包络检波总体分为：整流&amp;滤波。其中整流即是对原始信号取绝对值操作，本工程中通过判断am_mod最高位来实现。滤波即使用FIR IP核来进行，通过在FDATOOL中设计一个通带归一化频率为0.02的滤波器，将系数导入到Vivado即可。注意在仿真数据出来以后可以将其放入信号分析器观察频谱，调整通阻带增益来达到更好的解调效果。</p>
-<pre><code class="language-verilog">`timescale 1ns / 1ps
+<pre><code class="language-txt">`timescale 1ns / 1ps
 
 module am_demod(
     input sys_clk,
@@ -387,7 +380,7 @@ ip_fir inst1 (
 endmodule
 </code></pre>
 <h2 id="解调testbench">解调TestBench</h2>
-<pre><code class="language-verilog">`timescale 1ns / 1ps
+<pre><code class="language-txt">`timescale 1ns / 1ps
 
 module am_demod_tb(
     );
@@ -475,27 +468,74 @@ endmodule
 <p>《数字调制解调技术的MATLAB与FPGA实现》 杜勇著</p>
 </blockquote>
 
-                </div>
-            </article>
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E6%96%B0%E6%89%8B%E7%A6%8F%E5%88%A9-am%E4%BF%A1%E5%8F%B7%E8%B0%83%E5%88%B6%E8%A7%A3%E8%B0%83">新手福利 --- AM信号调制解调</a></li>
+<li><a href="#%E8%B0%83%E5%88%B6%E5%8E%9F%E7%90%86">调制原理</a></li>
+<li><a href="#matlab%E4%BB%BF%E7%9C%9F">MATLAB仿真</a>
+<ul>
+<li><a href="#%E8%B0%83%E5%88%B6">调制</a></li>
+<li><a href="#%E8%A7%A3%E8%B0%83">解调</a></li>
+</ul>
+</li>
+<li><a href="#fpga%E4%BB%BF%E7%9C%9F">FPGA仿真</a>
+<ul>
+<li><a href="#ip%E6%A0%B8">IP核</a>
+<ul>
+<li><a href="#clocking-wizard">Clocking Wizard</a></li>
+<li><a href="#dds-compiler">DDS Compiler</a>
+<ul>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#implementation">Implementation</a></li>
+<li><a href="#output-frequencies">Output Frequencies</a></li>
+</ul>
+</li>
+<li><a href="#multiplier">Multiplier</a></li>
+<li><a href="#fir-compiler">FIR Compiler</a>
+<ul>
+<li><a href="#filter-options">Filter Options</a></li>
+<li><a href="#channel-specification">Channel Specification</a></li>
+<li><a href="#implementation-2">Implementation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E8%B0%83%E5%88%B6%E6%BA%90%E6%96%87%E4%BB%B6">调制源文件</a></li>
+<li><a href="#%E8%B0%83%E5%88%B6testbench">调制TestBench</a></li>
+<li><a href="#%E8%B0%83%E5%88%B6%E7%BB%93%E6%9E%9C">调制结果</a></li>
+<li><a href="#%E8%B0%83%E5%88%B6%E6%88%AA%E4%BD%8D">调制截位</a></li>
+<li><a href="#%E8%A7%A3%E8%B0%83%E6%BA%90%E6%96%87%E4%BB%B6">解调源文件</a></li>
+<li><a href="#%E8%A7%A3%E8%B0%83testbench">解调TestBench</a></li>
+<li><a href="#%E8%A7%A3%E8%B0%83%E7%BB%93%E6%9E%9C">解调结果</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B6%E4%BB%96">其他</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">参考文献</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
         </div>
 
         
-            <div class="next-post">
-                <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://raincorn.top/about/" class="post-title gt-a-link">
-                    关于
-                </a>
-            </div>
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://raincorn.top/about/">
+              <h3 class="post-title">
+                关于
+              </h3>
+            </a>
+          </div>
         
 
         
+          
 
-        
-            
-
-            
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs/dist/disqusjs.css">
-<script src="https://cdn.jsdelivr.net/npm/disqusjs/dist/disqus.js"></script>
+          
+            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
 
 <div id="disqus_thread"></div>
 
@@ -512,42 +552,58 @@ var dsqjs = new DisqusJS(options)
 
 </script>
 
-            
+          
         
 
-        
-
-        <div class="site-footer gt-c-content-color-first">
-    <div class="slogan gt-c-content-color-first">傅立叶是一首数学的诗，黑格尔是一首辩证法的诗。</div>
-    <div class="social-container">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    </div>
-    <div class="footer-info">
-        <a href="https://beian.miit.gov.cn/" target="_blank">豫ICP备20022245号</a>
-    </div>
-    <div>
-        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
-                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://raincorn.top/atom.xml" target="_blank">RSS</a></a>
-    </div>
+        <div class="site-footer">
+  <a href="https://beian.miit.gov.cn/" target="_blank">豫ICP备20022245号</a>
+  <a class="rss" href="https://raincorn.top/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
 </div>
 
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
-
+      </div>
     </div>
-</div>
-</body>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
 </html>
