@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>AM调制解调的MATLAB与FPGA实现 | Chores</title>
-<link rel="shortcut icon" href="https://raincorn.top/favicon.ico?v=1642750584622">
+<link rel="shortcut icon" href="https://raincorn.top/favicon.ico?v=1642754162982">
 <link href="https://cdn.baomitu.com/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://raincorn.top/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="AM调制解调的MATLAB与FPGA实现 | Chores - Atom Feed" href="https://raincorn.top/atom.xml">
@@ -24,7 +24,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://raincorn.top">
-  <img class="avatar" src="https://raincorn.top/images/avatar.png?v=1642750584622" alt="">
+  <img class="avatar" src="https://raincorn.top/images/avatar.png?v=1642754162982" alt="">
   </a>
   <h1 class="site-title">
     Chores
@@ -125,7 +125,7 @@
 </blockquote>
 <h2 id="调制">调制</h2>
 <p>在MATLAB调制的仿真中，我们需要将基带信号输出到TXT文档，供FPGA仿真时读取，作为AD采样的数值。同时绘制调制后的频域波形与时域波形，便于直观对照。</p>
-<pre><code class="language-txt">close all;clear;clc;
+<pre><code class="language-c">close all;clear;clc;
 fs=10e6;
 f1=100e3;
 f2=1e6;
@@ -207,7 +207,7 @@ fclose(fid);
 <p>本设计所用到的IP核Summary如下：</p>
 <figure data-type="image" tabindex="6"><img src="https://imgs.raincorn.top/imgs/202110081602998.png" alt="image-20211008103639198" loading="lazy"></figure>
 <h2 id="调制源文件">调制源文件</h2>
-<pre><code class="language-txt">`timescale 1ns / 1ps
+<pre><code class="language-c">`timescale 1ns / 1ps
 
 module am_mod(
     input sys_clk,
@@ -256,7 +256,7 @@ endmodule
 </code></pre>
 <h2 id="调制testbench">调制TestBench</h2>
 <p>注意此处的文件读写操作，用来输入基带信号，输出调制信号，输出到TXT的数据可在MATLAB中进一步的验证正确性。此外，fdisplay这个函数会根据wire或者reg在程序中定义的类型进行输出，此处定义为signed，默认为unsigned。注意将所需要的调试文件设为顶层设计。</p>
-<pre><code class="language-txt">`timescale 1ns / 1ps
+<pre><code class="language-c">`timescale 1ns / 1ps
 
 module am_mod_tb(
     );
@@ -325,11 +325,11 @@ endmodule
 <figure data-type="image" tabindex="8"><img src="https://imgs.raincorn.top/imgs/202110081602436.png" alt="image-20211008110042168" loading="lazy"></figure>
 <h2 id="调制截位">调制截位</h2>
 <p>由于我们使用的AD/DA模块是黑金的AN108，其输入输出均为8bit无符号数据，因此需要进行转换。注意此处因为第15位与14位相同，故此处直接将第15位作为符号位，以提高截位后的精度。</p>
-<pre><code class="language-txt">assign am_mod = {mult_data[15],mult_data[13:7]} + 8'd128;
+<pre><code class="language-c">assign am_mod = {mult_data[15],mult_data[13:7]} + 8'd128;
 </code></pre>
 <h2 id="解调源文件">解调源文件</h2>
 <p>AM信号的调制可以直接采用包络检波，在大信噪比的时候其性能与相干解调差距不大。使用Verilog来进行包络检波总体分为：整流&amp;滤波。其中整流即是对原始信号取绝对值操作，本工程中通过判断am_mod最高位来实现。滤波即使用FIR IP核来进行，通过在FDATOOL中设计一个通带归一化频率为0.02的滤波器，将系数导入到Vivado即可。注意在仿真数据出来以后可以将其放入信号分析器观察频谱，调整通阻带增益来达到更好的解调效果。</p>
-<pre><code class="language-txt">`timescale 1ns / 1ps
+<pre><code class="language-c">`timescale 1ns / 1ps
 
 module am_demod(
     input sys_clk,
@@ -380,7 +380,7 @@ ip_fir inst1 (
 endmodule
 </code></pre>
 <h2 id="解调testbench">解调TestBench</h2>
-<pre><code class="language-txt">`timescale 1ns / 1ps
+<pre><code class="language-c">`timescale 1ns / 1ps
 
 module am_demod_tb(
     );
