@@ -1,111 +1,116 @@
 <html>
-  <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
 <title>AM调制解调的MATLAB与FPGA实现 | Chores</title>
-<link rel="shortcut icon" href="https://raincorn.top/favicon.ico?v=1642734258184">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+
+<link rel="shortcut icon" href="https://raincorn.top/favicon.ico?v=1642738306541">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://raincorn.top/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="AM调制解调的MATLAB与FPGA实现 | Chores - Atom Feed" href="https://raincorn.top/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
 
 
 
-    <meta name="description" content="新手福利 --- AM信号调制解调
-在模拟通信系统中，基带信号通过对载波波形幅度，相位，频率的调制以达到将信号在载波上传输信息的目的。根据基带信号的类型可分为：模拟调制 &amp; 数字调制。
-调制原理
-本文所述AM（Amplitude M..." />
-    <meta name="keywords" content="FPGA,MATLAB,Communication" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-  </head>
-  <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://raincorn.top">
-  <img class="avatar" src="https://raincorn.top/images/avatar.png?v=1642734258184" alt="">
-  </a>
-  <h1 class="site-title">
-    Chores
-  </h1>
-  <p class="site-description">
-    傅立叶是一首数学的诗，黑格尔是一首辩证法的诗。
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/about" class="menu">
-          关于
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
-
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              AM调制解调的MATLAB与FPGA实现
-            </h2>
-            <div class="post-info">
-              <span>
-                2022-01-20
-              </span>
-              <span>
-                14 min read
-              </span>
-              
-                <a href="https://raincorn.top/dYuK3v1f0/" class="post-tag">
-                  # FPGA
-                </a>
-              
-                <a href="https://raincorn.top/CLW8Ujhs1p/" class="post-tag">
-                  # MATLAB
-                </a>
-              
-                <a href="https://raincorn.top/p0it-EpF9y/" class="post-tag">
-                  # Communication
-                </a>
-              
-            </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            Chores
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
             
-              <img class="post-feature-image" src="https://imgs.raincorn.top/imgs/202110081602581.png" alt="">
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <h1 id="新手福利-am信号调制解调">新手福利 --- AM信号调制解调</h1>
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1642738306541" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    AM调制解调的MATLAB与FPGA实现
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-01-20 ·
+                    </time>
+                    
+                        <a href="https://raincorn.top/dYuK3v1f0/" class="post-tags">
+                            # FPGA
+                        </a>
+                    
+                        <a href="https://raincorn.top/CLW8Ujhs1p/" class="post-tags">
+                            # MATLAB
+                        </a>
+                    
+                        <a href="https://raincorn.top/p0it-EpF9y/" class="post-tags">
+                            # Communication
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h1 id="新手福利-am信号调制解调">新手福利 --- AM信号调制解调</h1>
 <p>在模拟通信系统中，基带信号通过对载波波形幅度，相位，频率的调制以达到将信号在载波上传输信息的目的。根据基带信号的类型可分为：模拟调制 &amp; 数字调制。</p>
 <h1 id="调制原理">调制原理</h1>
 <p>本文所述AM（<em>Amplitude Modulation</em>）调制，即是模拟信号对载波幅度进行调制，通过与载波信号相乘来进行频谱搬移。其中第一个公式为时域表达式，第二个公式为频域表达式。</p>
@@ -470,74 +475,27 @@ endmodule
 <p>《数字调制解调技术的MATLAB与FPGA实现》 杜勇著</p>
 </blockquote>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li><a href="#%E6%96%B0%E6%89%8B%E7%A6%8F%E5%88%A9-am%E4%BF%A1%E5%8F%B7%E8%B0%83%E5%88%B6%E8%A7%A3%E8%B0%83">新手福利 --- AM信号调制解调</a></li>
-<li><a href="#%E8%B0%83%E5%88%B6%E5%8E%9F%E7%90%86">调制原理</a></li>
-<li><a href="#matlab%E4%BB%BF%E7%9C%9F">MATLAB仿真</a>
-<ul>
-<li><a href="#%E8%B0%83%E5%88%B6">调制</a></li>
-<li><a href="#%E8%A7%A3%E8%B0%83">解调</a></li>
-</ul>
-</li>
-<li><a href="#fpga%E4%BB%BF%E7%9C%9F">FPGA仿真</a>
-<ul>
-<li><a href="#ip%E6%A0%B8">IP核</a>
-<ul>
-<li><a href="#clocking-wizard">Clocking Wizard</a></li>
-<li><a href="#dds-compiler">DDS Compiler</a>
-<ul>
-<li><a href="#configuration">Configuration</a></li>
-<li><a href="#implementation">Implementation</a></li>
-<li><a href="#output-frequencies">Output Frequencies</a></li>
-</ul>
-</li>
-<li><a href="#multiplier">Multiplier</a></li>
-<li><a href="#fir-compiler">FIR Compiler</a>
-<ul>
-<li><a href="#filter-options">Filter Options</a></li>
-<li><a href="#channel-specification">Channel Specification</a></li>
-<li><a href="#implementation-2">Implementation</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#%E8%B0%83%E5%88%B6%E6%BA%90%E6%96%87%E4%BB%B6">调制源文件</a></li>
-<li><a href="#%E8%B0%83%E5%88%B6testbench">调制TestBench</a></li>
-<li><a href="#%E8%B0%83%E5%88%B6%E7%BB%93%E6%9E%9C">调制结果</a></li>
-<li><a href="#%E8%B0%83%E5%88%B6%E6%88%AA%E4%BD%8D">调制截位</a></li>
-<li><a href="#%E8%A7%A3%E8%B0%83%E6%BA%90%E6%96%87%E4%BB%B6">解调源文件</a></li>
-<li><a href="#%E8%A7%A3%E8%B0%83testbench">解调TestBench</a></li>
-<li><a href="#%E8%A7%A3%E8%B0%83%E7%BB%93%E6%9E%9C">解调结果</a></li>
-</ul>
-</li>
-<li><a href="#%E5%85%B6%E4%BB%96">其他</a></li>
-<li><a href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">参考文献</a></li>
-</ul>
-
-              </div>
-            </div>
-          </article>
+                </div>
+            </article>
         </div>
 
         
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://raincorn.top/about/">
-              <h3 class="post-title">
-                关于
-              </h3>
-            </a>
-          </div>
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://raincorn.top/about/" class="post-title gt-a-link">
+                    关于
+                </a>
+            </div>
         
 
         
-          
 
-          
-            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
-<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+        
+            
+
+            
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs/dist/disqusjs.css">
+<script src="https://cdn.jsdelivr.net/npm/disqusjs/dist/disqus.js"></script>
 
 <div id="disqus_thread"></div>
 
@@ -554,58 +512,42 @@ var dsqjs = new DisqusJS(options)
 
 </script>
 
-          
+            
         
 
-        <div class="site-footer">
-  <a href="https://beian.miit.gov.cn/" target="_blank">豫ICP备20022245号</a>
-  <a class="rss" href="https://raincorn.top/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">傅立叶是一首数学的诗，黑格尔是一首辩证法的诗。</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        <a href="https://beian.miit.gov.cn/" target="_blank">豫ICP备20022245号</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://raincorn.top/atom.xml" target="_blank">RSS</a></a>
+    </div>
 </div>
 
-      </div>
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
     </div>
-
-    <script>
-      hljs.initHighlightingOnLoad()
-
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
-
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
-
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
-
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
-
-    </script>
-  </body>
+</div>
+</body>
 </html>

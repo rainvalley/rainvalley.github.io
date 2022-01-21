@@ -1,10 +1,12 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Chores</title>
+<title>搜索 - Chores</title>
 
 <link rel="shortcut icon" href="https://raincorn.top/favicon.ico?v=1642738306541">
 
@@ -25,10 +27,20 @@
 
 
 
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.0/dist/fuse.basic.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ejs@3.1.3/ejs.min.js"></script>
+    <script src="https://raincorn.top/media/gridea-search/gridea-search.js"></script>
+    <script src="https://raincorn.top/media/gridea-search/result-template.ejs" type="text/ejs"></script>
 </head>
+
 <body>
-<div class="main gt-bg-theme-color-first">
-    <div class="main-content">
+    <style>
+        .searched-keyword {
+            background-color: yellow;
+            color: red;
+        }
+    </style>
+    <div class="main gt-bg-theme-color-first">
         <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
@@ -85,49 +97,16 @@
     </div>
 </nav>
 
-        <div class="post-container">
-            <div class="post-detail gt-bg-theme-color-first">
-                <article class="gt-post-content">
-                    <h2 class="post-title">归档</h2>
-        
-
-<div class="archives-container">
-    
-        <h2 class="year gt-c-cotent-color-first">2022</h2>
-        
-            
-                <article class="post">
-                    <a href="https://raincorn.top/AM_Mod_and_Demod/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2022-01-20&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            AM调制解调的MATLAB与FPGA实现
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://raincorn.top/about/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2022-01-20&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            关于
-                        </div>
-                    </a>
-                </article>
-            
-        
-    
-</div>
-
-        <div class="pagination-container">
-    
-    
-</div>
-
-    </article>
-</div>
-</div>
+        <div id="gridea-search-result" data-update="1642738306541">
+            <div class="searching" style="font-size: 18px; margin-top: 50px;">
+                <i class="fa fa-sync-alt fa-spin"></i>&nbsp;&nbsp;搜索中......
+                <br><br>
+                <span style="font-size: 65%; color: #aaa">第一次搜索可能需要耗费较长时间构建索引，请耐心等待...</span>
+            </div>
+            <div class="no-result" style="display:none; font-size: 20px; margin-top: 50px;">
+                <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;未搜索到相关文章，请更换关键词
+            </div>
+        </div>
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">傅立叶是一首数学的诗，黑格尔是一首辩证法的诗。</div>
     <div class="social-container">
@@ -159,6 +138,6 @@
 </script>
 
     </div>
-</div>
 </body>
+
 </html>
