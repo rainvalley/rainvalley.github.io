@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://raincorn.top</id>
     <title>Chores</title>
-    <updated>2022-01-23T17:18:35.133Z</updated>
+    <updated>2022-01-24T04:36:39.248Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://raincorn.top"/>
     <link rel="self" href="https://raincorn.top/atom.xml"/>
@@ -726,7 +726,7 @@ endmodule
         <link href="https://raincorn.top/about/">
         </link>
         <updated>2022-01-20T12:19:56.000Z</updated>
-        <content type="html"><![CDATA[<p>由于之前站点的备份丢失，Markdown源文件已无法恢复。原站点已作归档处理，归档在<a href="https://old.raincorn.top">old.raincorn.top</a>。</p>
+        <content type="html"><![CDATA[<p>由于之前站点的备份丢失，Markdown源文件已无法恢复。原站点已作归档处理，归档在<a href="https://blog.raincorn.top">blog.raincorn.top</a>。</p>
 <h1 id="博主是谁">博主是谁</h1>
 <p>一名普通到不能再普通的在校学生，目前大三。</p>
 <h1 id="擅长什么">擅长什么</h1>
