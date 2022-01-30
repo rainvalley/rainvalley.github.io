@@ -1,0 +1,607 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>信号发生器的设计与实现 | Chores</title>
+<link rel="shortcut icon" href="https://raincorn.top/favicon.ico?v=1643557587971">
+<link href="https://cdn.baomitu.com/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://raincorn.top/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="信号发生器的设计与实现 | Chores - Atom Feed" href="https://raincorn.top/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="设计目标
+在本文中，我们将在XO2-4000HC开发平台上，借助外部高速DAC实现：
+
+DC~20MHz的正弦波，方波，三角波，锯齿波
+通过旋转编码器控制产生的信号频率与幅度（1 Vpp）
+波形的信息可以实时通过OLED显示屏查看
+
+
+DD..." />
+    <meta name="keywords" content="Signal,FPGA" />
+    <link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://raincorn.top">
+  <img class="avatar" src="https://raincorn.top/images/avatar.png?v=1643557587971" alt="">
+  </a>
+  <h1 class="site-title">
+    Chores
+  </h1>
+  <p class="site-description">
+    傅立叶是一首数学的诗，黑格尔是一首辩证法的诗。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              信号发生器的设计与实现
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-01-30
+              </span>
+              <span>
+                14 min read
+              </span>
+              
+                <a href="https://raincorn.top/sRUHVhQ0Ac/" class="post-tag">
+                  # Signal
+                </a>
+              
+                <a href="https://raincorn.top/dYuK3v1f0/" class="post-tag">
+                  # FPGA
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://imgs.raincorn.top/imgs/202201302204845.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="设计目标">设计目标</h1>
+<p>在本文中，我们将在XO2-4000HC开发平台上，借助外部高速DAC实现：</p>
+<ul>
+<li>DC~20MHz的正弦波，方波，三角波，锯齿波</li>
+<li>通过旋转编码器控制产生的信号频率与幅度（1 Vpp）</li>
+<li>波形的信息可以实时通过OLED显示屏查看</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://imgs.raincorn.top/imgs/202201302204845.jpg" alt="DDS发生器" loading="lazy"></figure>
+<h1 id="dds原理及实现">DDS原理及实现</h1>
+<p>DDS全称为直接数字式频率合成计（Direct Digital Synthesizer），将需要输出的数据储存在ROM中，按照一定的频率去读取后通过DAC输出即可。一个完整的DDS模块应当包括：查找表、相位控制器、DAC、外部滤波器，后文将详细叙述。如果希望更加直观地了解到DDS的工作原理以及设计细节，可以访问<a href="https://tools.analog.com/cn/simdds/">ADI DDS仿真器</a>，在该在线工具中你可以直观地看到每个周期的采样过程以及后置滤波器的原理。</p>
+<p>DDS实现信号发生器需要以下参数：</p>
+<ul>
+<li>
+<p>信号的采样率：根据奈奎斯特采样定理<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>s</mi></msub><mo>≥</mo><mn>2</mn><msub><mi>f</mi><mi>h</mi></msub></mrow><annotation encoding="application/x-tex">f_s\ge2f_h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">h</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，理论上每个周期采样两个点即可恢复原始波形。但是请注意，以正弦波为例采样波形此时为三角波，这就对滤波器的设计提出了很高的要求。因为在实际应用中我们常常会在一周期采样多个点，本设计中采样率为120MHz，即一个周期采样6个点。</p>
+</li>
+<li>
+<p>相位控制字宽度：相位控制字决定了信号采样的增量间隔，理论上一个信号的最小分辨率<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>e</mi><mi>s</mi><mo>=</mo><mfrac><msub><mi>f</mi><mi>s</mi></msub><msup><mn>2</mn><mi>n</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">res=\frac{f_s}{2^n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.277216em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9322159999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5935428571428571em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.446108em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.10764em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，在本设计中取28 bit以达到0.447Hz左右的频率分辨率。</p>
+</li>
+<li>
+<p>相位控制字增量：在上文中我们确定了频率的分辨率，将频率与分辨率相除即可得到单位增量。</p>
+</li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="https://imgs.raincorn.top/imgs/202201302247496.png" alt="ADI DDS仿真器" loading="lazy"></figure>
+<h2 id="查找表">查找表</h2>
+<p>DDS的实现通过查找ROM表实现，ROM表保存了一个正弦信号在不同相位时的信号幅值，当以一定频率取出时即实现了信号的发生。在改设计中，使用了一个长度为256，宽度为10 bit的正弦表。由于正弦信号的幅值存在对称性，因此实际只储存64*9 bit的正弦表。实现的代码如下所示，通过地址的高两位来判断信号所处的象限，进而实现对幅值的补偿。</p>
+<pre><code class="language-c">module lut(
+	input [7:0] address,
+	output reg [9:0] cos
+);
+
+wire [1:0] section;
+reg [5:0] lut_address;
+reg [8:0] lut_cos;
+assign section = address[7:6]; //Get the sections of cos wave to reduce memory
+
+always@(address)begin
+	case(section)
+		2'b00: begin
+					lut_address = address[5:0];
+					cos = 9'h1ff + lut_cos;
+			   end
+		2'b01: begin
+					lut_address = ~address[5:0];
+					cos = 9'h1ff + lut_cos;
+			   end
+		2'b10: begin
+					lut_address = address[5:0];
+					cos = 9'h1ff - lut_cos;
+			   end
+		2'b11: begin
+					lut_address = ~address[5:0];
+					cos = 9'h1ff - lut_cos;
+			   end			   
+	endcase
+end
+
+always @(lut_address) begin
+	case(lut_address)	
+      6'h0: lut_cos=9'h0;
+      6'h1: lut_cos=9'hC;
+      6'h2: lut_cos=9'h19;
+      6'h3: lut_cos=9'h25;
+      6'h4: lut_cos=9'h32;
+      6'h5: lut_cos=9'h3E;
+      6'h6: lut_cos=9'h4B;
+      6'h7: lut_cos=9'h57;
+      6'h8: lut_cos=9'h63;
+      6'h9: lut_cos=9'h70;
+      6'ha: lut_cos=9'h7C;
+      6'hb: lut_cos=9'h88;
+      6'hc: lut_cos=9'h94;
+      6'hd: lut_cos=9'hA0;
+      6'he: lut_cos=9'hAC;
+      6'hf: lut_cos=9'hB8;
+      6'h10: lut_cos=9'hC3;
+      6'h11: lut_cos=9'hCF;
+      6'h12: lut_cos=9'hDA;
+      6'h13: lut_cos=9'hE6;
+      6'h14: lut_cos=9'hF1;
+      6'h15: lut_cos=9'hFC;
+      6'h16: lut_cos=9'h107;
+      6'h17: lut_cos=9'h111;
+      6'h18: lut_cos=9'h11C;
+      6'h19: lut_cos=9'h126;
+      6'h1a: lut_cos=9'h130;
+      6'h1b: lut_cos=9'h13A;
+      6'h1c: lut_cos=9'h144;
+      6'h1d: lut_cos=9'h14E;
+      6'h1e: lut_cos=9'h157;
+      6'h1f: lut_cos=9'h161;
+      6'h20: lut_cos=9'h16A;
+      6'h21: lut_cos=9'h172;
+      6'h22: lut_cos=9'h17B;
+      6'h23: lut_cos=9'h183;
+      6'h24: lut_cos=9'h18B;
+      6'h25: lut_cos=9'h193;
+      6'h26: lut_cos=9'h19B;
+      6'h27: lut_cos=9'h1A2;
+      6'h28: lut_cos=9'h1A9;
+      6'h29: lut_cos=9'h1B0;
+      6'h2a: lut_cos=9'h1B7;
+      6'h2b: lut_cos=9'h1BD;
+      6'h2c: lut_cos=9'h1C3;
+      6'h2d: lut_cos=9'h1C9;
+      6'h2e: lut_cos=9'h1CE;
+      6'h2f: lut_cos=9'h1D4;
+      6'h30: lut_cos=9'h1D9;
+      6'h31: lut_cos=9'h1DD;
+      6'h32: lut_cos=9'h1E2;
+      6'h33: lut_cos=9'h1E6;
+      6'h34: lut_cos=9'h1E9;
+      6'h35: lut_cos=9'h1ED;
+      6'h36: lut_cos=9'h1F0;
+      6'h37: lut_cos=9'h1F3;
+      6'h38: lut_cos=9'h1F6;
+      6'h39: lut_cos=9'h1F8;
+      6'h3a: lut_cos=9'h1FA;
+      6'h3b: lut_cos=9'h1FC;
+      6'h3c: lut_cos=9'h1FD;
+      6'h3d: lut_cos=9'h1FE;
+      6'h3e: lut_cos=9'h1FF;
+      6'h3f: lut_cos=9'h1FF;
+   endcase
+end
+
+endmodule
+</code></pre>
+<h2 id="相位控制器">相位控制器</h2>
+<p>相位控制器是DDS设计中的核心，此设计可以直接影响信号的精度与稳定性。在前文叙述参数时已经提及，信号的控制字增量满足：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>d</mi><mi>d</mi><mo>=</mo><mfrac><mi>f</mi><mrow><mi>r</mi><mi>e</mi><mi>s</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">Add = \frac{f}{res}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault">d</span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.277216em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9322159999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight">s</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.446108em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>，即增量等于信号频率除以分辨率。由于乘除法操作在没有DSP单元的FPGA内部十分消耗资源，因此此处采用移位相加，如下所示。将频率与分辨率的除法转化为乘法，对乘法因子转换为二进制后取一定的精度即可。</p>
+<pre><code class="language-c">assign dds_phase_add = (wave_freq &lt;&lt; 1) + (wave_freq &gt;&gt; 3) + (wave_freq &gt;&gt; 4) + (wave_freq &gt;&gt; 5) + (wave_freq &gt;&gt; 6) + (wave_freq &gt;&gt; 9) + (wave_freq &gt;&gt; 11) + (wave_freq &gt;&gt; 13); //wave_freq*2.2369384765625(10.00111100101010);
+</code></pre>
+<p>相位增量的控制单元有如下实现，可以观察到查找表的输出取决于当前的信号分量。</p>
+<pre><code class="language-c">always@(posedge sys_clk or negedge sys_rst_n)begin
+	if(!sys_rst_n)begin
+		dds_phase &lt;= 28'd0;
+	end else begin
+		dds_phase &lt;= dds_phase + dds_phase_add;
+	end
+end
+
+lut u_lut(
+	.address(dds_phase[27:20]),
+	.cos(cos_dac)
+);
+</code></pre>
+<p>同时，在输出正弦波信号的同时我们需要输出方波、三角波、锯齿波，这些波形的产生均可通过对相位控制字截位进行。</p>
+<pre><code class="language-c">//Code below is designed to generate Square wave
+assign square_dac = {10{dds_phase[27]}};
+//Code below is designed to generate Trig wave
+assign trig_dac = dds_phase[27] ? ~dds_phase[26:17] : dds_phase[26:17];
+//Code below is designed to generate Saw wave
+assign saw_dac = dds_phase[27:18];
+</code></pre>
+<p>将所有信号通过一个多路选择器送出，即可实现不同类型的信号输出。</p>
+<h2 id="dac与滤波器">DAC与滤波器</h2>
+<p>本设计中高速DAC的时钟输入为120MHz，直接使用内部的锁相环IP核即可。注意在一般的应用中通常将外部的时钟信号经过锁相环稳定后再用作系统时钟，以保证时钟质量，使用锁相环的locked信号与外部复位信号一起用作系统复位。将该信号直接输出到DAC的时钟引脚，同时在D9~D0上并行送出数据即可实现数模转换。</p>
+<pre><code class="language-c">wire pll_locked;
+assign sys_rst_n = in_rst_n &amp; pll_locked;
+pll u_pll(
+	.CLKI(in_clk),
+	.CLKOP(dac_clk),
+	.CLKOS(sys_clk),
+	.LOCK(pll_locked)
+);
+</code></pre>
+<p>为保证模拟信号的质量，滤除高次谐波，往往会在DAC的输出级加入一个低通滤波器。在选择滤波器的截止频率与阶次时需注意，信号越接近需要发射的频点最后的波形信噪比越高，但同时会引入些许衰减。我一般的做法是选择一个高阶的滤波器，同时设置较高的截止频率。</p>
+<h1 id="旋转编码器译码">旋转编码器译码</h1>
+<p>板子上选用的编码器为增量式触电电刷编码器，型号为EC11。FPGA通过对A、B、S引脚的读取，进而识别出按键的状态：左转、右转、按下。其中S与传统按键类似，本电路中按下输出高电平，松手下拉到低电平。</p>
+<figure data-type="image" tabindex="3"><img src="https://imgs.raincorn.top/imgs/202201302304576.png" alt="旋转编码器原理图" loading="lazy"></figure>
+<p>按键S的消抖操作如下，对其进行20ms的消抖并输出一个时钟的高电平信号。</p>
+<pre><code class="language-c">parameter CNT_20MS_MAX = 240_000; //To scan keys
+
+//To D-reg the S input to sync data
+reg r_encoder_s;
+always@(posedge sys_clk or negedge sys_rst_n)begin
+	if(!sys_rst_n)begin
+		r_encoder_s &lt;= 1'b0;
+	end else begin
+		r_encoder_s &lt;= encoder_s;
+	end
+end
+
+//To provide 20ms counter to filter keys
+reg [19:0] cnt_20ms;
+always@(posedge sys_clk or negedge sys_rst_n)begin
+	if(!sys_rst_n)begin
+		cnt_20ms &lt;= 20'd0;
+	end else if(encoder_s == 1'b0)begin
+		cnt_20ms &lt;= 20'd0;
+	end else if(cnt_20ms == CNT_20MS_MAX - 1 &amp;&amp; encoder_s == 1'b1)begin
+		cnt_20ms &lt;= cnt_20ms;
+	end else begin
+		cnt_20ms &lt;= cnt_20ms + 1'b1;
+	end
+end
+                
+//To provide 1 clock cycle signal
+always@(posedge sys_clk or negedge sys_rst_n)begin
+	if(!sys_rst_n)begin
+		encoder_ok &lt;= 1'b0;
+	end else if(cnt_20ms == CNT_20MS_MAX - 2)begin
+		encoder_ok &lt;= 1'b1;
+	end else begin
+		encoder_ok &lt;= 1'b0;
+	end
+end
+</code></pre>
+<p>通过对A、B输出的信号相位进行判断即可得到编码器的旋转方向，当顺时针旋转时A信号提前B信号90°，逆时针旋转时B信号提前A信号90°。根据A、B信号相位的变化可以得到下述判断准则：</p>
+<ul>
+<li>A信号上升沿B信号低电平，A信号下降沿B信号高电平，编码器顺时针旋转。</li>
+<li>A信号上升沿B信号高电平，A信号下降沿B信号低电平，编码器逆时针旋转。</li>
+</ul>
+<figure data-type="image" tabindex="4"><img src="https://imgs.raincorn.top/imgs/202201302309987.png" alt="旋转编码器示意" loading="lazy"></figure>
+<p>编码器旋转方向的判断如下，在边沿进行检测即可。</p>
+<pre><code class="language-c">parameter CNT_1MS_MAX = 12_000; //To get 1k sample rate 
+
+//The counter of 1k signal
+reg [15:0] cnt_1ms;
+always@(posedge sys_clk or negedge sys_rst_n)begin
+	if(!sys_rst_n)begin
+		cnt_1ms &lt;= 16'd0;
+	end else if(cnt_1ms == CNT_1MS_MAX - 1)begin
+		cnt_1ms &lt;= 16'd0;
+	end else begin
+		cnt_1ms &lt;= cnt_1ms + 1'b1;
+	end
+end
+
+//To D-reg the A&amp;B input to sync data using 1k clock
+reg r_encoder_a,rr_encoder_a;
+reg r_encoder_b,rr_encoder_b;
+always@(posedge sys_clk or negedge sys_rst_n)begin
+	if(!sys_rst_n)begin
+		r_encoder_a &lt;= 1'b0;
+		r_encoder_b &lt;= 1'b0;
+		rr_encoder_a &lt;= 1'b0;
+		rr_encoder_b &lt;= 1'b0;
+	end else if(cnt_1ms == CNT_1MS_MAX - 1)begin
+		r_encoder_a &lt;= encoder_a;
+		r_encoder_b &lt;= encoder_b;
+		rr_encoder_a &lt;= r_encoder_a;
+		rr_encoder_b &lt;= r_encoder_b;
+	end
+end
+
+wire state_a = encoder_a &amp;&amp; r_encoder_a &amp;&amp; rr_encoder_a;
+wire state_b = encoder_b &amp;&amp; r_encoder_b &amp;&amp; rr_encoder_b;
+reg r_state_a;
+always@(posedge sys_clk or negedge sys_rst_n)begin
+	if(!sys_rst_n)begin
+		r_state_a &lt;= 1'b0;
+	end else begin
+		r_state_a &lt;= state_a;
+	end
+end
+
+//To get the rise_edge and fall_edge
+wire encoder_a_rise;
+wire encoder_a_fall;
+assign encoder_a_rise = (r_state_a | state_a)&amp;(r_state_a == 1'b0);
+assign encoder_a_fall = (r_state_a | state_a)&amp;(state_a == 1'b0);
+always@(posedge sys_clk or negedge sys_rst_n)begin
+	if(!sys_rst_n)begin
+		encoder_left &lt;= 1'b0;
+		encoder_right &lt;= 1'b0;
+	end else if((encoder_a_rise &amp;&amp; rr_encoder_b)||(encoder_a_fall &amp;&amp; !rr_encoder_b))begin
+		encoder_left &lt;= 1'b1;
+		encoder_right &lt;= 1'b0;
+	end else if((encoder_a_fall &amp;&amp; rr_encoder_b)||(encoder_a_rise &amp;&amp; !rr_encoder_b))begin
+		encoder_right &lt;= 1'b1;
+		encoder_left &lt;= 1'b0;
+	end else begin
+		encoder_left &lt;= 1'b0;
+		encoder_right &lt;= 1'b0;
+	end
+end
+</code></pre>
+<p>注意，在上述实现的代码中均加入了信号的触发器锁存，此举的目的为了消除亚稳态与跨时钟域同步。</p>
+<h1 id="菜单调节">菜单调节</h1>
+<p>在本设计中，需要调节的共有三个参量：信号类型、信号频率、信号幅度。信号的调节过程通过状态机实现，共有四个状态：类型调节、频率调节、幅度调节、闲置。画出状态转移图后即可轻松完成该部分的设计，状态通过encoder_ok进行跳转。</p>
+<pre><code class="language-c">module menu(
+	input sys_clk,
+	input sys_rst_n,
+	
+	input encoder_left,
+	input encoder_right,
+	input encoder_ok,
+	
+//	output [7:0] debug,
+	
+	output [1:0] type_ctrl,
+	output [31:0] freq_ctrl,
+	output [3:0] amp_ctrl
+);
+
+parameter TYPE_CTRL = 2'b00;
+parameter FREQ_CTRL = 2'b01;
+parameter AMP_CTRL = 2'b10;
+parameter IDLE = 2'b11;
+
+reg [1:0] state;
+always@(posedge sys_clk or negedge sys_rst_n)begin
+	if(!sys_rst_n)begin
+		state &lt;= TYPE_CTRL;
+	end else if(encoder_ok)begin
+		state &lt;= state + 1'b1;
+	end
+end
+
+reg [1:0] buff_type_ctrl;
+reg [31:0] buff_freq_ctrl;
+reg [3:0] buff_amp_ctrl;
+always@(posedge sys_clk or negedge sys_rst_n)begin
+	if(!sys_rst_n)begin
+		buff_type_ctrl &lt;= 2'd0;
+	end else if(state == TYPE_CTRL &amp;&amp; encoder_right)begin
+		buff_type_ctrl &lt;= buff_type_ctrl + 2'd1;
+	end else begin
+		buff_type_ctrl &lt;= buff_type_ctrl;
+	end
+end
+
+always@(posedge sys_clk or negedge sys_rst_n)begin
+	if(!sys_rst_n)begin
+		buff_freq_ctrl = 32'd100_000;
+	end else begin
+		if(state == FREQ_CTRL &amp;&amp; encoder_right)begin
+			buff_freq_ctrl = buff_freq_ctrl + 32'd100_000;
+		end else if(state == FREQ_CTRL &amp;&amp; encoder_left)begin
+			buff_freq_ctrl = buff_freq_ctrl - 32'd100_000;
+		end
+		
+		if(buff_freq_ctrl &gt;= 32'd20_000_000)begin
+			buff_freq_ctrl = 32'd20_000_000;
+		end else if(buff_freq_ctrl &lt;= 32'd100_000)begin
+			buff_freq_ctrl = 32'd100_000;
+		end
+	end 
+end
+
+always@(posedge sys_clk or negedge sys_rst_n)begin
+	if(!sys_rst_n)begin
+		buff_amp_ctrl = 4'd5;
+	end else begin
+		if(state == AMP_CTRL &amp;&amp; encoder_right)begin
+			buff_amp_ctrl = buff_amp_ctrl + 4'd1;
+		end else if(state == AMP_CTRL &amp;&amp; encoder_left)begin
+			buff_amp_ctrl = buff_amp_ctrl - 4'd1;
+		end
+		
+		if(buff_amp_ctrl &gt;= 4'd10)begin
+			buff_amp_ctrl = 4'd10;
+		end else if(buff_amp_ctrl &lt;= 4'd1)begin
+			buff_amp_ctrl = 4'd1;
+		end
+	end
+end
+
+assign type_ctrl = buff_type_ctrl;
+assign freq_ctrl = buff_freq_ctrl;
+assign amp_ctrl = buff_amp_ctrl;
+
+endmodule
+</code></pre>
+<h1 id="结果测试">结果测试</h1>
+<p>条件受限，家里只有一台20M带宽的示波器，且无硬件触发。因此在显示高频信号时候存在衰减，同时精度过低，幅度只进行了初校。显示方波这种由不同频率合成的信号，失真程度更甚，测试如下：</p>
+<ul>
+<li>
+<p>100KHz正弦波，0.5Vpp</p>
+<figure data-type="image" tabindex="5"><img src="https://imgs.raincorn.top/imgs/202201302326293.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>500KHz方波，0.6Vpp</p>
+<figure data-type="image" tabindex="6"><img src="https://imgs.raincorn.top/imgs/202201302329357.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>1MHz三角波，0.7Vpp</p>
+<figure data-type="image" tabindex="7"><img src="https://imgs.raincorn.top/imgs/202201302330989.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>2MHz锯齿波，1.0Vpp</p>
+<figure data-type="image" tabindex="8"><img src="https://imgs.raincorn.top/imgs/202201302332312.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>20MHz正弦波，1.0Vpp</p>
+<figure data-type="image" tabindex="9"><img src="https://imgs.raincorn.top/imgs/202201302334777.png" alt="" loading="lazy"></figure>
+</li>
+</ul>
+<p>完整工程资料可在此处下载：<a href="https://imgs.raincorn.top/file/Signal_generate_XO2-4000HC.zip">Signal_generate_XO2-4000HC.zip</a></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E8%AE%BE%E8%AE%A1%E7%9B%AE%E6%A0%87">设计目标</a></li>
+<li><a href="#dds%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0">DDS原理及实现</a>
+<ul>
+<li><a href="#%E6%9F%A5%E6%89%BE%E8%A1%A8">查找表</a></li>
+<li><a href="#%E7%9B%B8%E4%BD%8D%E6%8E%A7%E5%88%B6%E5%99%A8">相位控制器</a></li>
+<li><a href="#dac%E4%B8%8E%E6%BB%A4%E6%B3%A2%E5%99%A8">DAC与滤波器</a></li>
+</ul>
+</li>
+<li><a href="#%E6%97%8B%E8%BD%AC%E7%BC%96%E7%A0%81%E5%99%A8%E8%AF%91%E7%A0%81">旋转编码器译码</a></li>
+<li><a href="#%E8%8F%9C%E5%8D%95%E8%B0%83%E8%8A%82">菜单调节</a></li>
+<li><a href="#%E7%BB%93%E6%9E%9C%E6%B5%8B%E8%AF%95">结果测试</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://raincorn.top/ice40up5k_sigma_delta_adc/">
+              <h3 class="post-title">
+                iCE40UP5K实现Σ-Δ ADC采集及电压表
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+
+          
+            <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script>
+
+var options = {
+  shortname: 'raincorn',
+  apikey: 'rKPdU1hjcyOPR8BiZqpaIDvLrdH7B0BnP0pLBqNBK8nzJvMsmBqWMVMUY8pAoXMN',
+}
+if ('') {
+  options.api = ''
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+          
+        
+
+        <div class="site-footer">
+  <a href="https://beian.miit.gov.cn/" target="_blank">豫ICP备20022245号</a>
+  <a class="rss" href="https://raincorn.top/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
